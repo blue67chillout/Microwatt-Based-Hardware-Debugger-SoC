@@ -1,75 +1,85 @@
-# OpenFrame Overview
+# Microwatt-Based Hardware Debugger SoC
 
-The OpenFrame Project provides an empty harness chip that differs significantly from the Caravel and Caravan designs. Unlike Caravel and Caravan, which include integrated SoCs and additional features, OpenFrame offers only the essential padframe, providing users with a clean slate for their custom designs.
+## Overview
 
-<img width="256" alt="Screenshot 2024-06-24 at 12 53 39 PM" src="https://github.com/efabless/openframe_timer_example/assets/67271180/ff58b58b-b9c8-4d5e-b9bc-bf344355fa80">
+This repository contains the design, firmware, and integration resources for a **hardware debugger platform built on the open-source Microwatt POWER CPU core**. The project transforms Microwatt into a versatile debug master, offering real-time control, inspection, and patching of external hardware modules—targeting both FPGA and ASIC environments.
 
-## Key Characteristics of OpenFrame
+The solution supports seamless integration with industry-standard debug tools (GDB, OpenOCD) through UART, SPI, GPIO, and JTAG protocols, making it ideal for hardware bring-up, rapid prototyping, advanced verification, and cross-disciplinary hardware/software education.
 
-1. **Minimalist Design:** 
-   - No integrated SoC or additional circuitry.
-   - Only includes the padframe, a power-on-reset circuit, and a digital ROM containing the 32-bit project ID.
+---
 
-2. **Padframe Compatibility:**
-   - The padframe design and pin placements match those of the Caravel and Caravan chips, ensuring compatibility and ease of transition between designs.
-   - Pin types are identical, with power and ground pins positioned similarly and the same power domains available.
+## Key Features
 
-3. **Flexibility:**
-   - Provides full access to all GPIO controls.
-   - Maximizes the user project area, allowing for greater customization and integration of alternative SoCs or user-specific projects at the same hierarchy level.
+- **Wishbone Master Debugging:** Microwatt acts as a bus master, inspecting and manipulating memory/registers of any attached Wishbone-compliant peripheral, IP block, or soft CPU.
+- **Multi-Protocol Debug Bridges:** Supports UART, SPI, GPIO, and optional JTAG master for connection to external targets ranging from SoCs to custom digital designs.
+- **GDB/OpenOCD Server Block:** Built-in protocol handler accepts remote debug commands over UART, Ethernet, or USB, bridging industry-standard tools directly into the SoC’s internals.
+- **Breakpoints & Watchpoints:** Hardware logic enables setting breakpoints, watchpoints, and triggers for advanced test, debug, and automation scenarios.
+- **Performance & Trace Modules:** Optional additions for execution tracing, cycle/instruction counting, and system performance profiling.
+- **Firmware Tools:** Configurable firmware and command interpreter for streamlined debug workflows and easy integration with host scripts.
 
-4. **Simplified I/O:**
-   - Pins that previously connected to CPU functions (e.g., flash controller interface, SPI interface, UART) are now repurposed as general-purpose I/O, offering flexibility for various applications.
+---
 
-The OpenFrame harness is ideal for those looking to implement custom SoCs or integrate user projects without the constraints of an existing SoC.
+## Architecture
 
-## Features
 
-1. 44 configurable GPIOs.
-2. User area of approximately 15mm².
-3. Supports digital, analog, or mixed-signal designs.
+- **Microwatt Core:** Central processor running debug firmware.
+- **Wishbone Master:** Direct access to IP blocks and peripherals.
+- **External Interfaces:** UART, SPI, GPIO, optional JTAG master and GDB/OpenOCD server.
+- **Peripheral Agents:** Target modules with debug-agent logic for breakpoint, patch, and monitor functions.
 
-# openframe_timer_example
+---
 
-This example implements a simple timer and connects it to the GPIOs.
+## Supported Debug Workflows
 
-## Installation and Setup
+- **Halt, single-step, resume, and status reporting on target modules**
+- **Memory/register inspection and patching**
+- **Setting, removing, and monitoring hardware breakpoints/watchpoints**
+- **Real-time trace and performance analysis**
+- **Automated test and remote debug via scriptable GDB/OpenOCD integration**
 
-First, clone the repository:
+---
 
-```bash
-git clone https://github.com/efabless/openframe_timer_example.git
-cd openframe_timer_example
-```
+## Applications
 
-Then, download all dependencies:
+- Rapid ASIC/FPGA hardware bring-up and troubleshooting
+- Embedded firmware debugging without special host hardware
+- System-level verification and cross-trigger workflows
+- Teaching computer architecture and digital hardware
+- Prototyping co-processor, accelerator, and multicore experiments
+- Open hardware development with professional tool support
 
-```bash
-make setup
-```
+---
 
-## Hardening the Design
+## Getting Started
 
-In this example, we will harden the timer. You will need to harden your own design similarly.
+1. **Clone the repo** and review the top-level block diagrams and RTL modules.
+2. **Select target platform** (FPGA or prepare scripts for ASIC tapeout).
+3. **Connect external modules** through Wishbone, SPI, GPIO, or JTAG pins.
+4. **Run the debug firmware** on Microwatt; interface with GDB/OpenOCD or use terminal for manual command entry.
+5. **Start debugging!** Inspect, patch, and control attached hardware, view logs, handle breakpoints, and automate verification flows.
 
-```bash
-make user_proj_timer
-```
+---
 
-Once you have hardened your design, integrate it into the OpenFrame wrapper:
+## Contributing
 
-```bash
-make openframe_project_wrapper
-```
+Open for contributions in:
+- Hardware module design (trace, JTAG master, performance counters)
+- Firmware improvements and debug protocol extensions
+- Documentation, educational use cases, and integration examples
 
-## Important Notes
+---
 
-1. **Connecting to Power:**
-   - Ensure your design is connected to power using the power pins on the wrapper.
-   - Use the `vccd1_connection` and `vssd1_connection` macros, which contain the necessary vias and nets for power connections.
+## License
 
-2. **Flattening the Design:**
-   - If you plan to flatten your design within the `openframe_project_wrapper`, do not buffer the analog pins using standard cells.
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
-3. **Running Custom Steps:**
-   - Execute the custom step in OpenLane that copies the power pins from the template DEF. If this step is skipped, the precheck will fail, and your design will not be powered.
+---
+
+## Contact
+
+Questions, issues, and collaboration: Open an issue in this repo or contact the maintainer.
+
+---
+
+**Empower your hardware debug workflow by leveraging the flexibility, openness, and modern POWER architecture of Microwatt!**
+

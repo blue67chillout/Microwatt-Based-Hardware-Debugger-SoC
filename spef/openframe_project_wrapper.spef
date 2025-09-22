@@ -1,0 +1,3440 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "openframe_project_wrapper"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "OpenRCX"
+*PROGRAM "Parallel Extraction"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*1 analog_io[0]
+*2 analog_io[10]
+*3 analog_io[11]
+*4 analog_io[12]
+*5 analog_io[13]
+*6 analog_io[14]
+*7 analog_io[15]
+*8 analog_io[16]
+*9 analog_io[17]
+*10 analog_io[18]
+*11 analog_io[19]
+*12 analog_io[1]
+*13 analog_io[20]
+*14 analog_io[21]
+*15 analog_io[22]
+*16 analog_io[23]
+*17 analog_io[24]
+*18 analog_io[25]
+*19 analog_io[26]
+*20 analog_io[27]
+*21 analog_io[28]
+*22 analog_io[29]
+*23 analog_io[2]
+*24 analog_io[30]
+*25 analog_io[31]
+*26 analog_io[32]
+*27 analog_io[33]
+*28 analog_io[34]
+*29 analog_io[35]
+*30 analog_io[36]
+*31 analog_io[37]
+*32 analog_io[38]
+*33 analog_io[39]
+*34 analog_io[3]
+*35 analog_io[40]
+*36 analog_io[41]
+*37 analog_io[42]
+*38 analog_io[43]
+*39 analog_io[4]
+*40 analog_io[5]
+*41 analog_io[6]
+*42 analog_io[7]
+*43 analog_io[8]
+*44 analog_io[9]
+*45 analog_noesd_io[0]
+*46 analog_noesd_io[10]
+*47 analog_noesd_io[11]
+*48 analog_noesd_io[12]
+*49 analog_noesd_io[13]
+*50 analog_noesd_io[14]
+*51 analog_noesd_io[15]
+*52 analog_noesd_io[16]
+*53 analog_noesd_io[17]
+*54 analog_noesd_io[18]
+*55 analog_noesd_io[19]
+*56 analog_noesd_io[1]
+*57 analog_noesd_io[20]
+*58 analog_noesd_io[21]
+*59 analog_noesd_io[22]
+*60 analog_noesd_io[23]
+*61 analog_noesd_io[24]
+*62 analog_noesd_io[25]
+*63 analog_noesd_io[26]
+*64 analog_noesd_io[27]
+*65 analog_noesd_io[28]
+*66 analog_noesd_io[29]
+*67 analog_noesd_io[2]
+*68 analog_noesd_io[30]
+*69 analog_noesd_io[31]
+*70 analog_noesd_io[32]
+*71 analog_noesd_io[33]
+*72 analog_noesd_io[34]
+*73 analog_noesd_io[35]
+*74 analog_noesd_io[36]
+*75 analog_noesd_io[37]
+*76 analog_noesd_io[38]
+*77 analog_noesd_io[39]
+*78 analog_noesd_io[3]
+*79 analog_noesd_io[40]
+*80 analog_noesd_io[41]
+*81 analog_noesd_io[42]
+*82 analog_noesd_io[43]
+*83 analog_noesd_io[4]
+*84 analog_noesd_io[5]
+*85 analog_noesd_io[6]
+*86 analog_noesd_io[7]
+*87 analog_noesd_io[8]
+*88 analog_noesd_io[9]
+*89 gpio_loopback_zero[0]
+*90 gpio_loopback_zero[10]
+*91 gpio_loopback_zero[11]
+*92 gpio_loopback_zero[12]
+*93 gpio_loopback_zero[13]
+*94 gpio_loopback_zero[14]
+*95 gpio_loopback_zero[15]
+*96 gpio_loopback_zero[16]
+*97 gpio_loopback_zero[17]
+*98 gpio_loopback_zero[18]
+*99 gpio_loopback_zero[19]
+*100 gpio_loopback_zero[1]
+*101 gpio_loopback_zero[20]
+*102 gpio_loopback_zero[21]
+*103 gpio_loopback_zero[22]
+*104 gpio_loopback_zero[23]
+*105 gpio_loopback_zero[24]
+*106 gpio_loopback_zero[25]
+*107 gpio_loopback_zero[26]
+*108 gpio_loopback_zero[27]
+*109 gpio_loopback_zero[28]
+*110 gpio_loopback_zero[29]
+*111 gpio_loopback_zero[2]
+*112 gpio_loopback_zero[30]
+*113 gpio_loopback_zero[31]
+*114 gpio_loopback_zero[32]
+*115 gpio_loopback_zero[33]
+*116 gpio_loopback_zero[34]
+*117 gpio_loopback_zero[35]
+*118 gpio_loopback_zero[36]
+*119 gpio_loopback_zero[37]
+*120 gpio_loopback_zero[38]
+*121 gpio_loopback_zero[39]
+*122 gpio_loopback_zero[3]
+*123 gpio_loopback_zero[40]
+*124 gpio_loopback_zero[41]
+*125 gpio_loopback_zero[42]
+*126 gpio_loopback_zero[43]
+*127 gpio_loopback_zero[4]
+*128 gpio_loopback_zero[5]
+*129 gpio_loopback_zero[6]
+*130 gpio_loopback_zero[7]
+*131 gpio_loopback_zero[8]
+*132 gpio_loopback_zero[9]
+*133 gpio_dm0[0]
+*134 gpio_dm0[10]
+*135 gpio_dm0[11]
+*136 gpio_dm0[12]
+*137 gpio_dm0[13]
+*138 gpio_dm0[14]
+*139 gpio_dm0[15]
+*140 gpio_dm0[16]
+*141 gpio_dm0[17]
+*142 gpio_dm0[18]
+*143 gpio_dm0[19]
+*144 gpio_dm0[1]
+*145 gpio_dm0[20]
+*146 gpio_dm0[21]
+*147 gpio_dm0[22]
+*148 gpio_dm0[23]
+*149 gpio_dm0[24]
+*150 gpio_dm0[25]
+*151 gpio_dm0[26]
+*152 gpio_dm0[27]
+*153 gpio_dm0[28]
+*154 gpio_dm0[29]
+*155 gpio_dm0[2]
+*156 gpio_dm0[30]
+*157 gpio_dm0[31]
+*158 gpio_dm0[32]
+*159 gpio_dm0[33]
+*160 gpio_dm0[34]
+*161 gpio_dm0[35]
+*162 gpio_dm0[36]
+*163 gpio_dm0[37]
+*164 gpio_dm0[38]
+*165 gpio_dm0[39]
+*166 gpio_dm0[3]
+*167 gpio_dm0[40]
+*168 gpio_dm0[41]
+*169 gpio_dm0[42]
+*170 gpio_dm0[43]
+*171 gpio_dm0[4]
+*172 gpio_dm0[5]
+*173 gpio_dm0[6]
+*174 gpio_dm0[7]
+*175 gpio_dm0[8]
+*176 gpio_dm0[9]
+*177 gpio_dm1[0]
+*178 gpio_dm1[10]
+*179 gpio_dm1[11]
+*180 gpio_dm1[12]
+*181 gpio_dm1[13]
+*182 gpio_dm1[14]
+*183 gpio_dm1[15]
+*184 gpio_dm1[16]
+*185 gpio_dm1[17]
+*186 gpio_dm1[18]
+*187 gpio_dm1[19]
+*188 gpio_dm1[1]
+*189 gpio_dm1[20]
+*190 gpio_dm1[21]
+*191 gpio_dm1[22]
+*192 gpio_dm1[23]
+*193 gpio_dm1[24]
+*194 gpio_dm1[25]
+*195 gpio_dm1[26]
+*196 gpio_dm1[27]
+*197 gpio_dm1[28]
+*198 gpio_dm1[29]
+*199 gpio_dm1[2]
+*200 gpio_dm1[30]
+*201 gpio_dm1[31]
+*202 gpio_dm1[32]
+*203 gpio_dm1[33]
+*204 gpio_dm1[34]
+*205 gpio_dm1[35]
+*206 gpio_dm1[36]
+*207 gpio_dm1[37]
+*208 gpio_dm1[38]
+*209 gpio_dm1[39]
+*210 gpio_dm1[3]
+*211 gpio_dm1[40]
+*212 gpio_dm1[41]
+*213 gpio_dm1[42]
+*214 gpio_dm1[43]
+*215 gpio_dm1[4]
+*216 gpio_dm1[5]
+*217 gpio_dm1[6]
+*218 gpio_dm1[7]
+*219 gpio_dm1[8]
+*220 gpio_dm1[9]
+*221 gpio_dm2[0]
+*222 gpio_dm2[10]
+*223 gpio_dm2[11]
+*224 gpio_dm2[12]
+*225 gpio_dm2[13]
+*226 gpio_dm2[14]
+*227 gpio_dm2[15]
+*228 gpio_dm2[16]
+*229 gpio_dm2[17]
+*230 gpio_dm2[18]
+*231 gpio_dm2[19]
+*232 gpio_dm2[1]
+*233 gpio_dm2[20]
+*234 gpio_dm2[21]
+*235 gpio_dm2[22]
+*236 gpio_dm2[23]
+*237 gpio_dm2[24]
+*238 gpio_dm2[25]
+*239 gpio_dm2[26]
+*240 gpio_dm2[27]
+*241 gpio_dm2[28]
+*242 gpio_dm2[29]
+*243 gpio_dm2[2]
+*244 gpio_dm2[30]
+*245 gpio_dm2[31]
+*246 gpio_dm2[32]
+*247 gpio_dm2[33]
+*248 gpio_dm2[34]
+*249 gpio_dm2[35]
+*250 gpio_dm2[36]
+*251 gpio_dm2[37]
+*252 gpio_dm2[38]
+*253 gpio_dm2[39]
+*254 gpio_dm2[3]
+*255 gpio_dm2[40]
+*256 gpio_dm2[41]
+*257 gpio_dm2[42]
+*258 gpio_dm2[43]
+*259 gpio_dm2[4]
+*260 gpio_dm2[5]
+*261 gpio_dm2[6]
+*262 gpio_dm2[7]
+*263 gpio_dm2[8]
+*264 gpio_dm2[9]
+*265 gpio_ib_mode_sel[0]
+*266 gpio_ib_mode_sel[10]
+*267 gpio_ib_mode_sel[11]
+*268 gpio_ib_mode_sel[12]
+*269 gpio_ib_mode_sel[13]
+*270 gpio_ib_mode_sel[14]
+*271 gpio_ib_mode_sel[15]
+*272 gpio_ib_mode_sel[16]
+*273 gpio_ib_mode_sel[17]
+*274 gpio_ib_mode_sel[18]
+*275 gpio_ib_mode_sel[19]
+*276 gpio_ib_mode_sel[1]
+*277 gpio_ib_mode_sel[20]
+*278 gpio_ib_mode_sel[21]
+*279 gpio_ib_mode_sel[22]
+*280 gpio_ib_mode_sel[23]
+*281 gpio_ib_mode_sel[24]
+*282 gpio_ib_mode_sel[25]
+*283 gpio_ib_mode_sel[26]
+*284 gpio_ib_mode_sel[27]
+*285 gpio_ib_mode_sel[28]
+*286 gpio_ib_mode_sel[29]
+*287 gpio_ib_mode_sel[2]
+*288 gpio_ib_mode_sel[30]
+*289 gpio_ib_mode_sel[31]
+*290 gpio_ib_mode_sel[32]
+*291 gpio_ib_mode_sel[33]
+*292 gpio_ib_mode_sel[34]
+*293 gpio_ib_mode_sel[35]
+*294 gpio_ib_mode_sel[36]
+*295 gpio_ib_mode_sel[37]
+*296 gpio_ib_mode_sel[38]
+*297 gpio_ib_mode_sel[39]
+*298 gpio_ib_mode_sel[3]
+*299 gpio_ib_mode_sel[40]
+*300 gpio_ib_mode_sel[41]
+*301 gpio_ib_mode_sel[42]
+*302 gpio_ib_mode_sel[43]
+*303 gpio_ib_mode_sel[4]
+*304 gpio_ib_mode_sel[5]
+*305 gpio_ib_mode_sel[6]
+*306 gpio_ib_mode_sel[7]
+*307 gpio_ib_mode_sel[8]
+*308 gpio_ib_mode_sel[9]
+*309 gpio_in[0]
+*310 gpio_in[10]
+*311 gpio_in[11]
+*312 gpio_in[12]
+*313 gpio_in[13]
+*314 gpio_in[14]
+*315 gpio_in[15]
+*316 gpio_in[16]
+*317 gpio_in[17]
+*318 gpio_in[18]
+*319 gpio_in[19]
+*320 gpio_in[1]
+*321 gpio_in[20]
+*322 gpio_in[21]
+*323 gpio_in[22]
+*324 gpio_in[23]
+*325 gpio_in[24]
+*326 gpio_in[25]
+*327 gpio_in[26]
+*328 gpio_in[27]
+*329 gpio_in[28]
+*330 gpio_in[29]
+*331 gpio_in[2]
+*332 gpio_in[30]
+*333 gpio_in[31]
+*334 gpio_in[32]
+*335 gpio_in[33]
+*336 gpio_in[34]
+*337 gpio_in[35]
+*338 gpio_in[36]
+*339 gpio_in[37]
+*340 gpio_in[38]
+*341 gpio_in[39]
+*342 gpio_in[3]
+*343 gpio_in[40]
+*344 gpio_in[41]
+*345 gpio_in[42]
+*346 gpio_in[43]
+*347 gpio_in[4]
+*348 gpio_in[5]
+*349 gpio_in[6]
+*350 gpio_in[7]
+*351 gpio_in[8]
+*352 gpio_in[9]
+*353 gpio_in_h[0]
+*354 gpio_in_h[10]
+*355 gpio_in_h[11]
+*356 gpio_in_h[12]
+*357 gpio_in_h[13]
+*358 gpio_in_h[14]
+*359 gpio_in_h[15]
+*360 gpio_in_h[16]
+*361 gpio_in_h[17]
+*362 gpio_in_h[18]
+*363 gpio_in_h[19]
+*364 gpio_in_h[1]
+*365 gpio_in_h[20]
+*366 gpio_in_h[21]
+*367 gpio_in_h[22]
+*368 gpio_in_h[23]
+*369 gpio_in_h[24]
+*370 gpio_in_h[25]
+*371 gpio_in_h[26]
+*372 gpio_in_h[27]
+*373 gpio_in_h[28]
+*374 gpio_in_h[29]
+*375 gpio_in_h[2]
+*376 gpio_in_h[30]
+*377 gpio_in_h[31]
+*378 gpio_in_h[32]
+*379 gpio_in_h[33]
+*380 gpio_in_h[34]
+*381 gpio_in_h[35]
+*382 gpio_in_h[36]
+*383 gpio_in_h[37]
+*384 gpio_in_h[38]
+*385 gpio_in_h[39]
+*386 gpio_in_h[3]
+*387 gpio_in_h[40]
+*388 gpio_in_h[41]
+*389 gpio_in_h[42]
+*390 gpio_in_h[43]
+*391 gpio_in_h[4]
+*392 gpio_in_h[5]
+*393 gpio_in_h[6]
+*394 gpio_in_h[7]
+*395 gpio_in_h[8]
+*396 gpio_in_h[9]
+*397 gpio_inp_dis[0]
+*398 gpio_inp_dis[10]
+*399 gpio_inp_dis[11]
+*400 gpio_inp_dis[12]
+*401 gpio_inp_dis[13]
+*402 gpio_inp_dis[14]
+*403 gpio_inp_dis[15]
+*404 gpio_inp_dis[16]
+*405 gpio_inp_dis[17]
+*406 gpio_inp_dis[18]
+*407 gpio_inp_dis[19]
+*408 gpio_inp_dis[1]
+*409 gpio_inp_dis[20]
+*410 gpio_inp_dis[21]
+*411 gpio_inp_dis[22]
+*412 gpio_inp_dis[23]
+*413 gpio_inp_dis[24]
+*414 gpio_inp_dis[25]
+*415 gpio_inp_dis[26]
+*416 gpio_inp_dis[27]
+*417 gpio_inp_dis[28]
+*418 gpio_inp_dis[29]
+*419 gpio_inp_dis[2]
+*420 gpio_inp_dis[30]
+*421 gpio_inp_dis[31]
+*422 gpio_inp_dis[32]
+*423 gpio_inp_dis[33]
+*424 gpio_inp_dis[34]
+*425 gpio_inp_dis[35]
+*426 gpio_inp_dis[36]
+*427 gpio_inp_dis[37]
+*428 gpio_inp_dis[38]
+*429 gpio_inp_dis[39]
+*430 gpio_inp_dis[3]
+*431 gpio_inp_dis[40]
+*432 gpio_inp_dis[41]
+*433 gpio_inp_dis[42]
+*434 gpio_inp_dis[43]
+*435 gpio_inp_dis[4]
+*436 gpio_inp_dis[5]
+*437 gpio_inp_dis[6]
+*438 gpio_inp_dis[7]
+*439 gpio_inp_dis[8]
+*440 gpio_inp_dis[9]
+*441 gpio_loopback_one[0]
+*442 gpio_loopback_one[10]
+*443 gpio_loopback_one[11]
+*444 gpio_loopback_one[12]
+*445 gpio_loopback_one[13]
+*446 gpio_loopback_one[14]
+*447 gpio_loopback_one[15]
+*448 gpio_loopback_one[16]
+*449 gpio_loopback_one[17]
+*450 gpio_loopback_one[18]
+*451 gpio_loopback_one[19]
+*452 gpio_loopback_one[1]
+*453 gpio_loopback_one[20]
+*454 gpio_loopback_one[21]
+*455 gpio_loopback_one[22]
+*456 gpio_loopback_one[23]
+*457 gpio_loopback_one[24]
+*458 gpio_loopback_one[25]
+*459 gpio_loopback_one[26]
+*460 gpio_loopback_one[27]
+*461 gpio_loopback_one[28]
+*462 gpio_loopback_one[29]
+*463 gpio_loopback_one[2]
+*464 gpio_loopback_one[30]
+*465 gpio_loopback_one[31]
+*466 gpio_loopback_one[32]
+*467 gpio_loopback_one[33]
+*468 gpio_loopback_one[34]
+*469 gpio_loopback_one[35]
+*470 gpio_loopback_one[36]
+*471 gpio_loopback_one[37]
+*472 gpio_loopback_one[38]
+*473 gpio_loopback_one[39]
+*474 gpio_loopback_one[3]
+*475 gpio_loopback_one[40]
+*476 gpio_loopback_one[41]
+*477 gpio_loopback_one[42]
+*478 gpio_loopback_one[43]
+*479 gpio_loopback_one[4]
+*480 gpio_loopback_one[5]
+*481 gpio_loopback_one[6]
+*482 gpio_loopback_one[7]
+*483 gpio_loopback_one[8]
+*484 gpio_loopback_one[9]
+*485 gpio_oeb[0]
+*486 gpio_oeb[10]
+*487 gpio_oeb[11]
+*488 gpio_oeb[12]
+*489 gpio_oeb[13]
+*490 gpio_oeb[14]
+*491 gpio_oeb[15]
+*492 gpio_oeb[16]
+*493 gpio_oeb[17]
+*494 gpio_oeb[18]
+*495 gpio_oeb[19]
+*496 gpio_oeb[1]
+*497 gpio_oeb[20]
+*498 gpio_oeb[21]
+*499 gpio_oeb[22]
+*500 gpio_oeb[23]
+*501 gpio_oeb[24]
+*502 gpio_oeb[25]
+*503 gpio_oeb[26]
+*504 gpio_oeb[27]
+*505 gpio_oeb[28]
+*506 gpio_oeb[29]
+*507 gpio_oeb[2]
+*508 gpio_oeb[30]
+*509 gpio_oeb[31]
+*510 gpio_oeb[32]
+*511 gpio_oeb[33]
+*512 gpio_oeb[34]
+*513 gpio_oeb[35]
+*514 gpio_oeb[36]
+*515 gpio_oeb[37]
+*516 gpio_oeb[38]
+*517 gpio_oeb[39]
+*518 gpio_oeb[3]
+*519 gpio_oeb[40]
+*520 gpio_oeb[41]
+*521 gpio_oeb[42]
+*522 gpio_oeb[43]
+*523 gpio_oeb[4]
+*524 gpio_oeb[5]
+*525 gpio_oeb[6]
+*526 gpio_oeb[7]
+*527 gpio_oeb[8]
+*528 gpio_oeb[9]
+*529 gpio_out[0]
+*530 gpio_out[10]
+*531 gpio_out[11]
+*532 gpio_out[12]
+*533 gpio_out[13]
+*534 gpio_out[14]
+*535 gpio_out[15]
+*536 gpio_out[16]
+*537 gpio_out[17]
+*538 gpio_out[18]
+*539 gpio_out[19]
+*540 gpio_out[1]
+*541 gpio_out[20]
+*542 gpio_out[21]
+*543 gpio_out[22]
+*544 gpio_out[23]
+*545 gpio_out[24]
+*546 gpio_out[25]
+*547 gpio_out[26]
+*548 gpio_out[27]
+*549 gpio_out[28]
+*550 gpio_out[29]
+*551 gpio_out[2]
+*552 gpio_out[30]
+*553 gpio_out[31]
+*554 gpio_out[32]
+*555 gpio_out[33]
+*556 gpio_out[34]
+*557 gpio_out[35]
+*558 gpio_out[36]
+*559 gpio_out[37]
+*560 gpio_out[38]
+*561 gpio_out[39]
+*562 gpio_out[3]
+*563 gpio_out[40]
+*564 gpio_out[41]
+*565 gpio_out[42]
+*566 gpio_out[43]
+*567 gpio_out[4]
+*568 gpio_out[5]
+*569 gpio_out[6]
+*570 gpio_out[7]
+*571 gpio_out[8]
+*572 gpio_out[9]
+*573 gpio_slow_sel[0]
+*574 gpio_slow_sel[10]
+*575 gpio_slow_sel[11]
+*576 gpio_slow_sel[12]
+*577 gpio_slow_sel[13]
+*578 gpio_slow_sel[14]
+*579 gpio_slow_sel[15]
+*580 gpio_slow_sel[16]
+*581 gpio_slow_sel[17]
+*582 gpio_slow_sel[18]
+*583 gpio_slow_sel[19]
+*584 gpio_slow_sel[1]
+*585 gpio_slow_sel[20]
+*586 gpio_slow_sel[21]
+*587 gpio_slow_sel[22]
+*588 gpio_slow_sel[23]
+*589 gpio_slow_sel[24]
+*590 gpio_slow_sel[25]
+*591 gpio_slow_sel[26]
+*592 gpio_slow_sel[27]
+*593 gpio_slow_sel[28]
+*594 gpio_slow_sel[29]
+*595 gpio_slow_sel[2]
+*596 gpio_slow_sel[30]
+*597 gpio_slow_sel[31]
+*598 gpio_slow_sel[32]
+*599 gpio_slow_sel[33]
+*600 gpio_slow_sel[34]
+*601 gpio_slow_sel[35]
+*602 gpio_slow_sel[36]
+*603 gpio_slow_sel[37]
+*604 gpio_slow_sel[38]
+*605 gpio_slow_sel[39]
+*606 gpio_slow_sel[3]
+*607 gpio_slow_sel[40]
+*608 gpio_slow_sel[41]
+*609 gpio_slow_sel[42]
+*610 gpio_slow_sel[43]
+*611 gpio_slow_sel[4]
+*612 gpio_slow_sel[5]
+*613 gpio_slow_sel[6]
+*614 gpio_slow_sel[7]
+*615 gpio_slow_sel[8]
+*616 gpio_slow_sel[9]
+*617 gpio_vtrip_sel[0]
+*618 gpio_vtrip_sel[10]
+*619 gpio_vtrip_sel[11]
+*620 gpio_vtrip_sel[12]
+*621 gpio_vtrip_sel[13]
+*622 gpio_vtrip_sel[14]
+*623 gpio_vtrip_sel[15]
+*624 gpio_vtrip_sel[16]
+*625 gpio_vtrip_sel[17]
+*626 gpio_vtrip_sel[18]
+*627 gpio_vtrip_sel[19]
+*628 gpio_vtrip_sel[1]
+*629 gpio_vtrip_sel[20]
+*630 gpio_vtrip_sel[21]
+*631 gpio_vtrip_sel[22]
+*632 gpio_vtrip_sel[23]
+*633 gpio_vtrip_sel[24]
+*634 gpio_vtrip_sel[25]
+*635 gpio_vtrip_sel[26]
+*636 gpio_vtrip_sel[27]
+*637 gpio_vtrip_sel[28]
+*638 gpio_vtrip_sel[29]
+*639 gpio_vtrip_sel[2]
+*640 gpio_vtrip_sel[30]
+*641 gpio_vtrip_sel[31]
+*642 gpio_vtrip_sel[32]
+*643 gpio_vtrip_sel[33]
+*644 gpio_vtrip_sel[34]
+*645 gpio_vtrip_sel[35]
+*646 gpio_vtrip_sel[36]
+*647 gpio_vtrip_sel[37]
+*648 gpio_vtrip_sel[38]
+*649 gpio_vtrip_sel[39]
+*650 gpio_vtrip_sel[3]
+*651 gpio_vtrip_sel[40]
+*652 gpio_vtrip_sel[41]
+*653 gpio_vtrip_sel[42]
+*654 gpio_vtrip_sel[43]
+*655 gpio_vtrip_sel[4]
+*656 gpio_vtrip_sel[5]
+*657 gpio_vtrip_sel[6]
+*658 gpio_vtrip_sel[7]
+*659 gpio_vtrip_sel[8]
+*660 gpio_vtrip_sel[9]
+*661 mask_rev[0]
+*662 mask_rev[10]
+*663 mask_rev[11]
+*664 mask_rev[12]
+*665 mask_rev[13]
+*666 mask_rev[14]
+*667 mask_rev[15]
+*668 mask_rev[16]
+*669 mask_rev[17]
+*670 mask_rev[18]
+*671 mask_rev[19]
+*672 mask_rev[1]
+*673 mask_rev[20]
+*674 mask_rev[21]
+*675 mask_rev[22]
+*676 mask_rev[23]
+*677 mask_rev[24]
+*678 mask_rev[25]
+*679 mask_rev[26]
+*680 mask_rev[27]
+*681 mask_rev[28]
+*682 mask_rev[29]
+*683 mask_rev[2]
+*684 mask_rev[30]
+*685 mask_rev[31]
+*686 mask_rev[3]
+*687 mask_rev[4]
+*688 mask_rev[5]
+*689 mask_rev[6]
+*690 mask_rev[7]
+*691 mask_rev[8]
+*692 mask_rev[9]
+*693 por_l
+*694 porb_h
+*695 porb_l
+*696 resetb_h
+*697 resetb_l
+*698 mprj
+
+*PORTS
+analog_io[0] I
+analog_io[10] I
+analog_io[11] I
+analog_io[12] I
+analog_io[13] I
+analog_io[14] I
+analog_io[15] I
+analog_io[16] I
+analog_io[17] I
+analog_io[18] I
+analog_io[19] I
+analog_io[1] I
+analog_io[20] I
+analog_io[21] I
+analog_io[22] I
+analog_io[23] I
+analog_io[24] I
+analog_io[25] I
+analog_io[26] I
+analog_io[27] I
+analog_io[28] I
+analog_io[29] I
+analog_io[2] I
+analog_io[30] I
+analog_io[31] I
+analog_io[32] I
+analog_io[33] I
+analog_io[34] I
+analog_io[35] I
+analog_io[36] I
+analog_io[37] I
+analog_io[38] I
+analog_io[39] I
+analog_io[3] I
+analog_io[40] I
+analog_io[41] I
+analog_io[42] I
+analog_io[43] I
+analog_io[4] I
+analog_io[5] I
+analog_io[6] I
+analog_io[7] I
+analog_io[8] I
+analog_io[9] I
+analog_noesd_io[0] I
+analog_noesd_io[10] I
+analog_noesd_io[11] I
+analog_noesd_io[12] I
+analog_noesd_io[13] I
+analog_noesd_io[14] I
+analog_noesd_io[15] I
+analog_noesd_io[16] I
+analog_noesd_io[17] I
+analog_noesd_io[18] I
+analog_noesd_io[19] I
+analog_noesd_io[1] I
+analog_noesd_io[20] I
+analog_noesd_io[21] I
+analog_noesd_io[22] I
+analog_noesd_io[23] I
+analog_noesd_io[24] I
+analog_noesd_io[25] I
+analog_noesd_io[26] I
+analog_noesd_io[27] I
+analog_noesd_io[28] I
+analog_noesd_io[29] I
+analog_noesd_io[2] I
+analog_noesd_io[30] I
+analog_noesd_io[31] I
+analog_noesd_io[32] I
+analog_noesd_io[33] I
+analog_noesd_io[34] I
+analog_noesd_io[35] I
+analog_noesd_io[36] I
+analog_noesd_io[37] I
+analog_noesd_io[38] I
+analog_noesd_io[39] I
+analog_noesd_io[3] I
+analog_noesd_io[40] I
+analog_noesd_io[41] I
+analog_noesd_io[42] I
+analog_noesd_io[43] I
+analog_noesd_io[4] I
+analog_noesd_io[5] I
+analog_noesd_io[6] I
+analog_noesd_io[7] I
+analog_noesd_io[8] I
+analog_noesd_io[9] I
+gpio_analog_en[0] O
+gpio_analog_en[10] O
+gpio_analog_en[11] O
+gpio_analog_en[12] O
+gpio_analog_en[13] O
+gpio_analog_en[14] O
+gpio_analog_en[15] O
+gpio_analog_en[16] O
+gpio_analog_en[17] O
+gpio_analog_en[18] O
+gpio_analog_en[19] O
+gpio_analog_en[1] O
+gpio_analog_en[20] O
+gpio_analog_en[21] O
+gpio_analog_en[22] O
+gpio_analog_en[23] O
+gpio_analog_en[24] O
+gpio_analog_en[25] O
+gpio_analog_en[26] O
+gpio_analog_en[27] O
+gpio_analog_en[28] O
+gpio_analog_en[29] O
+gpio_analog_en[2] O
+gpio_analog_en[30] O
+gpio_analog_en[31] O
+gpio_analog_en[32] O
+gpio_analog_en[33] O
+gpio_analog_en[34] O
+gpio_analog_en[35] O
+gpio_analog_en[36] O
+gpio_analog_en[37] O
+gpio_analog_en[38] O
+gpio_analog_en[39] O
+gpio_analog_en[3] O
+gpio_analog_en[40] O
+gpio_analog_en[41] O
+gpio_analog_en[42] O
+gpio_analog_en[43] O
+gpio_analog_en[4] O
+gpio_analog_en[5] O
+gpio_analog_en[6] O
+gpio_analog_en[7] O
+gpio_analog_en[8] O
+gpio_analog_en[9] O
+gpio_analog_pol[0] O
+gpio_analog_pol[10] O
+gpio_analog_pol[11] O
+gpio_analog_pol[12] O
+gpio_analog_pol[13] O
+gpio_analog_pol[14] O
+gpio_analog_pol[15] O
+gpio_analog_pol[16] O
+gpio_analog_pol[17] O
+gpio_analog_pol[18] O
+gpio_analog_pol[19] O
+gpio_analog_pol[1] O
+gpio_analog_pol[20] O
+gpio_analog_pol[21] O
+gpio_analog_pol[22] O
+gpio_analog_pol[23] O
+gpio_analog_pol[24] O
+gpio_analog_pol[25] O
+gpio_analog_pol[26] O
+gpio_analog_pol[27] O
+gpio_analog_pol[28] O
+gpio_analog_pol[29] O
+gpio_analog_pol[2] O
+gpio_analog_pol[30] O
+gpio_analog_pol[31] O
+gpio_analog_pol[32] O
+gpio_analog_pol[33] O
+gpio_analog_pol[34] O
+gpio_analog_pol[35] O
+gpio_analog_pol[36] O
+gpio_analog_pol[37] O
+gpio_analog_pol[38] O
+gpio_analog_pol[39] O
+gpio_analog_pol[3] O
+gpio_analog_pol[40] O
+gpio_analog_pol[41] O
+gpio_analog_pol[42] O
+gpio_analog_pol[43] O
+gpio_analog_pol[4] O
+gpio_analog_pol[5] O
+gpio_analog_pol[6] O
+gpio_analog_pol[7] O
+gpio_analog_pol[8] O
+gpio_analog_pol[9] O
+gpio_analog_sel[0] O
+gpio_analog_sel[10] O
+gpio_analog_sel[11] O
+gpio_analog_sel[12] O
+gpio_analog_sel[13] O
+gpio_analog_sel[14] O
+gpio_analog_sel[15] O
+gpio_analog_sel[16] O
+gpio_analog_sel[17] O
+gpio_analog_sel[18] O
+gpio_analog_sel[19] O
+gpio_analog_sel[1] O
+gpio_analog_sel[20] O
+gpio_analog_sel[21] O
+gpio_analog_sel[22] O
+gpio_analog_sel[23] O
+gpio_analog_sel[24] O
+gpio_analog_sel[25] O
+gpio_analog_sel[26] O
+gpio_analog_sel[27] O
+gpio_analog_sel[28] O
+gpio_analog_sel[29] O
+gpio_analog_sel[2] O
+gpio_analog_sel[30] O
+gpio_analog_sel[31] O
+gpio_analog_sel[32] O
+gpio_analog_sel[33] O
+gpio_analog_sel[34] O
+gpio_analog_sel[35] O
+gpio_analog_sel[36] O
+gpio_analog_sel[37] O
+gpio_analog_sel[38] O
+gpio_analog_sel[39] O
+gpio_analog_sel[3] O
+gpio_analog_sel[40] O
+gpio_analog_sel[41] O
+gpio_analog_sel[42] O
+gpio_analog_sel[43] O
+gpio_analog_sel[4] O
+gpio_analog_sel[5] O
+gpio_analog_sel[6] O
+gpio_analog_sel[7] O
+gpio_analog_sel[8] O
+gpio_analog_sel[9] O
+gpio_dm0[0] O
+gpio_dm0[10] O
+gpio_dm0[11] O
+gpio_dm0[12] O
+gpio_dm0[13] O
+gpio_dm0[14] O
+gpio_dm0[15] O
+gpio_dm0[16] O
+gpio_dm0[17] O
+gpio_dm0[18] O
+gpio_dm0[19] O
+gpio_dm0[1] O
+gpio_dm0[20] O
+gpio_dm0[21] O
+gpio_dm0[22] O
+gpio_dm0[23] O
+gpio_dm0[24] O
+gpio_dm0[25] O
+gpio_dm0[26] O
+gpio_dm0[27] O
+gpio_dm0[28] O
+gpio_dm0[29] O
+gpio_dm0[2] O
+gpio_dm0[30] O
+gpio_dm0[31] O
+gpio_dm0[32] O
+gpio_dm0[33] O
+gpio_dm0[34] O
+gpio_dm0[35] O
+gpio_dm0[36] O
+gpio_dm0[37] O
+gpio_dm0[38] O
+gpio_dm0[39] O
+gpio_dm0[3] O
+gpio_dm0[40] O
+gpio_dm0[41] O
+gpio_dm0[42] O
+gpio_dm0[43] O
+gpio_dm0[4] O
+gpio_dm0[5] O
+gpio_dm0[6] O
+gpio_dm0[7] O
+gpio_dm0[8] O
+gpio_dm0[9] O
+gpio_dm1[0] O
+gpio_dm1[10] O
+gpio_dm1[11] O
+gpio_dm1[12] O
+gpio_dm1[13] O
+gpio_dm1[14] O
+gpio_dm1[15] O
+gpio_dm1[16] O
+gpio_dm1[17] O
+gpio_dm1[18] O
+gpio_dm1[19] O
+gpio_dm1[1] O
+gpio_dm1[20] O
+gpio_dm1[21] O
+gpio_dm1[22] O
+gpio_dm1[23] O
+gpio_dm1[24] O
+gpio_dm1[25] O
+gpio_dm1[26] O
+gpio_dm1[27] O
+gpio_dm1[28] O
+gpio_dm1[29] O
+gpio_dm1[2] O
+gpio_dm1[30] O
+gpio_dm1[31] O
+gpio_dm1[32] O
+gpio_dm1[33] O
+gpio_dm1[34] O
+gpio_dm1[35] O
+gpio_dm1[36] O
+gpio_dm1[37] O
+gpio_dm1[38] O
+gpio_dm1[39] O
+gpio_dm1[3] O
+gpio_dm1[40] O
+gpio_dm1[41] O
+gpio_dm1[42] O
+gpio_dm1[43] O
+gpio_dm1[4] O
+gpio_dm1[5] O
+gpio_dm1[6] O
+gpio_dm1[7] O
+gpio_dm1[8] O
+gpio_dm1[9] O
+gpio_dm2[0] O
+gpio_dm2[10] O
+gpio_dm2[11] O
+gpio_dm2[12] O
+gpio_dm2[13] O
+gpio_dm2[14] O
+gpio_dm2[15] O
+gpio_dm2[16] O
+gpio_dm2[17] O
+gpio_dm2[18] O
+gpio_dm2[19] O
+gpio_dm2[1] O
+gpio_dm2[20] O
+gpio_dm2[21] O
+gpio_dm2[22] O
+gpio_dm2[23] O
+gpio_dm2[24] O
+gpio_dm2[25] O
+gpio_dm2[26] O
+gpio_dm2[27] O
+gpio_dm2[28] O
+gpio_dm2[29] O
+gpio_dm2[2] O
+gpio_dm2[30] O
+gpio_dm2[31] O
+gpio_dm2[32] O
+gpio_dm2[33] O
+gpio_dm2[34] O
+gpio_dm2[35] O
+gpio_dm2[36] O
+gpio_dm2[37] O
+gpio_dm2[38] O
+gpio_dm2[39] O
+gpio_dm2[3] O
+gpio_dm2[40] O
+gpio_dm2[41] O
+gpio_dm2[42] O
+gpio_dm2[43] O
+gpio_dm2[4] O
+gpio_dm2[5] O
+gpio_dm2[6] O
+gpio_dm2[7] O
+gpio_dm2[8] O
+gpio_dm2[9] O
+gpio_holdover[0] O
+gpio_holdover[10] O
+gpio_holdover[11] O
+gpio_holdover[12] O
+gpio_holdover[13] O
+gpio_holdover[14] O
+gpio_holdover[15] O
+gpio_holdover[16] O
+gpio_holdover[17] O
+gpio_holdover[18] O
+gpio_holdover[19] O
+gpio_holdover[1] O
+gpio_holdover[20] O
+gpio_holdover[21] O
+gpio_holdover[22] O
+gpio_holdover[23] O
+gpio_holdover[24] O
+gpio_holdover[25] O
+gpio_holdover[26] O
+gpio_holdover[27] O
+gpio_holdover[28] O
+gpio_holdover[29] O
+gpio_holdover[2] O
+gpio_holdover[30] O
+gpio_holdover[31] O
+gpio_holdover[32] O
+gpio_holdover[33] O
+gpio_holdover[34] O
+gpio_holdover[35] O
+gpio_holdover[36] O
+gpio_holdover[37] O
+gpio_holdover[38] O
+gpio_holdover[39] O
+gpio_holdover[3] O
+gpio_holdover[40] O
+gpio_holdover[41] O
+gpio_holdover[42] O
+gpio_holdover[43] O
+gpio_holdover[4] O
+gpio_holdover[5] O
+gpio_holdover[6] O
+gpio_holdover[7] O
+gpio_holdover[8] O
+gpio_holdover[9] O
+gpio_ib_mode_sel[0] O
+gpio_ib_mode_sel[10] O
+gpio_ib_mode_sel[11] O
+gpio_ib_mode_sel[12] O
+gpio_ib_mode_sel[13] O
+gpio_ib_mode_sel[14] O
+gpio_ib_mode_sel[15] O
+gpio_ib_mode_sel[16] O
+gpio_ib_mode_sel[17] O
+gpio_ib_mode_sel[18] O
+gpio_ib_mode_sel[19] O
+gpio_ib_mode_sel[1] O
+gpio_ib_mode_sel[20] O
+gpio_ib_mode_sel[21] O
+gpio_ib_mode_sel[22] O
+gpio_ib_mode_sel[23] O
+gpio_ib_mode_sel[24] O
+gpio_ib_mode_sel[25] O
+gpio_ib_mode_sel[26] O
+gpio_ib_mode_sel[27] O
+gpio_ib_mode_sel[28] O
+gpio_ib_mode_sel[29] O
+gpio_ib_mode_sel[2] O
+gpio_ib_mode_sel[30] O
+gpio_ib_mode_sel[31] O
+gpio_ib_mode_sel[32] O
+gpio_ib_mode_sel[33] O
+gpio_ib_mode_sel[34] O
+gpio_ib_mode_sel[35] O
+gpio_ib_mode_sel[36] O
+gpio_ib_mode_sel[37] O
+gpio_ib_mode_sel[38] O
+gpio_ib_mode_sel[39] O
+gpio_ib_mode_sel[3] O
+gpio_ib_mode_sel[40] O
+gpio_ib_mode_sel[41] O
+gpio_ib_mode_sel[42] O
+gpio_ib_mode_sel[43] O
+gpio_ib_mode_sel[4] O
+gpio_ib_mode_sel[5] O
+gpio_ib_mode_sel[6] O
+gpio_ib_mode_sel[7] O
+gpio_ib_mode_sel[8] O
+gpio_ib_mode_sel[9] O
+gpio_in[0] I
+gpio_in[10] I
+gpio_in[11] I
+gpio_in[12] I
+gpio_in[13] I
+gpio_in[14] I
+gpio_in[15] I
+gpio_in[16] I
+gpio_in[17] I
+gpio_in[18] I
+gpio_in[19] I
+gpio_in[1] I
+gpio_in[20] I
+gpio_in[21] I
+gpio_in[22] I
+gpio_in[23] I
+gpio_in[24] I
+gpio_in[25] I
+gpio_in[26] I
+gpio_in[27] I
+gpio_in[28] I
+gpio_in[29] I
+gpio_in[2] I
+gpio_in[30] I
+gpio_in[31] I
+gpio_in[32] I
+gpio_in[33] I
+gpio_in[34] I
+gpio_in[35] I
+gpio_in[36] I
+gpio_in[37] I
+gpio_in[38] I
+gpio_in[39] I
+gpio_in[3] I
+gpio_in[40] I
+gpio_in[41] I
+gpio_in[42] I
+gpio_in[43] I
+gpio_in[4] I
+gpio_in[5] I
+gpio_in[6] I
+gpio_in[7] I
+gpio_in[8] I
+gpio_in[9] I
+gpio_in_h[0] I
+gpio_in_h[10] I
+gpio_in_h[11] I
+gpio_in_h[12] I
+gpio_in_h[13] I
+gpio_in_h[14] I
+gpio_in_h[15] I
+gpio_in_h[16] I
+gpio_in_h[17] I
+gpio_in_h[18] I
+gpio_in_h[19] I
+gpio_in_h[1] I
+gpio_in_h[20] I
+gpio_in_h[21] I
+gpio_in_h[22] I
+gpio_in_h[23] I
+gpio_in_h[24] I
+gpio_in_h[25] I
+gpio_in_h[26] I
+gpio_in_h[27] I
+gpio_in_h[28] I
+gpio_in_h[29] I
+gpio_in_h[2] I
+gpio_in_h[30] I
+gpio_in_h[31] I
+gpio_in_h[32] I
+gpio_in_h[33] I
+gpio_in_h[34] I
+gpio_in_h[35] I
+gpio_in_h[36] I
+gpio_in_h[37] I
+gpio_in_h[38] I
+gpio_in_h[39] I
+gpio_in_h[3] I
+gpio_in_h[40] I
+gpio_in_h[41] I
+gpio_in_h[42] I
+gpio_in_h[43] I
+gpio_in_h[4] I
+gpio_in_h[5] I
+gpio_in_h[6] I
+gpio_in_h[7] I
+gpio_in_h[8] I
+gpio_in_h[9] I
+gpio_inp_dis[0] O
+gpio_inp_dis[10] O
+gpio_inp_dis[11] O
+gpio_inp_dis[12] O
+gpio_inp_dis[13] O
+gpio_inp_dis[14] O
+gpio_inp_dis[15] O
+gpio_inp_dis[16] O
+gpio_inp_dis[17] O
+gpio_inp_dis[18] O
+gpio_inp_dis[19] O
+gpio_inp_dis[1] O
+gpio_inp_dis[20] O
+gpio_inp_dis[21] O
+gpio_inp_dis[22] O
+gpio_inp_dis[23] O
+gpio_inp_dis[24] O
+gpio_inp_dis[25] O
+gpio_inp_dis[26] O
+gpio_inp_dis[27] O
+gpio_inp_dis[28] O
+gpio_inp_dis[29] O
+gpio_inp_dis[2] O
+gpio_inp_dis[30] O
+gpio_inp_dis[31] O
+gpio_inp_dis[32] O
+gpio_inp_dis[33] O
+gpio_inp_dis[34] O
+gpio_inp_dis[35] O
+gpio_inp_dis[36] O
+gpio_inp_dis[37] O
+gpio_inp_dis[38] O
+gpio_inp_dis[39] O
+gpio_inp_dis[3] O
+gpio_inp_dis[40] O
+gpio_inp_dis[41] O
+gpio_inp_dis[42] O
+gpio_inp_dis[43] O
+gpio_inp_dis[4] O
+gpio_inp_dis[5] O
+gpio_inp_dis[6] O
+gpio_inp_dis[7] O
+gpio_inp_dis[8] O
+gpio_inp_dis[9] O
+gpio_loopback_one[0] I
+gpio_loopback_one[10] I
+gpio_loopback_one[11] I
+gpio_loopback_one[12] I
+gpio_loopback_one[13] I
+gpio_loopback_one[14] I
+gpio_loopback_one[15] I
+gpio_loopback_one[16] I
+gpio_loopback_one[17] I
+gpio_loopback_one[18] I
+gpio_loopback_one[19] I
+gpio_loopback_one[1] I
+gpio_loopback_one[20] I
+gpio_loopback_one[21] I
+gpio_loopback_one[22] I
+gpio_loopback_one[23] I
+gpio_loopback_one[24] I
+gpio_loopback_one[25] I
+gpio_loopback_one[26] I
+gpio_loopback_one[27] I
+gpio_loopback_one[28] I
+gpio_loopback_one[29] I
+gpio_loopback_one[2] I
+gpio_loopback_one[30] I
+gpio_loopback_one[31] I
+gpio_loopback_one[32] I
+gpio_loopback_one[33] I
+gpio_loopback_one[34] I
+gpio_loopback_one[35] I
+gpio_loopback_one[36] I
+gpio_loopback_one[37] I
+gpio_loopback_one[38] I
+gpio_loopback_one[39] I
+gpio_loopback_one[3] I
+gpio_loopback_one[40] I
+gpio_loopback_one[41] I
+gpio_loopback_one[42] I
+gpio_loopback_one[43] I
+gpio_loopback_one[4] I
+gpio_loopback_one[5] I
+gpio_loopback_one[6] I
+gpio_loopback_one[7] I
+gpio_loopback_one[8] I
+gpio_loopback_one[9] I
+gpio_loopback_zero[0] I
+gpio_loopback_zero[10] I
+gpio_loopback_zero[11] I
+gpio_loopback_zero[12] I
+gpio_loopback_zero[13] I
+gpio_loopback_zero[14] I
+gpio_loopback_zero[15] I
+gpio_loopback_zero[16] I
+gpio_loopback_zero[17] I
+gpio_loopback_zero[18] I
+gpio_loopback_zero[19] I
+gpio_loopback_zero[1] I
+gpio_loopback_zero[20] I
+gpio_loopback_zero[21] I
+gpio_loopback_zero[22] I
+gpio_loopback_zero[23] I
+gpio_loopback_zero[24] I
+gpio_loopback_zero[25] I
+gpio_loopback_zero[26] I
+gpio_loopback_zero[27] I
+gpio_loopback_zero[28] I
+gpio_loopback_zero[29] I
+gpio_loopback_zero[2] I
+gpio_loopback_zero[30] I
+gpio_loopback_zero[31] I
+gpio_loopback_zero[32] I
+gpio_loopback_zero[33] I
+gpio_loopback_zero[34] I
+gpio_loopback_zero[35] I
+gpio_loopback_zero[36] I
+gpio_loopback_zero[37] I
+gpio_loopback_zero[38] I
+gpio_loopback_zero[39] I
+gpio_loopback_zero[3] I
+gpio_loopback_zero[40] I
+gpio_loopback_zero[41] I
+gpio_loopback_zero[42] I
+gpio_loopback_zero[43] I
+gpio_loopback_zero[4] I
+gpio_loopback_zero[5] I
+gpio_loopback_zero[6] I
+gpio_loopback_zero[7] I
+gpio_loopback_zero[8] I
+gpio_loopback_zero[9] I
+gpio_oeb[0] O
+gpio_oeb[10] O
+gpio_oeb[11] O
+gpio_oeb[12] O
+gpio_oeb[13] O
+gpio_oeb[14] O
+gpio_oeb[15] O
+gpio_oeb[16] O
+gpio_oeb[17] O
+gpio_oeb[18] O
+gpio_oeb[19] O
+gpio_oeb[1] O
+gpio_oeb[20] O
+gpio_oeb[21] O
+gpio_oeb[22] O
+gpio_oeb[23] O
+gpio_oeb[24] O
+gpio_oeb[25] O
+gpio_oeb[26] O
+gpio_oeb[27] O
+gpio_oeb[28] O
+gpio_oeb[29] O
+gpio_oeb[2] O
+gpio_oeb[30] O
+gpio_oeb[31] O
+gpio_oeb[32] O
+gpio_oeb[33] O
+gpio_oeb[34] O
+gpio_oeb[35] O
+gpio_oeb[36] O
+gpio_oeb[37] O
+gpio_oeb[38] O
+gpio_oeb[39] O
+gpio_oeb[3] O
+gpio_oeb[40] O
+gpio_oeb[41] O
+gpio_oeb[42] O
+gpio_oeb[43] O
+gpio_oeb[4] O
+gpio_oeb[5] O
+gpio_oeb[6] O
+gpio_oeb[7] O
+gpio_oeb[8] O
+gpio_oeb[9] O
+gpio_out[0] O
+gpio_out[10] O
+gpio_out[11] O
+gpio_out[12] O
+gpio_out[13] O
+gpio_out[14] O
+gpio_out[15] O
+gpio_out[16] O
+gpio_out[17] O
+gpio_out[18] O
+gpio_out[19] O
+gpio_out[1] O
+gpio_out[20] O
+gpio_out[21] O
+gpio_out[22] O
+gpio_out[23] O
+gpio_out[24] O
+gpio_out[25] O
+gpio_out[26] O
+gpio_out[27] O
+gpio_out[28] O
+gpio_out[29] O
+gpio_out[2] O
+gpio_out[30] O
+gpio_out[31] O
+gpio_out[32] O
+gpio_out[33] O
+gpio_out[34] O
+gpio_out[35] O
+gpio_out[36] O
+gpio_out[37] O
+gpio_out[38] O
+gpio_out[39] O
+gpio_out[3] O
+gpio_out[40] O
+gpio_out[41] O
+gpio_out[42] O
+gpio_out[43] O
+gpio_out[4] O
+gpio_out[5] O
+gpio_out[6] O
+gpio_out[7] O
+gpio_out[8] O
+gpio_out[9] O
+gpio_slow_sel[0] O
+gpio_slow_sel[10] O
+gpio_slow_sel[11] O
+gpio_slow_sel[12] O
+gpio_slow_sel[13] O
+gpio_slow_sel[14] O
+gpio_slow_sel[15] O
+gpio_slow_sel[16] O
+gpio_slow_sel[17] O
+gpio_slow_sel[18] O
+gpio_slow_sel[19] O
+gpio_slow_sel[1] O
+gpio_slow_sel[20] O
+gpio_slow_sel[21] O
+gpio_slow_sel[22] O
+gpio_slow_sel[23] O
+gpio_slow_sel[24] O
+gpio_slow_sel[25] O
+gpio_slow_sel[26] O
+gpio_slow_sel[27] O
+gpio_slow_sel[28] O
+gpio_slow_sel[29] O
+gpio_slow_sel[2] O
+gpio_slow_sel[30] O
+gpio_slow_sel[31] O
+gpio_slow_sel[32] O
+gpio_slow_sel[33] O
+gpio_slow_sel[34] O
+gpio_slow_sel[35] O
+gpio_slow_sel[36] O
+gpio_slow_sel[37] O
+gpio_slow_sel[38] O
+gpio_slow_sel[39] O
+gpio_slow_sel[3] O
+gpio_slow_sel[40] O
+gpio_slow_sel[41] O
+gpio_slow_sel[42] O
+gpio_slow_sel[43] O
+gpio_slow_sel[4] O
+gpio_slow_sel[5] O
+gpio_slow_sel[6] O
+gpio_slow_sel[7] O
+gpio_slow_sel[8] O
+gpio_slow_sel[9] O
+gpio_vtrip_sel[0] O
+gpio_vtrip_sel[10] O
+gpio_vtrip_sel[11] O
+gpio_vtrip_sel[12] O
+gpio_vtrip_sel[13] O
+gpio_vtrip_sel[14] O
+gpio_vtrip_sel[15] O
+gpio_vtrip_sel[16] O
+gpio_vtrip_sel[17] O
+gpio_vtrip_sel[18] O
+gpio_vtrip_sel[19] O
+gpio_vtrip_sel[1] O
+gpio_vtrip_sel[20] O
+gpio_vtrip_sel[21] O
+gpio_vtrip_sel[22] O
+gpio_vtrip_sel[23] O
+gpio_vtrip_sel[24] O
+gpio_vtrip_sel[25] O
+gpio_vtrip_sel[26] O
+gpio_vtrip_sel[27] O
+gpio_vtrip_sel[28] O
+gpio_vtrip_sel[29] O
+gpio_vtrip_sel[2] O
+gpio_vtrip_sel[30] O
+gpio_vtrip_sel[31] O
+gpio_vtrip_sel[32] O
+gpio_vtrip_sel[33] O
+gpio_vtrip_sel[34] O
+gpio_vtrip_sel[35] O
+gpio_vtrip_sel[36] O
+gpio_vtrip_sel[37] O
+gpio_vtrip_sel[38] O
+gpio_vtrip_sel[39] O
+gpio_vtrip_sel[3] O
+gpio_vtrip_sel[40] O
+gpio_vtrip_sel[41] O
+gpio_vtrip_sel[42] O
+gpio_vtrip_sel[43] O
+gpio_vtrip_sel[4] O
+gpio_vtrip_sel[5] O
+gpio_vtrip_sel[6] O
+gpio_vtrip_sel[7] O
+gpio_vtrip_sel[8] O
+gpio_vtrip_sel[9] O
+mask_rev[0] I
+mask_rev[10] I
+mask_rev[11] I
+mask_rev[12] I
+mask_rev[13] I
+mask_rev[14] I
+mask_rev[15] I
+mask_rev[16] I
+mask_rev[17] I
+mask_rev[18] I
+mask_rev[19] I
+mask_rev[1] I
+mask_rev[20] I
+mask_rev[21] I
+mask_rev[22] I
+mask_rev[23] I
+mask_rev[24] I
+mask_rev[25] I
+mask_rev[26] I
+mask_rev[27] I
+mask_rev[28] I
+mask_rev[29] I
+mask_rev[2] I
+mask_rev[30] I
+mask_rev[31] I
+mask_rev[3] I
+mask_rev[4] I
+mask_rev[5] I
+mask_rev[6] I
+mask_rev[7] I
+mask_rev[8] I
+mask_rev[9] I
+por_l I
+porb_h I
+porb_l I
+resetb_h I
+resetb_l I
+
+*D_NET *89 0.0136199
+*CONN
+*P gpio_holdover[0] O
+*P gpio_analog_sel[0] O
+*P gpio_analog_en[0] O
+*P gpio_analog_pol[0] O
+*P gpio_loopback_zero[0] I
+*CAP
+1 gpio_holdover[0] 5.97666e-06
+2 gpio_analog_sel[0] 1.04981e-05
+3 gpio_analog_en[0] 0.000488323
+4 gpio_analog_pol[0] 2.03838e-05
+5 gpio_loopback_zero[0] 0.00348064
+6 *89:51 0.00132032
+7 *89:37 0.00130104
+8 *89:19 0.00199848
+9 *89:15 0.00499421
+*RES
+1 gpio_loopback_zero[0] *89:15 48.5265 
+2 *89:15 *89:19 3.32368 
+3 *89:19 *89:37 1.9082 
+4 *89:37 *89:51 21.0085 
+5 *89:51 gpio_analog_pol[0] 0.151183 
+6 *89:51 gpio_analog_en[0] 1.89802 
+7 *89:37 gpio_analog_sel[0] 0.0705 
+8 *89:19 gpio_holdover[0] 0.0705 
+*END
+
+*D_NET *90 0.0131465
+*CONN
+*P gpio_holdover[10] O
+*P gpio_analog_sel[10] O
+*P gpio_analog_pol[10] O
+*P gpio_analog_en[10] O
+*P gpio_loopback_zero[10] I
+*CAP
+1 gpio_holdover[10] 2.91394e-06
+2 gpio_analog_sel[10] 1.29355e-05
+3 gpio_analog_pol[10] 5.30897e-05
+4 gpio_analog_en[10] 0.000459074
+5 gpio_loopback_zero[10] 0.00433187
+6 *90:43 0.00125418
+7 *90:37 0.0012258
+8 *90:19 0.00480564
+9 gpio_holdover[10] gpio_out[10] 3.9289e-06
+10 *90:19 gpio_out[10] 0.000558585
+11 *90:19 *486:9 0.000438484
+12 *90:19 *531:9 0
+*RES
+1 gpio_loopback_zero[10] *90:19 46.9664 
+2 *90:19 *90:37 1.9082 
+3 *90:37 *90:43 17.2437 
+4 *90:43 gpio_analog_en[10] 7.94972 
+5 *90:43 gpio_analog_pol[10] 3.5886 
+6 *90:37 gpio_analog_sel[10] 0.0705 
+7 *90:19 gpio_holdover[10] 0.0705 
+*END
+
+*D_NET *91 0.00742946
+*CONN
+*P gpio_holdover[11] O
+*P gpio_analog_sel[11] O
+*P gpio_analog_pol[11] O
+*P gpio_analog_en[11] O
+*P gpio_loopback_zero[11] I
+*CAP
+1 gpio_holdover[11] 3.09201e-06
+2 gpio_analog_sel[11] 1.30773e-05
+3 gpio_analog_pol[11] 2.2227e-06
+4 gpio_analog_en[11] 0.000511932
+5 gpio_loopback_zero[11] 0.00188337
+6 *91:61 0.00133099
+7 *91:45 0.00130013
+8 *91:27 0.00235668
+9 *91:27 gpio_out[11] 2.79547e-05
+10 *91:45 gpio_out[11] 0
+*RES
+1 gpio_loopback_zero[11] *91:27 37.7235 
+2 *91:27 *91:45 1.9082 
+3 *91:45 *91:61 19.7591 
+4 *91:61 gpio_analog_en[11] 1.9787 
+5 *91:61 gpio_analog_pol[11] 0.0705 
+6 *91:45 gpio_analog_sel[11] 0.0705 
+7 *91:27 gpio_holdover[11] 0.0705 
+*END
+
+*D_NET *92 0.01316
+*CONN
+*P gpio_holdover[12] O
+*P gpio_analog_sel[12] O
+*P gpio_analog_pol[12] O
+*P gpio_analog_en[12] O
+*P gpio_loopback_zero[12] I
+*CAP
+1 gpio_holdover[12] 1.7388e-05
+2 gpio_analog_sel[12] 1.12576e-05
+3 gpio_analog_pol[12] 4.9305e-06
+4 gpio_analog_en[12] 0.000460651
+5 gpio_loopback_zero[12] 0.00454172
+6 *92:51 0.00125977
+7 *92:39 0.0012802
+8 *92:21 0.00503387
+9 gpio_holdover[12] gpio_out[12] 1.06961e-05
+10 *92:21 gpio_out[12] 0.000539557
+11 *92:21 *488:9 0
+12 *92:21 *532:9 0
+*RES
+1 gpio_loopback_zero[12] *92:21 46.4635 
+2 *92:21 *92:39 1.89645 
+3 *92:39 *92:51 20.5134 
+4 *92:51 gpio_analog_en[12] 1.90663 
+5 *92:51 gpio_analog_pol[12] 0.0705 
+6 *92:39 gpio_analog_sel[12] 0.0705 
+7 *92:21 gpio_holdover[12] 0.12925 
+*END
+
+*D_NET *93 0.00718263
+*CONN
+*P gpio_analog_sel[13] O
+*P gpio_analog_en[13] O
+*P gpio_analog_pol[13] O
+*P gpio_holdover[13] O
+*P gpio_loopback_zero[13] I
+*CAP
+1 gpio_analog_sel[13] 9.67619e-05
+2 gpio_analog_en[13] 0.000446553
+3 gpio_analog_pol[13] 6.5123e-05
+4 gpio_holdover[13] 0.00221032
+5 gpio_loopback_zero[13] 0.00178221
+6 *93:58 0.00128423
+7 *93:50 0.00129743
+*RES
+1 gpio_loopback_zero[13] gpio_holdover[13] 38.1379 
+2 gpio_holdover[13] *93:50 1.60975 
+3 *93:50 *93:58 22.1815 
+4 *93:58 gpio_analog_pol[13] 0.339183 
+5 *93:58 gpio_analog_en[13] 1.71002 
+6 *93:50 gpio_analog_sel[13] 0.41595 
+*END
+
+*D_NET *94 0.0135418
+*CONN
+*P gpio_holdover[14] O
+*P gpio_analog_en[14] O
+*P gpio_analog_pol[14] O
+*P gpio_analog_sel[14] O
+*P gpio_loopback_zero[14] I
+*CAP
+1 gpio_holdover[14] 5.87197e-05
+2 gpio_analog_en[14] 0.000480488
+3 gpio_analog_pol[14] 0.0013009
+4 gpio_analog_sel[14] 0.00141098
+5 gpio_loopback_zero[14] 0.00482071
+6 *94:40 2.71683e-05
+7 *94:17 0.00544283
+*RES
+1 gpio_loopback_zero[14] *94:17 49.1733 
+2 *94:17 gpio_analog_sel[14] 1.85415 
+3 gpio_analog_sel[14] *94:40 0.184083 
+4 gpio_analog_sel[14] gpio_analog_pol[14] 17.499 
+5 gpio_analog_pol[14] gpio_analog_en[14] 1.9787 
+6 *94:17 gpio_holdover[14] 0.32195 
+*END
+
+*D_NET *95 0.0136788
+*CONN
+*P gpio_holdover[15] O
+*P gpio_analog_en[15] O
+*P gpio_analog_pol[15] O
+*P gpio_analog_sel[15] O
+*P gpio_loopback_zero[15] I
+*CAP
+1 gpio_holdover[15] 2.9868e-05
+2 gpio_analog_en[15] 0.000359195
+3 gpio_analog_pol[15] 2.9868e-05
+4 gpio_analog_sel[15] 2.9868e-05
+5 gpio_loopback_zero[15] 0.00443547
+6 *95:31 0.00112599
+7 *95:21 0.00109612
+8 *95:17 0.00124806
+9 *95:11 0.00532433
+*RES
+1 gpio_loopback_zero[15] *95:11 33.9774 
+2 *95:11 *95:17 17.7321 
+3 *95:17 *95:21 10.375 
+4 *95:21 gpio_analog_sel[15] 5.01786 
+5 *95:21 *95:31 13.6786 
+6 *95:31 gpio_analog_pol[15] 5.01786 
+7 *95:31 gpio_analog_en[15] 10.8929 
+8 *95:17 gpio_holdover[15] 0.517857 
+*END
+
+*D_NET *96 0.0123879
+*CONN
+*P gpio_analog_en[16] O
+*P gpio_analog_pol[16] O
+*P gpio_analog_sel[16] O
+*P gpio_holdover[16] O
+*P gpio_loopback_zero[16] I
+*CAP
+1 gpio_analog_en[16] 0.000356374
+2 gpio_analog_pol[16] 1.62789e-05
+3 gpio_analog_sel[16] 1.9595e-05
+4 gpio_holdover[16] 2.04049e-05
+5 gpio_loopback_zero[16] 0.00387879
+6 *96:61 0.00111418
+7 *96:43 0.00110233
+8 *96:19 0.00118141
+9 *96:17 0.00469859
+*RES
+1 gpio_loopback_zero[16] *96:17 33.3613 
+2 *96:17 *96:19 17.125 
+3 *96:19 gpio_holdover[16] 0.669643 
+4 *96:19 *96:43 9.30357 
+5 *96:43 gpio_analog_sel[16] 0.669643 
+6 *96:43 *96:61 23.0804 
+7 *96:61 gpio_analog_pol[16] 0.669643 
+8 *96:61 gpio_analog_en[16] 9.97321 
+*END
+
+*D_NET *97 0.0120486
+*CONN
+*P gpio_analog_en[17] O
+*P gpio_analog_pol[17] O
+*P gpio_analog_sel[17] O
+*P gpio_holdover[17] O
+*P gpio_loopback_zero[17] I
+*CAP
+1 gpio_analog_en[17] 0.000356058
+2 gpio_analog_pol[17] 4.0225e-06
+3 gpio_analog_sel[17] 1.9595e-05
+4 gpio_holdover[17] 2.04049e-05
+5 gpio_loopback_zero[17] 0.00452054
+6 *97:59 0.00112254
+7 *97:37 0.00112326
+8 *97:13 0.00488215
+*RES
+1 gpio_loopback_zero[17] *97:13 49.0845 
+2 *97:13 gpio_holdover[17] 0.669643 
+3 *97:13 *97:37 9.30357 
+4 *97:37 gpio_analog_sel[17] 0.669643 
+5 *97:37 *97:59 24.2411 
+6 *97:59 gpio_analog_pol[17] 0.669643 
+7 *97:59 gpio_analog_en[17] 9.97321 
+*END
+
+*D_NET *98 0.0119256
+*CONN
+*P gpio_analog_en[18] O
+*P gpio_analog_pol[18] O
+*P gpio_analog_sel[18] O
+*P gpio_holdover[18] O
+*P gpio_loopback_zero[18] I
+*CAP
+1 gpio_analog_en[18] 0.000367185
+2 gpio_analog_pol[18] 2.61253e-05
+3 gpio_analog_sel[18] 1.9595e-05
+4 gpio_holdover[18] 2.04049e-05
+5 gpio_loopback_zero[18] 0.0036413
+6 *98:55 0.00112048
+7 *98:43 0.00108797
+8 *98:19 0.00118141
+9 *98:17 0.0044611
+*RES
+1 gpio_loopback_zero[18] *98:17 33.2172 
+2 *98:17 *98:19 17.125 
+3 *98:19 gpio_holdover[18] 0.669643 
+4 *98:19 *98:43 9.30357 
+5 *98:43 gpio_analog_sel[18] 0.669643 
+6 *98:43 *98:55 18.1786 
+7 *98:55 gpio_analog_pol[18] 5.01786 
+8 *98:55 gpio_analog_en[18] 12.6071 
+*END
+
+*D_NET *99 0.0135417
+*CONN
+*P gpio_analog_en[19] O
+*P gpio_analog_pol[19] O
+*P gpio_analog_sel[19] O
+*P gpio_holdover[19] O
+*P gpio_loopback_zero[19] I
+*CAP
+1 gpio_analog_en[19] 0.000360022
+2 gpio_analog_pol[19] 2.42345e-05
+3 gpio_analog_sel[19] 1.9595e-05
+4 gpio_holdover[19] 2.04049e-05
+5 gpio_loopback_zero[19] 0.00445962
+6 *99:51 0.00111143
+7 *99:37 0.00108676
+8 *99:13 0.00118019
+9 *99:11 0.00527942
+*RES
+1 gpio_loopback_zero[19] *99:11 33.9774 
+2 *99:11 *99:13 17.125 
+3 *99:13 gpio_holdover[19] 0.669643 
+4 *99:13 *99:37 9.30357 
+5 *99:37 gpio_analog_sel[19] 0.669643 
+6 *99:37 *99:51 22.6786 
+7 *99:51 gpio_analog_pol[19] 0.669643 
+8 *99:51 gpio_analog_en[19] 9.97321 
+*END
+
+*D_NET *100 0.0136667
+*CONN
+*P gpio_analog_pol[1] O
+*P gpio_analog_en[1] O
+*P gpio_analog_sel[1] O
+*P gpio_holdover[1] O
+*P gpio_loopback_zero[1] I
+*CAP
+1 gpio_analog_pol[1] 1.2441e-05
+2 gpio_analog_en[1] 0.000655459
+3 gpio_analog_sel[1] 6.92167e-05
+4 gpio_holdover[1] 0.00193098
+5 gpio_loopback_zero[1] 0.00343526
+6 *100:66 0.0013979
+7 *100:42 0.00121962
+8 *100:15 0.00494583
+9 *100:15 *331:13 0
+10 *100:15 *551:9 0
+*RES
+1 gpio_loopback_zero[1] *100:15 48.514 
+2 *100:15 gpio_holdover[1] 3.34875 
+3 gpio_holdover[1] *100:42 1.65988 
+4 *100:42 gpio_analog_sel[1] 0.318817 
+5 *100:42 *100:66 20.6076 
+6 *100:66 gpio_analog_en[1] 2.63748 
+7 *100:66 gpio_analog_pol[1] 0.15275 
+*END
+
+*D_NET *101 0.0134487
+*CONN
+*P gpio_holdover[20] O
+*P gpio_analog_en[20] O
+*P gpio_analog_pol[20] O
+*P gpio_analog_sel[20] O
+*P gpio_loopback_zero[20] I
+*CAP
+1 gpio_holdover[20] 2.9868e-05
+2 gpio_analog_en[20] 0.000359195
+3 gpio_analog_pol[20] 2.9868e-05
+4 gpio_analog_sel[20] 2.9868e-05
+5 gpio_loopback_zero[20] 0.00435845
+6 *101:31 0.00112599
+7 *101:21 0.00109612
+8 *101:17 0.00121003
+9 *101:11 0.00520929
+*RES
+1 gpio_loopback_zero[20] *101:11 33.6891 
+2 *101:11 *101:17 17.7321 
+3 *101:17 *101:21 10.375 
+4 *101:21 gpio_analog_sel[20] 5.01786 
+5 *101:21 *101:31 13.6786 
+6 *101:31 gpio_analog_pol[20] 5.01786 
+7 *101:31 gpio_analog_en[20] 10.8929 
+8 *101:17 gpio_holdover[20] 0.517857 
+*END
+
+*D_NET *102 0.0161532
+*CONN
+*P gpio_analog_en[21] O
+*P gpio_analog_pol[21] O
+*P gpio_analog_sel[21] O
+*P gpio_holdover[21] O
+*P gpio_loopback_zero[21] I
+*CAP
+1 gpio_analog_en[21] 0.000364386
+2 gpio_analog_pol[21] 2.7998e-05
+3 gpio_analog_sel[21] 0.000167587
+4 gpio_holdover[21] 0.000224823
+5 gpio_loopback_zero[21] 0.00462076
+6 *102:47 0.00220307
+7 *102:13 0.00125277
+8 *102:9 0.0072918
+*RES
+1 gpio_loopback_zero[21] *102:9 30.6394 
+2 *102:9 *102:13 20.535 
+3 *102:13 gpio_holdover[21] 13 
+4 *102:13 gpio_analog_sel[21] 3.46429 
+5 *102:9 *102:47 24.6503 
+6 *102:47 gpio_analog_pol[21] 0.669643 
+7 *102:47 gpio_analog_en[21] 15.7946 
+*END
+
+*D_NET *103 0.0128249
+*CONN
+*P gpio_analog_en[22] O
+*P gpio_analog_pol[22] O
+*P gpio_analog_sel[22] O
+*P gpio_holdover[22] O
+*P gpio_loopback_zero[22] I
+*CAP
+1 gpio_analog_en[22] 0.000360022
+2 gpio_analog_pol[22] 2.42345e-05
+3 gpio_analog_sel[22] 1.9595e-05
+4 gpio_holdover[22] 2.04049e-05
+5 gpio_loopback_zero[22] 0.0041
+6 *103:51 0.00111143
+7 *103:37 0.00108797
+8 *103:13 0.00118141
+9 *103:11 0.00491979
+*RES
+1 gpio_loopback_zero[22] *103:11 33.4008 
+2 *103:11 *103:13 17.125 
+3 *103:13 gpio_holdover[22] 0.669643 
+4 *103:13 *103:37 9.30357 
+5 *103:37 gpio_analog_sel[22] 0.669643 
+6 *103:37 *103:51 22.6786 
+7 *103:51 gpio_analog_pol[22] 0.669643 
+8 *103:51 gpio_analog_en[22] 9.97321 
+*END
+
+*D_NET *104 0.0134733
+*CONN
+*P gpio_analog_sel[23] O
+*P gpio_analog_en[23] O
+*P gpio_analog_pol[23] O
+*P gpio_holdover[23] O
+*P gpio_loopback_zero[23] I
+*CAP
+1 gpio_analog_sel[23] 3.19112e-05
+2 gpio_analog_en[23] 0.000350076
+3 gpio_analog_pol[23] 4.62412e-05
+4 gpio_holdover[23] 3.6732e-05
+5 gpio_loopback_zero[23] 0.00438353
+6 *104:43 0.00113253
+7 *104:37 0.00109981
+8 *104:15 0.0011887
+9 *104:13 0.00520381
+*RES
+1 gpio_loopback_zero[23] *104:13 33.7204 
+2 *104:13 *104:15 17.125 
+3 *104:15 gpio_holdover[23] 1.20536 
+4 *104:15 *104:37 8.44643 
+5 *104:37 *104:43 18.4554 
+6 *104:43 gpio_analog_pol[23] 5.25 
+7 *104:43 gpio_analog_en[23] 11.125 
+8 *104:37 gpio_analog_sel[23] 0.473214 
+*END
+
+*D_NET *105 0.013047
+*CONN
+*P gpio_analog_en[24] O
+*P gpio_analog_pol[24] O
+*P gpio_analog_sel[24] O
+*P gpio_holdover[24] O
+*P gpio_loopback_zero[24] I
+*CAP
+1 gpio_analog_en[24] 0.000352442
+2 gpio_analog_pol[24] 6.33011e-05
+3 gpio_analog_sel[24] 4.15826e-05
+4 gpio_holdover[24] 5.20431e-05
+5 gpio_loopback_zero[24] 0.00110267
+6 *105:71 0.00111324
+7 *105:61 0.00124692
+8 *105:29 0.0016314
+9 *105:17 0.00370611
+10 *105:15 0.00373726
+*RES
+1 gpio_loopback_zero[24] *105:15 5.9574 
+2 *105:15 *105:17 52.3393 
+3 *105:17 *105:29 5.77018 
+4 *105:29 gpio_holdover[24] 0.2162 
+5 *105:29 *105:61 6.9743 
+6 *105:61 gpio_analog_sel[24] 3.59017 
+7 *105:61 *105:71 13.6786 
+8 *105:71 gpio_analog_pol[24] 3.59017 
+9 *105:71 gpio_analog_en[24] 9.46517 
+*END
+
+*D_NET *106 0.0130703
+*CONN
+*P gpio_analog_en[25] O
+*P gpio_analog_pol[25] O
+*P gpio_analog_sel[25] O
+*P gpio_holdover[25] O
+*P gpio_loopback_zero[25] I
+*CAP
+1 gpio_analog_en[25] 0.000352442
+2 gpio_analog_pol[25] 6.33011e-05
+3 gpio_analog_sel[25] 8.78602e-05
+4 gpio_holdover[25] 3.08801e-05
+5 gpio_loopback_zero[25] 0.00105221
+6 *106:57 0.00118328
+7 *106:39 0.00126891
+8 *106:19 0.00148584
+9 *106:13 0.00376741
+10 *106:11 0.00377818
+*RES
+1 gpio_loopback_zero[25] *106:11 5.75687 
+2 *106:11 *106:13 54.1607 
+3 *106:13 *106:19 5.60882 
+4 *106:19 gpio_holdover[25] 0.180167 
+5 *106:19 *106:39 1.67085 
+6 *106:39 gpio_analog_sel[25] 0.398717 
+7 *106:39 *106:57 18.0735 
+8 *106:57 gpio_analog_pol[25] 3.59017 
+9 *106:57 gpio_analog_en[25] 9.46517 
+*END
+
+*D_NET *107 0.012574
+*CONN
+*P gpio_analog_en[26] O
+*P gpio_analog_pol[26] O
+*P gpio_analog_sel[26] O
+*P gpio_holdover[26] O
+*P gpio_loopback_zero[26] I
+*CAP
+1 gpio_analog_en[26] 0.000352442
+2 gpio_analog_pol[26] 6.33011e-05
+3 gpio_analog_sel[26] 4.53377e-05
+4 gpio_holdover[26] 5.15202e-05
+5 gpio_loopback_zero[26] 0.00104518
+6 *107:39 0.00111324
+7 *107:29 0.00104994
+8 *107:19 0.00141821
+9 *107:13 0.00372463
+10 *107:11 0.00371023
+*RES
+1 gpio_loopback_zero[26] *107:11 5.73807 
+2 *107:11 *107:13 52.9464 
+3 *107:13 *107:19 5.64642 
+4 *107:19 gpio_holdover[26] 0.180167 
+5 *107:19 *107:29 9.285 
+6 *107:29 gpio_analog_sel[26] 3.59017 
+7 *107:29 *107:39 13.6786 
+8 *107:39 gpio_analog_pol[26] 3.59017 
+9 *107:39 gpio_analog_en[26] 9.46517 
+*END
+
+*D_NET *108 0.0129705
+*CONN
+*P gpio_analog_en[27] O
+*P gpio_analog_pol[27] O
+*P gpio_analog_sel[27] O
+*P gpio_holdover[27] O
+*P gpio_loopback_zero[27] I
+*CAP
+1 gpio_analog_en[27] 0.000352442
+2 gpio_analog_pol[27] 6.33011e-05
+3 gpio_analog_sel[27] 5.05037e-05
+4 gpio_holdover[27] 5.14381e-05
+5 gpio_loopback_zero[27] 0.00109489
+6 *108:65 0.00111324
+7 *108:53 0.00126463
+8 *108:29 0.00165294
+9 *108:17 0.00365854
+10 *108:15 0.00366857
+*RES
+1 gpio_loopback_zero[27] *108:15 5.9198 
+2 *108:15 *108:17 51.125 
+3 *108:17 *108:29 5.78898 
+4 *108:29 gpio_holdover[27] 0.2162 
+5 *108:29 *108:53 2.20273 
+6 *108:53 gpio_analog_sel[27] 0.2162 
+7 *108:53 *108:65 17.0886 
+8 *108:65 gpio_analog_pol[27] 3.59017 
+9 *108:65 gpio_analog_en[27] 9.46517 
+*END
+
+*D_NET *109 0.0156674
+*CONN
+*P gpio_analog_pol[28] O
+*P gpio_analog_en[28] O
+*P gpio_analog_sel[28] O
+*P gpio_holdover[28] O
+*P gpio_loopback_zero[28] I
+*CAP
+1 gpio_analog_pol[28] 2.82282e-05
+2 gpio_analog_en[28] 0.000507333
+3 gpio_analog_sel[28] 0.000568137
+4 gpio_holdover[28] 4.1189e-05
+5 gpio_loopback_zero[28] 0.00110707
+6 *109:55 0.00254676
+7 *109:19 0.00163666
+8 *109:13 0.00558174
+9 *109:11 0.00365028
+*RES
+1 gpio_loopback_zero[28] *109:11 5.81013 
+2 *109:11 *109:13 50.5179 
+3 *109:13 *109:19 5.57905 
+4 *109:19 gpio_holdover[28] 0.2162 
+5 *109:19 gpio_analog_sel[28] 2.41893 
+6 *109:13 *109:55 25.7437 
+7 *109:55 gpio_analog_en[28] 2.19255 
+8 *109:55 gpio_analog_pol[28] 0.154317 
+*END
+
+*D_NET *110 0.0156359
+*CONN
+*P gpio_analog_en[29] O
+*P gpio_analog_pol[29] O
+*P gpio_analog_sel[29] O
+*P gpio_holdover[29] O
+*P gpio_loopback_zero[29] I
+*CAP
+1 gpio_analog_en[29] 0.000563669
+2 gpio_analog_pol[29] 4.9377e-05
+3 gpio_analog_sel[29] 0.000800008
+4 gpio_holdover[29] 0.000814259
+5 gpio_loopback_zero[29] 0.00112628
+6 *110:53 0.00227535
+7 *110:31 0.00278206
+8 *110:17 0.00361631
+9 *110:15 0.00360858
+*RES
+1 gpio_loopback_zero[29] *110:15 6.1266 
+2 *110:15 *110:17 49.3036 
+3 *110:17 gpio_holdover[29] 5.72632 
+4 *110:17 *110:31 6.19643 
+5 *110:31 gpio_analog_sel[29] 5.73415 
+6 *110:31 *110:53 19.0173 
+7 *110:53 gpio_analog_pol[29] 0.2162 
+8 *110:53 gpio_analog_en[29] 2.41893 
+*END
+
+*D_NET *111 0.0136793
+*CONN
+*P gpio_holdover[2] O
+*P gpio_analog_sel[2] O
+*P gpio_analog_pol[2] O
+*P gpio_analog_en[2] O
+*P gpio_loopback_zero[2] I
+*CAP
+1 gpio_holdover[2] 2.91394e-06
+2 gpio_analog_sel[2] 1.30749e-05
+3 gpio_analog_pol[2] 2.79278e-06
+4 gpio_analog_en[2] 0.000485659
+5 gpio_loopback_zero[2] 0.00340794
+6 *111:57 0.00136508
+7 *111:37 0.00137158
+8 *111:19 0.00177232
+9 *111:15 0.00469547
+10 gpio_holdover[2] gpio_out[2] 3.9289e-06
+11 *111:15 *342:13 0
+12 *111:15 *507:9 0
+13 *111:19 gpio_out[2] 0.000558585
+*RES
+1 gpio_loopback_zero[2] *111:15 47.8943 
+2 *111:15 *111:19 3.29862 
+3 *111:19 *111:37 1.9082 
+4 *111:37 *111:57 18.9829 
+5 *111:57 gpio_analog_en[2] 1.9787 
+6 *111:57 gpio_analog_pol[2] 0.0705 
+7 *111:37 gpio_analog_sel[2] 0.0705 
+8 *111:19 gpio_holdover[2] 0.0705 
+*END
+
+*D_NET *112 0.0125787
+*CONN
+*P gpio_analog_en[30] O
+*P gpio_analog_pol[30] O
+*P gpio_analog_sel[30] O
+*P gpio_holdover[30] O
+*P gpio_loopback_zero[30] I
+*CAP
+1 gpio_analog_en[30] 0.000352442
+2 gpio_analog_pol[30] 6.33011e-05
+3 gpio_analog_sel[30] 4.56746e-05
+4 gpio_holdover[30] 4.23976e-05
+5 gpio_loopback_zero[30] 0.00116349
+6 *112:59 0.00111324
+7 *112:47 0.00126432
+8 *112:23 0.00157603
+9 *112:17 0.00340341
+10 *112:15 0.00355442
+*RES
+1 gpio_loopback_zero[30] *112:15 6.25193 
+2 *112:15 *112:17 47.4821 
+3 *112:17 *112:23 5.54772 
+4 *112:23 gpio_holdover[30] 0.2162 
+5 *112:23 *112:47 2.20273 
+6 *112:47 gpio_analog_sel[30] 0.2162 
+7 *112:47 *112:59 17.0886 
+8 *112:59 gpio_analog_pol[30] 3.59017 
+9 *112:59 gpio_analog_en[30] 9.46517 
+*END
+
+*D_NET *113 0.0130803
+*CONN
+*P gpio_analog_en[31] O
+*P gpio_analog_pol[31] O
+*P gpio_analog_sel[31] O
+*P gpio_holdover[31] O
+*P gpio_loopback_zero[31] I
+*CAP
+1 gpio_analog_en[31] 0.000502077
+2 gpio_analog_pol[31] 8.06425e-05
+3 gpio_analog_sel[31] 0.000158387
+4 gpio_holdover[31] 4.97653e-05
+5 gpio_loopback_zero[31] 0.00112672
+6 *113:61 0.0013724
+7 *113:41 0.00136211
+8 *113:21 0.00149171
+9 *113:13 0.00341882
+10 *113:11 0.00351764
+*RES
+1 gpio_loopback_zero[31] *113:11 5.86653 
+2 *113:11 *113:13 47.4821 
+3 *113:13 *113:21 5.63232 
+4 *113:21 gpio_holdover[31] 0.2162 
+5 *113:21 *113:41 1.76642 
+6 *113:41 gpio_analog_sel[31] 0.652517 
+7 *113:41 *113:61 22.1831 
+8 *113:61 gpio_analog_pol[31] 0.39715 
+9 *113:61 gpio_analog_en[31] 1.99672 
+*END
+
+*D_NET *114 0.0128443
+*CONN
+*P gpio_analog_en[32] O
+*P gpio_analog_pol[32] O
+*P gpio_analog_sel[32] O
+*P gpio_holdover[32] O
+*P gpio_loopback_zero[32] I
+*CAP
+1 gpio_analog_en[32] 0.000352442
+2 gpio_analog_pol[32] 6.33011e-05
+3 gpio_analog_sel[32] 5.25415e-05
+4 gpio_holdover[32] 0.000131362
+5 gpio_loopback_zero[32] 0.00105465
+6 *114:49 0.00111324
+7 *114:39 0.00101528
+8 *114:17 0.00138438
+9 *114:13 0.00380512
+10 *114:11 0.00387199
+*RES
+1 gpio_loopback_zero[32] *114:11 5.70987 
+2 *114:11 *114:13 55.9821 
+3 *114:13 *114:17 5.47487 
+4 *114:17 gpio_holdover[32] 0.69795 
+5 *114:17 *114:39 8.49482 
+6 *114:39 gpio_analog_sel[32] 3.59017 
+7 *114:39 *114:49 13.6786 
+8 *114:49 gpio_analog_pol[32] 3.59017 
+9 *114:49 gpio_analog_en[32] 9.46517 
+*END
+
+*D_NET *115 0.0134508
+*CONN
+*P gpio_analog_en[33] O
+*P gpio_analog_pol[33] O
+*P gpio_analog_sel[33] O
+*P gpio_holdover[33] O
+*P gpio_loopback_zero[33] I
+*CAP
+1 gpio_analog_en[33] 0.000368623
+2 gpio_analog_pol[33] 0.00017313
+3 gpio_analog_sel[33] 1.69117e-05
+4 gpio_holdover[33] 4.92476e-05
+5 gpio_loopback_zero[33] 0.00112696
+6 *115:67 0.00137384
+7 *115:49 0.0013639
+8 *115:25 0.00154265
+9 *115:17 0.00364355
+10 *115:15 0.00379201
+*RES
+1 gpio_loopback_zero[33] *115:15 6.13287 
+2 *115:15 *115:17 52.9464 
+3 *115:17 *115:25 5.53832 
+4 *115:25 gpio_holdover[33] 0.2162 
+5 *115:25 *115:49 2.20273 
+6 *115:49 gpio_analog_sel[33] 0.2162 
+7 *115:49 *115:67 15.941 
+8 *115:67 gpio_analog_pol[33] 4.02335 
+9 *115:67 gpio_analog_en[33] 7.53343 
+*END
+
+*D_NET *116 0.0137233
+*CONN
+*P gpio_analog_en[34] O
+*P gpio_analog_pol[34] O
+*P gpio_analog_sel[34] O
+*P gpio_holdover[34] O
+*P gpio_loopback_zero[34] I
+*CAP
+1 gpio_analog_en[34] 0.000576172
+2 gpio_analog_pol[34] 9.33603e-05
+3 gpio_analog_sel[34] 2.07381e-05
+4 gpio_holdover[34] 5.18489e-05
+5 gpio_loopback_zero[34] 0.00116536
+6 *116:63 0.0015014
+7 *116:41 0.00137844
+8 *116:25 0.00163094
+9 *116:17 0.00359647
+10 *116:15 0.00370858
+*RES
+1 gpio_loopback_zero[34] *116:15 6.2582 
+2 *116:15 *116:17 50.5179 
+3 *116:17 *116:25 5.68245 
+4 *116:25 gpio_holdover[34] 0.2162 
+5 *116:25 *116:41 1.62933 
+6 *116:41 gpio_analog_sel[34] 0.2162 
+7 *116:41 *116:63 20.2738 
+8 *116:63 gpio_analog_pol[34] 0.2162 
+9 *116:63 gpio_analog_en[34] 2.41893 
+*END
+
+*D_NET *117 0.0130306
+*CONN
+*P gpio_analog_en[35] O
+*P gpio_analog_pol[35] O
+*P gpio_analog_sel[35] O
+*P gpio_holdover[35] O
+*P gpio_loopback_zero[35] I
+*CAP
+1 gpio_analog_en[35] 0.000421032
+2 gpio_analog_pol[35] 6.33011e-05
+3 gpio_analog_sel[35] 5.10539e-05
+4 gpio_holdover[35] 4.17067e-05
+5 gpio_loopback_zero[35] 0.00109365
+6 *117:59 0.00118183
+7 *117:47 0.00127011
+8 *117:23 0.00158465
+9 *117:17 0.00362553
+10 *117:15 0.00369778
+*RES
+1 gpio_loopback_zero[35] *117:15 5.94487 
+2 *117:15 *117:17 51.7321 
+3 *117:17 *117:23 5.56652 
+4 *117:23 gpio_holdover[35] 0.2162 
+5 *117:23 *117:47 2.20273 
+6 *117:47 gpio_analog_sel[35] 0.2162 
+7 *117:47 *117:59 17.0886 
+8 *117:59 gpio_analog_pol[35] 3.59017 
+9 *117:59 gpio_analog_en[35] 9.11958 
+*END
+
+*D_NET *118 0.0134096
+*CONN
+*P gpio_analog_en[36] O
+*P gpio_analog_pol[36] O
+*P gpio_analog_sel[36] O
+*P gpio_holdover[36] O
+*P gpio_loopback_zero[36] I
+*CAP
+1 gpio_analog_en[36] 0.00050292
+2 gpio_analog_pol[36] 1.60081e-05
+3 gpio_analog_sel[36] 0.000163002
+4 gpio_holdover[36] 6.9895e-05
+5 gpio_loopback_zero[36] 0.00109458
+6 *118:63 0.00139099
+7 *118:37 0.00143789
+8 *118:25 0.00151299
+9 *118:17 0.00358349
+10 *118:15 0.0036378
+*RES
+1 gpio_loopback_zero[36] *118:15 5.92607 
+2 *118:15 *118:17 50.5179 
+3 *118:17 *118:25 5.65112 
+4 *118:25 gpio_holdover[36] 0.2162 
+5 *118:25 *118:37 1.17422 
+6 *118:37 gpio_analog_sel[36] 0.671317 
+7 *118:37 *118:63 20.3976 
+8 *118:63 gpio_analog_pol[36] 0.2162 
+9 *118:63 gpio_analog_en[36] 2.13067 
+*END
+
+*D_NET *119 0.0130348
+*CONN
+*P gpio_analog_sel[37] O
+*P gpio_analog_en[37] O
+*P gpio_analog_pol[37] O
+*P gpio_holdover[37] O
+*P gpio_loopback_zero[37] I
+*CAP
+1 gpio_analog_sel[37] 0.000175376
+2 gpio_analog_en[37] 0.000345053
+3 gpio_analog_pol[37] 6.33011e-05
+4 gpio_holdover[37] 5.16434e-05
+5 gpio_loopback_zero[37] 0.00114816
+6 *119:47 0.00117164
+7 *119:43 0.00137545
+8 *119:25 0.00157038
+9 *119:13 0.0035338
+10 *119:11 0.00360001
+*RES
+1 gpio_loopback_zero[37] *119:11 5.9104 
+2 *119:11 *119:13 48.6964 
+3 *119:13 *119:25 5.78272 
+4 *119:25 gpio_holdover[37] 0.2162 
+5 *119:25 *119:43 1.50635 
+6 *119:43 *119:47 18.2627 
+7 *119:47 gpio_analog_pol[37] 3.59017 
+8 *119:47 gpio_analog_en[37] 9.46517 
+9 *119:43 gpio_analog_sel[37] 0.433183 
+*END
+
+*D_NET *120 0.0124322
+*CONN
+*P gpio_analog_sel[38] O
+*P gpio_holdover[38] O
+*P gpio_analog_en[38] O
+*P gpio_analog_pol[38] O
+*P gpio_loopback_zero[38] I
+*CAP
+1 gpio_analog_sel[38] 0.000345216
+2 gpio_holdover[38] 0.000984597
+3 gpio_analog_en[38] 0.000337676
+4 gpio_analog_pol[38] 0.00220572
+5 gpio_loopback_zero[38] 0.00302578
+6 *120:13 0.0055332
+*RES
+1 gpio_loopback_zero[38] *120:13 22.4098 
+2 *120:13 gpio_analog_pol[38] 19.568 
+3 gpio_analog_pol[38] gpio_analog_en[38] 9.04464 
+4 *120:13 gpio_holdover[38] 16.5975 
+5 gpio_holdover[38] gpio_analog_sel[38] 9.04464 
+*END
+
+*D_NET *121 0.0106034
+*CONN
+*P gpio_holdover[39] O
+*P gpio_analog_en[39] O
+*P gpio_analog_pol[39] O
+*P gpio_analog_sel[39] O
+*P gpio_loopback_zero[39] I
+*CAP
+1 gpio_holdover[39] 3.71539e-06
+2 gpio_analog_en[39] 0.000356658
+3 gpio_analog_pol[39] 0.00110665
+4 gpio_analog_sel[39] 0.0010809
+5 gpio_loopback_zero[39] 0.00386044
+6 *121:21 0.00419506
+*RES
+1 gpio_loopback_zero[39] *121:21 39.7057 
+2 *121:21 gpio_analog_sel[39] 8.1875 
+3 gpio_analog_sel[39] gpio_analog_pol[39] 25.5446 
+4 gpio_analog_pol[39] gpio_analog_en[39] 10.2589 
+5 *121:21 gpio_holdover[39] 0.241071 
+*END
+
+*D_NET *122 0.0139324
+*CONN
+*P gpio_holdover[3] O
+*P gpio_analog_pol[3] O
+*P gpio_analog_en[3] O
+*P gpio_analog_sel[3] O
+*P gpio_loopback_zero[3] I
+*CAP
+1 gpio_holdover[3] 5.28199e-05
+2 gpio_analog_pol[3] 3.05272e-05
+3 gpio_analog_en[3] 0.00061288
+4 gpio_analog_sel[3] 0.00139403
+5 gpio_loopback_zero[3] 0.0034002
+6 *122:66 0.00146166
+7 *122:17 0.00190465
+8 *122:15 0.00467626
+9 gpio_holdover[3] gpio_out[3] 3.21344e-05
+10 *122:15 *518:11 0
+11 *122:15 *562:9 0
+12 *122:17 gpio_out[3] 0.00036726
+*RES
+1 gpio_loopback_zero[3] *122:15 47.2856 
+2 *122:15 *122:17 3.03777 
+3 *122:17 gpio_analog_sel[3] 2.44322 
+4 gpio_analog_sel[3] *122:66 17.4582 
+5 *122:66 gpio_analog_en[3] 2.42128 
+6 *122:66 gpio_analog_pol[3] 0.318817 
+7 *122:17 gpio_holdover[3] 0.34075 
+*END
+
+*D_NET *123 0.0132831
+*CONN
+*P gpio_holdover[40] O
+*P gpio_analog_sel[40] O
+*P gpio_analog_en[40] O
+*P gpio_analog_pol[40] O
+*P gpio_loopback_zero[40] I
+*CAP
+1 gpio_holdover[40] 0.000335771
+2 gpio_analog_sel[40] 0.000948277
+3 gpio_analog_en[40] 0.000335738
+4 gpio_analog_pol[40] 0.00200962
+5 gpio_loopback_zero[40] 0.00368364
+6 *123:13 0.00597003
+*RES
+1 gpio_loopback_zero[40] *123:13 24.3193 
+2 *123:13 gpio_analog_pol[40] 18.7899 
+3 gpio_analog_pol[40] gpio_analog_en[40] 9.04464 
+4 *123:13 gpio_analog_sel[40] 16.0618 
+5 gpio_analog_sel[40] gpio_holdover[40] 9.04464 
+*END
+
+*D_NET *124 0.0109265
+*CONN
+*P gpio_holdover[41] O
+*P gpio_analog_pol[41] O
+*P gpio_analog_en[41] O
+*P gpio_analog_sel[41] O
+*P gpio_loopback_zero[41] I
+*CAP
+1 gpio_holdover[41] 3.09175e-05
+2 gpio_analog_pol[41] 0.000122657
+3 gpio_analog_en[41] 0.000396071
+4 gpio_analog_sel[41] 6.62594e-06
+5 gpio_loopback_zero[41] 0.00389829
+6 *124:49 0.00118577
+7 *124:37 0.00101533
+8 *124:19 0.00427087
+*RES
+1 gpio_loopback_zero[41] *124:19 38.9289 
+2 *124:19 *124:37 9.53571 
+3 *124:37 gpio_analog_sel[41] 0.241071 
+4 *124:37 *124:49 17.8125 
+5 *124:49 gpio_analog_en[41] 12.2679 
+6 *124:49 gpio_analog_pol[41] 7 
+7 *124:19 gpio_holdover[41] 1.22321 
+*END
+
+*D_NET *125 0.0108385
+*CONN
+*P gpio_holdover[42] O
+*P gpio_analog_en[42] O
+*P gpio_analog_pol[42] O
+*P gpio_analog_sel[42] O
+*P gpio_loopback_zero[42] I
+*CAP
+1 gpio_holdover[42] 3.72484e-06
+2 gpio_analog_en[42] 0.000336744
+3 gpio_analog_pol[42] 0.0010896
+4 gpio_analog_sel[42] 0.00110293
+5 gpio_loopback_zero[42] 0.00397585
+6 *125:23 0.00432965
+*RES
+1 gpio_loopback_zero[42] *125:23 40.9455 
+2 *125:23 gpio_analog_sel[42] 10.2589 
+3 gpio_analog_sel[42] gpio_analog_pol[42] 25.2411 
+4 gpio_analog_pol[42] gpio_analog_en[42] 8.1875 
+5 *125:23 gpio_holdover[42] 0.241071 
+*END
+
+*D_NET *126 0.012953
+*CONN
+*P gpio_holdover[43] O
+*P gpio_analog_sel[43] O
+*P gpio_analog_en[43] O
+*P gpio_analog_pol[43] O
+*P gpio_loopback_zero[43] I
+*CAP
+1 gpio_holdover[43] 0.000338226
+2 gpio_analog_sel[43] 0.000919849
+3 gpio_analog_en[43] 0.000347671
+4 gpio_analog_pol[43] 0.001733
+5 gpio_loopback_zero[43] 0.00382367
+6 *126:13 0.00579062
+*RES
+1 gpio_loopback_zero[43] *126:13 24.5074 
+2 *126:13 gpio_analog_pol[43] 18.2191 
+3 gpio_analog_pol[43] gpio_analog_en[43] 9.04464 
+4 *126:13 gpio_analog_sel[43] 15.7939 
+5 gpio_analog_sel[43] gpio_holdover[43] 9.04464 
+*END
+
+*D_NET *127 0.00770133
+*CONN
+*P gpio_holdover[4] O
+*P gpio_analog_sel[4] O
+*P gpio_analog_pol[4] O
+*P gpio_analog_en[4] O
+*P gpio_loopback_zero[4] I
+*CAP
+1 gpio_holdover[4] 6.23673e-05
+2 gpio_analog_sel[4] 0.000111318
+3 gpio_analog_pol[4] 5.83738e-05
+4 gpio_analog_en[4] 0.000593303
+5 gpio_loopback_zero[4] 0.00196817
+6 *127:17 0.00137797
+7 *127:11 0.00115319
+8 *127:9 0.00234612
+9 gpio_holdover[4] gpio_out[4] 3.05186e-05
+*RES
+1 gpio_loopback_zero[4] *127:9 40.6466 
+2 *127:9 *127:11 6.12946 
+3 *127:11 *127:17 16.5055 
+4 *127:17 gpio_analog_en[4] 2.41502 
+5 *127:17 gpio_analog_pol[4] 0.295317 
+6 *127:11 gpio_analog_sel[4] 3.87217 
+7 *127:9 gpio_holdover[4] 3.72725 
+*END
+
+*D_NET *128 0.0144416
+*CONN
+*P gpio_holdover[5] O
+*P gpio_analog_sel[5] O
+*P gpio_analog_pol[5] O
+*P gpio_analog_en[5] O
+*P gpio_loopback_zero[5] I
+*CAP
+1 gpio_holdover[5] 4.10314e-06
+2 gpio_analog_sel[5] 2.97172e-06
+3 gpio_analog_pol[5] 1.02135e-05
+4 gpio_analog_en[5] 0.000632772
+5 gpio_loopback_zero[5] 0.00327512
+6 *128:57 0.00140308
+7 *128:37 0.00125409
+8 *128:19 0.00181006
+9 *128:15 0.00459005
+10 gpio_holdover[5] gpio_out[5] 3.9289e-06
+11 *128:15 gpio_out[5] 0.000885802
+12 *128:19 gpio_out[5] 0.000569452
+*RES
+1 gpio_loopback_zero[5] *128:15 47.3827 
+2 *128:15 *128:19 3.35815 
+3 *128:19 *128:37 1.9082 
+4 *128:37 *128:57 17.7426 
+5 *128:57 gpio_analog_en[5] 2.63748 
+6 *128:57 gpio_analog_pol[5] 0.15275 
+7 *128:37 gpio_analog_sel[5] 0.0705 
+8 *128:19 gpio_holdover[5] 0.0705 
+*END
+
+*D_NET *129 0.0136042
+*CONN
+*P gpio_holdover[6] O
+*P gpio_analog_en[6] O
+*P gpio_analog_pol[6] O
+*P gpio_analog_sel[6] O
+*P gpio_loopback_zero[6] I
+*CAP
+1 gpio_holdover[6] 5.2004e-05
+2 gpio_analog_en[6] 0.000499185
+3 gpio_analog_pol[6] 0.00132015
+4 gpio_analog_sel[6] 0.00141101
+5 gpio_loopback_zero[6] 0.0048331
+6 *129:48 2.50279e-05
+7 *129:17 0.00545013
+8 gpio_analog_sel[6] gpio_out[6] 0
+9 gpio_holdover[6] gpio_out[6] 1.36104e-05
+*RES
+1 gpio_loopback_zero[6] *129:17 49.167 
+2 *129:17 gpio_analog_sel[6] 2.43068 
+3 gpio_analog_sel[6] *129:48 0.177817 
+4 gpio_analog_sel[6] gpio_analog_pol[6] 17.5052 
+5 gpio_analog_pol[6] gpio_analog_en[6] 1.9787 
+6 *129:17 gpio_holdover[6] 0.328217 
+*END
+
+*D_NET *130 0.0141955
+*CONN
+*P gpio_holdover[7] O
+*P gpio_analog_en[7] O
+*P gpio_analog_pol[7] O
+*P gpio_analog_sel[7] O
+*P gpio_loopback_zero[7] I
+*CAP
+1 gpio_holdover[7] 5.16247e-05
+2 gpio_analog_en[7] 0.000542423
+3 gpio_analog_pol[7] 0.0013785
+4 gpio_analog_sel[7] 1.19733e-05
+5 gpio_loopback_zero[7] 0.0040993
+6 *130:37 0.00144921
+7 *130:17 0.00475209
+8 gpio_holdover[7] gpio_out[7] 3.14421e-05
+9 *130:17 gpio_out[7] 0.000366135
+10 *130:17 *527:9 0.00151277
+*RES
+1 gpio_loopback_zero[7] *130:17 48.5035 
+2 *130:17 *130:37 2.444 
+3 *130:37 gpio_analog_sel[7] 0.14805 
+4 *130:37 gpio_analog_pol[7] 17.6055 
+5 gpio_analog_pol[7] gpio_analog_en[7] 2.26697 
+6 *130:17 gpio_holdover[7] 0.334483 
+*END
+
+*D_NET *131 0.0135044
+*CONN
+*P gpio_holdover[8] O
+*P gpio_analog_sel[8] O
+*P gpio_analog_en[8] O
+*P gpio_analog_pol[8] O
+*P gpio_loopback_zero[8] I
+*CAP
+1 gpio_holdover[8] 3.03422e-06
+2 gpio_analog_sel[8] 1.04981e-05
+3 gpio_analog_en[8] 0.000486366
+4 gpio_analog_pol[8] 0.00130233
+5 gpio_loopback_zero[8] 0.00410133
+6 *131:58 2.45175e-05
+7 *131:37 0.00125743
+8 *131:19 0.00455985
+9 gpio_holdover[8] gpio_out[8] 4.39342e-06
+10 *131:19 gpio_out[8] 0.000568461
+11 *131:19 *527:9 0.000678449
+12 *131:19 *528:9 0.000507756
+*RES
+1 gpio_loopback_zero[8] *131:19 47.5736 
+2 *131:19 *131:37 1.9082 
+3 *131:37 gpio_analog_pol[8] 20.8323 
+4 gpio_analog_pol[8] *131:58 0.174683 
+5 gpio_analog_pol[8] gpio_analog_en[8] 1.80402 
+6 *131:37 gpio_analog_sel[8] 0.0705 
+7 *131:19 gpio_holdover[8] 0.0705 
+*END
+
+*D_NET *132 0.0140389
+*CONN
+*P gpio_holdover[9] O
+*P gpio_analog_sel[9] O
+*P gpio_analog_pol[9] O
+*P gpio_analog_en[9] O
+*P gpio_loopback_zero[9] I
+*CAP
+1 gpio_holdover[9] 2.97172e-06
+2 gpio_analog_sel[9] 1.28332e-05
+3 gpio_analog_pol[9] 4.50557e-05
+4 gpio_analog_en[9] 0.000369914
+5 gpio_loopback_zero[9] 0.00420107
+6 *132:47 0.00115711
+7 *132:41 0.00124018
+8 *132:23 0.00468924
+9 *132:23 gpio_out[9] 0.0019159
+10 *132:23 *528:9 0.000404633
+11 *132:23 *530:9 0
+*RES
+1 gpio_loopback_zero[9] *132:23 46.7854 
+2 *132:23 *132:41 1.9082 
+3 *132:41 *132:47 17.2437 
+4 *132:47 gpio_analog_en[9] 9.4636 
+5 *132:47 gpio_analog_pol[9] 3.5886 
+6 *132:41 gpio_analog_sel[9] 0.0705 
+7 *132:23 gpio_holdover[9] 0.0705 
+*END
+
+*D_NET *309 0.0151803
+*CONN
+*P gpio_in[0] I
+*I *698:wb_clk_i I *D user_proj_timer
+*CAP
+1 gpio_in[0] 0.00759017
+2 *698:wb_clk_i 0.00759017
+*RES
+1 gpio_in[0] *698:wb_clk_i 19.1549 
+*END
+
+*D_NET *310 0.0618937
+*CONN
+*P gpio_in[10] I
+*I *698:io_in[8] I *D user_proj_timer
+*CAP
+1 gpio_in[10] 0.00170943
+2 *698:io_in[8] 0.00599485
+3 *310:13 0.0122313
+4 *310:11 0.00794588
+5 *310:13 *311:13 0.00137485
+6 *310:13 *528:9 0.00404052
+7 *310:13 *530:9 0.0168882
+8 *310:13 *572:9 0.0117087
+*RES
+1 gpio_in[10] *310:11 7.09402 
+2 *310:11 *310:13 296.411 
+3 *310:13 *698:io_in[8] 18.2432 
+*END
+
+*D_NET *311 0.0445664
+*CONN
+*P gpio_in[11] I
+*I *698:io_in[9] I *D user_proj_timer
+*CAP
+1 gpio_in[11] 0.00175695
+2 *698:io_in[9] 0.00575423
+3 *311:13 0.0132581
+4 *311:11 0.00926079
+5 *311:13 *486:9 0
+6 *311:13 *530:9 0.00154425
+7 *311:13 *531:9 0.0116172
+8 *310:13 *311:13 0.00137485
+*RES
+1 gpio_in[11] *311:11 7.22562 
+2 *311:11 *311:13 231.446 
+3 *311:13 *698:io_in[9] 18.0991 
+*END
+
+*D_NET *312 0.0358685
+*CONN
+*P gpio_in[12] I
+*I *698:io_in[10] I *D user_proj_timer
+*CAP
+1 gpio_in[12] 0.00174095
+2 *698:io_in[10] 0.00592661
+3 *312:13 0.0121093
+4 *312:11 0.00792364
+5 *312:13 *487:9 0.000635399
+6 *312:13 *531:9 0.00119839
+7 *312:13 *532:9 0.0063342
+*RES
+1 gpio_in[12] *312:11 7.21465 
+2 *312:11 *312:13 166.482 
+3 *312:13 *698:io_in[10] 18.0991 
+*END
+
+*D_NET *320 0.027064
+*CONN
+*P gpio_in[1] I
+*I *698:wb_rst_i I *D user_proj_timer
+*CAP
+1 gpio_in[1] 0.00171593
+2 *698:wb_rst_i 0.00595884
+3 *320:13 0.0109256
+4 *320:11 0.00668268
+5 *320:13 *331:13 0.00178092
+*RES
+1 gpio_in[1] *320:11 7.17862 
+2 *320:11 *320:13 110.625 
+3 *320:13 *698:wb_rst_i 18.1711 
+*END
+
+*D_NET *331 0.0437313
+*CONN
+*P gpio_in[2] I
+*I *698:io_in[0] I *D user_proj_timer
+*CAP
+1 gpio_in[2] 0.00176289
+2 *698:io_in[0] 0.00575423
+3 *331:13 0.0137467
+4 *331:11 0.00975535
+5 *331:13 *551:9 0.0109312
+6 *100:15 *331:13 0
+7 *320:13 *331:13 0.00178092
+*RES
+1 gpio_in[2] *331:11 7.23815 
+2 *331:11 *331:13 222.946 
+3 *331:13 *698:io_in[0] 18.0991 
+*END
+
+*D_NET *342 0.0343998
+*CONN
+*P gpio_in[3] I
+*I *698:io_in[1] I *D user_proj_timer
+*CAP
+1 gpio_in[3] 0.00176485
+2 *698:io_in[1] 0.00592661
+3 *342:13 0.0120185
+4 *342:11 0.00785673
+5 *342:13 *507:9 0.000648732
+6 *342:13 *551:9 0.000499793
+7 *342:13 *562:9 0.0056846
+8 *111:15 *342:13 0
+*RES
+1 gpio_in[3] *342:11 7.27575 
+2 *342:11 *342:13 158.589 
+3 *342:13 *698:io_in[1] 18.0991 
+*END
+
+*D_NET *347 0.0243276
+*CONN
+*P gpio_in[4] I
+*I *698:io_in[2] I *D user_proj_timer
+*CAP
+1 gpio_in[4] 0.00176857
+2 *698:io_in[2] 0.00575423
+3 *347:13 0.0101958
+4 *347:11 0.00621011
+5 *347:13 *567:9 0.000398946
+*RES
+1 gpio_in[4] *347:11 7.26322 
+2 *347:11 *347:13 93.625 
+3 *347:13 *698:io_in[2] 18.0991 
+*END
+
+*D_NET *348 0.0178922
+*CONN
+*P gpio_in[5] I
+*I *698:io_in[3] I *D user_proj_timer
+*CAP
+1 gpio_in[5] 0.00894611
+2 *698:io_in[3] 0.00894611
+*RES
+1 gpio_in[5] *698:io_in[3] 49.693 
+*END
+
+*D_NET *349 0.0188945
+*CONN
+*P gpio_in[6] I
+*I *698:io_in[4] I *D user_proj_timer
+*CAP
+1 gpio_in[6] 0.0076828
+2 *698:io_in[4] 0.00176445
+3 *349:23 0.00944725
+*RES
+1 gpio_in[6] *349:23 42.8923 
+2 *349:23 *698:io_in[4] 23.9708 
+*END
+
+*D_NET *350 0.081099
+*CONN
+*P gpio_in[7] I
+*I *698:io_in[5] I *D user_proj_timer
+*CAP
+1 gpio_in[7] 0.00180972
+2 *698:io_in[5] 0.00592661
+3 *350:13 0.0224384
+4 *350:11 0.0183215
+5 *350:13 *570:9 0.0326026
+*RES
+1 gpio_in[7] *350:11 7.28202 
+2 *350:11 *350:13 489.482 
+3 *350:13 *698:io_in[5] 18.0991 
+*END
+
+*D_NET *351 0.0897822
+*CONN
+*P gpio_in[8] I
+*I *698:io_in[6] I *D user_proj_timer
+*CAP
+1 gpio_in[8] 0.00169822
+2 *698:io_in[6] 0.00581001
+3 *351:13 0.011619
+4 *351:11 0.00750723
+5 *351:13 *352:13 0.00367915
+6 *351:13 *526:9 0.00403424
+7 *351:13 *570:9 0.0222289
+8 *351:13 *571:9 0.0274113
+9 *351:13 *572:9 0.00579409
+*RES
+1 gpio_in[8] *351:11 7.07052 
+2 *351:11 *351:13 425.732 
+3 *351:13 *698:io_in[6] 18.2432 
+*END
+
+*D_NET *352 0.0642536
+*CONN
+*P gpio_in[9] I
+*I *698:io_in[7] I *D user_proj_timer
+*CAP
+1 gpio_in[9] 0.00177079
+2 *698:io_in[7] 0.00593553
+3 *352:13 0.0171467
+4 *352:11 0.0129819
+5 *352:11 *530:7 0
+6 *352:13 *570:9 0.000596538
+7 *352:13 *572:9 0.0221429
+8 *351:13 *352:13 0.00367915
+*RES
+1 gpio_in[9] *352:11 7.22718 
+2 *352:11 *352:13 360.768 
+3 *352:13 *698:io_in[7] 18.0991 
+*END
+
+*D_NET *486 0.0411867
+*CONN
+*P gpio_oeb[10] O
+*I *698:io_oeb[8] O *D user_proj_timer
+*CAP
+1 gpio_oeb[10] 0.00166131
+2 *698:io_oeb[8] 0.00605876
+3 *486:9 0.00739075
+4 *486:7 0.0117882
+5 *486:9 *530:9 0.013695
+6 *486:9 *531:9 0.000154231
+7 *90:19 *486:9 0.000438484
+8 *311:13 *486:9 0
+*RES
+1 *698:io_oeb[8] *486:7 18.3873 
+2 *486:7 *486:9 182.268 
+3 *486:9 gpio_oeb[10] 6.96868 
+*END
+
+*D_NET *487 0.0313188
+*CONN
+*P gpio_oeb[11] O
+*I *698:io_oeb[9] O *D user_proj_timer
+*CAP
+1 gpio_oeb[11] 0.00170455
+2 *698:io_oeb[9] 0.00581001
+3 *487:9 0.0053307
+4 *487:7 0.00943616
+5 *487:9 *531:9 0.00840198
+6 *312:13 *487:9 0.000635399
+*RES
+1 *698:io_oeb[9] *487:7 18.2432 
+2 *487:7 *487:9 117.304 
+3 *487:9 gpio_oeb[11] 7.10028 
+*END
+
+*D_NET *488 0.022157
+*CONN
+*P gpio_oeb[12] O
+*I *698:io_oeb[10] O *D user_proj_timer
+*CAP
+1 gpio_oeb[12] 0.00173834
+2 *698:io_oeb[10] 0.00592661
+3 *488:9 0.00359228
+4 *488:7 0.00778055
+5 *488:9 *532:9 0.00311922
+6 *92:21 *488:9 0
+*RES
+1 *698:io_oeb[10] *488:7 18.0991 
+2 *488:7 *488:9 52.3393 
+3 *488:9 gpio_oeb[12] 7.23188 
+*END
+
+*D_NET *507 0.0301134
+*CONN
+*P gpio_oeb[2] O
+*I *698:io_oeb[0] O *D user_proj_timer
+*CAP
+1 gpio_oeb[2] 0.00170729
+2 *698:io_oeb[0] 0.00581001
+3 *507:9 0.00507182
+4 *507:7 0.00917454
+5 *507:9 *551:9 0.00770102
+6 *111:15 *507:9 0
+7 *342:13 *507:9 0.000648732
+*RES
+1 *698:io_oeb[0] *507:7 18.2432 
+2 *507:7 *507:9 108.804 
+3 *507:9 gpio_oeb[2] 7.11282 
+*END
+
+*D_NET *518 0.0211368
+*CONN
+*P gpio_oeb[3] O
+*I *698:io_oeb[1] O *D user_proj_timer
+*CAP
+1 gpio_oeb[3] 0.00174205
+2 *698:io_oeb[1] 0.00593553
+3 *518:11 0.00336729
+4 *518:7 0.00756077
+5 *518:11 *562:9 0.00253119
+6 *122:15 *518:11 0
+*RES
+1 *698:io_oeb[1] *518:7 18.0991 
+2 *518:7 *518:11 48.4636 
+3 *518:11 gpio_oeb[3] 3.82972 
+*END
+
+*D_NET *523 0.0172092
+*CONN
+*P gpio_oeb[4] O
+*I *698:io_oeb[2] O *D user_proj_timer
+*CAP
+1 gpio_oeb[4] 0.0086046
+2 *698:io_oeb[2] 0.0086046
+*RES
+1 *698:io_oeb[2] gpio_oeb[4] 44.2922 
+*END
+
+*D_NET *524 0.0238831
+*CONN
+*P gpio_oeb[5] O
+*I *698:io_oeb[3] O *D user_proj_timer
+*CAP
+1 gpio_oeb[5] 0.00717221
+2 *698:io_oeb[3] 0.000703188
+3 *524:9 0.0112383
+4 *524:7 0.00476933
+5 gpio_oeb[5] gpio_out[5] 0
+*RES
+1 *698:io_oeb[3] *524:7 5.12707 
+2 *524:7 *524:9 80.875 
+3 *524:9 gpio_oeb[5] 21.2645 
+*END
+
+*D_NET *525 0.0327894
+*CONN
+*P gpio_oeb[6] O
+*I *698:io_oeb[4] O *D user_proj_timer
+*CAP
+1 gpio_oeb[6] 0.00681622
+2 *698:io_oeb[4] 0.000682361
+3 *525:9 0.0132721
+4 *525:7 0.00713823
+5 *525:9 *569:9 0.00488046
+*RES
+1 *698:io_oeb[4] *525:7 5.12707 
+2 *525:7 *525:9 149.482 
+3 *525:9 gpio_oeb[6] 20.1992 
+*END
+
+*D_NET *526 0.0682151
+*CONN
+*P gpio_oeb[7] O
+*I *698:io_oeb[5] O *D user_proj_timer
+*CAP
+1 gpio_oeb[7] 0.0016602
+2 *698:io_oeb[5] 0.00605048
+3 *526:9 0.0121803
+4 *526:7 0.0165706
+5 *526:9 *527:9 0.00882311
+6 *526:9 *570:9 0.00274803
+7 *526:9 *571:9 0.0161482
+8 *351:13 *526:9 0.00403424
+*RES
+1 *698:io_oeb[5] *526:7 18.3873 
+2 *526:7 *526:9 375.946 
+3 *526:9 gpio_oeb[7] 6.94518 
+*END
+
+*D_NET *527 0.0562478
+*CONN
+*P gpio_oeb[8] O
+*I *698:io_oeb[6] O *D user_proj_timer
+*CAP
+1 gpio_oeb[8] 0.00161807
+2 *698:io_oeb[6] 0.00593784
+3 *527:9 0.0113006
+4 *527:7 0.0156204
+5 *527:9 *528:9 0.00366122
+6 *527:9 *571:9 0.00709533
+7 *130:17 *527:9 0.00151277
+8 *131:19 *527:9 0.000678449
+9 *526:9 *527:9 0.00882311
+*RES
+1 *698:io_oeb[6] *527:7 18.4594 
+2 *527:7 *527:9 311.589 
+3 *527:9 gpio_oeb[8] 6.87155 
+*END
+
+*D_NET *528 0.0480876
+*CONN
+*P gpio_oeb[9] O
+*I *698:io_oeb[7] O *D user_proj_timer
+*CAP
+1 gpio_oeb[9] 0.00164349
+2 *698:io_oeb[7] 0.0060612
+3 *528:9 0.00869666
+4 *528:7 0.0131144
+5 *528:9 *530:9 0.00563163
+6 *528:9 *571:9 0.00257311
+7 *528:9 *572:9 0.00175298
+8 *131:19 *528:9 0.000507756
+9 *132:23 *528:9 0.000404633
+10 *310:13 *528:9 0.00404052
+11 *527:9 *528:9 0.00366122
+*RES
+1 *698:io_oeb[7] *528:7 18.3873 
+2 *528:7 *528:9 246.625 
+3 *528:9 gpio_oeb[9] 6.93108 
+*END
+
+*D_NET *530 0.0605899
+*CONN
+*P gpio_out[10] O
+*I *698:io_out[8] O *D user_proj_timer
+*CAP
+1 gpio_out[10] 0.00147626
+2 *698:io_out[8] 0.00584245
+3 *530:9 0.00529171
+4 *530:7 0.00965789
+5 gpio_holdover[10] gpio_out[10] 3.9289e-06
+6 *90:19 gpio_out[10] 0.000558585
+7 *132:23 *530:9 0
+8 *310:13 *530:9 0.0168882
+9 *311:13 *530:9 0.00154425
+10 *352:11 *530:7 0
+11 *486:9 *530:9 0.013695
+12 *528:9 *530:9 0.00563163
+*RES
+1 *698:io_out[8] *530:7 18.3153 
+2 *530:7 *530:9 256.946 
+3 *530:9 gpio_out[10] 7.04075 
+*END
+
+*D_NET *531 0.0459259
+*CONN
+*P gpio_out[11] O
+*I *698:io_out[9] O *D user_proj_timer
+*CAP
+1 gpio_out[11] 0.0017225
+2 *698:io_out[9] 0.00596969
+3 *531:9 0.00629336
+4 *531:7 0.0105405
+5 *90:19 *531:9 0
+6 *91:27 gpio_out[11] 2.79547e-05
+7 *91:45 gpio_out[11] 0
+8 *311:13 *531:9 0.0116172
+9 *312:13 *531:9 0.00119839
+10 *486:9 *531:9 0.000154231
+11 *487:9 *531:9 0.00840198
+*RES
+1 *698:io_out[9] *531:7 18.1711 
+2 *531:7 *531:9 191.982 
+3 *531:9 gpio_out[11] 7.17235 
+*END
+
+*D_NET *532 0.0327175
+*CONN
+*P gpio_out[12] O
+*I *698:io_out[10] O *D user_proj_timer
+*CAP
+1 gpio_out[12] 0.00150844
+2 *698:io_out[10] 0.00577758
+3 *532:9 0.00557935
+4 *532:7 0.00984848
+5 gpio_holdover[12] gpio_out[12] 1.06961e-05
+6 *92:21 gpio_out[12] 0.000539557
+7 *92:21 *532:9 0
+8 *312:13 *532:9 0.0063342
+9 *488:9 *532:9 0.00311922
+*RES
+1 *698:io_out[10] *532:7 18.1711 
+2 *532:7 *532:9 127.018 
+3 *532:9 gpio_out[12] 7.15982 
+*END
+
+*D_NET *551 0.0440219
+*CONN
+*P gpio_out[2] O
+*I *698:io_out[0] O *D user_proj_timer
+*CAP
+1 gpio_out[2] 0.00151741
+2 *698:io_out[0] 0.00596069
+3 *551:9 0.00620301
+4 *551:7 0.0106463
+5 gpio_holdover[2] gpio_out[2] 3.9289e-06
+6 *100:15 *551:9 0
+7 *111:19 gpio_out[2] 0.000558585
+8 *331:13 *551:9 0.0109312
+9 *342:13 *551:9 0.000499793
+10 *507:9 *551:9 0.00770102
+*RES
+1 *698:io_out[0] *551:7 18.1711 
+2 *551:7 *551:9 183.482 
+3 *551:9 gpio_out[2] 7.18488 
+*END
+
+*D_NET *562 0.0312837
+*CONN
+*P gpio_out[3] O
+*I *698:io_out[1] O *D user_proj_timer
+*CAP
+1 gpio_out[3] 0.00156218
+2 *698:io_out[1] 0.00577758
+3 *562:9 0.0055567
+4 *562:7 0.0097721
+5 gpio_holdover[3] gpio_out[3] 3.21344e-05
+6 *122:15 *562:9 0
+7 *122:17 gpio_out[3] 0.00036726
+8 *342:13 *562:9 0.0056846
+9 *518:11 *562:9 0.00253119
+*RES
+1 *698:io_out[1] *562:7 18.1711 
+2 *562:7 *562:9 119.732 
+3 *562:9 gpio_out[3] 7.16765 
+*END
+
+*D_NET *567 0.0209313
+*CONN
+*P gpio_out[4] O
+*I *698:io_out[2] O *D user_proj_timer
+*CAP
+1 gpio_out[4] 0.00173267
+2 *698:io_out[2] 0.00596969
+3 *567:9 0.00428122
+4 *567:7 0.00851823
+5 gpio_holdover[4] gpio_out[4] 3.05186e-05
+6 *347:13 *567:9 0.000398946
+*RES
+1 *698:io_out[2] *567:7 18.1711 
+2 *567:7 *567:9 54.1607 
+3 *567:9 gpio_out[4] 7.20995 
+*END
+
+*D_NET *568 0.0167562
+*CONN
+*P gpio_out[5] O
+*I *698:io_out[3] O *D user_proj_timer
+*CAP
+1 gpio_out[5] 0.00764852
+2 *698:io_out[3] 0.00764852
+3 gpio_holdover[5] gpio_out[5] 3.9289e-06
+4 gpio_oeb[5] gpio_out[5] 0
+5 *128:15 gpio_out[5] 0.000885802
+6 *128:19 gpio_out[5] 0.000569452
+*RES
+1 *698:io_out[3] gpio_out[5] 36.4221 
+*END
+
+*D_NET *569 0.025725
+*CONN
+*P gpio_out[6] O
+*I *698:io_out[4] O *D user_proj_timer
+*CAP
+1 gpio_out[6] 0.00701955
+2 *698:io_out[4] 0.000747371
+3 *569:9 0.00966811
+4 *569:7 0.00339594
+5 gpio_analog_sel[6] gpio_out[6] 0
+6 gpio_holdover[6] gpio_out[6] 1.36104e-05
+7 *525:9 *569:9 0.00488046
+*RES
+1 *698:io_out[4] *569:7 5.19913 
+2 *569:7 *569:9 73.5893 
+3 *569:9 gpio_out[6] 20.5282 
+*END
+
+*D_NET *570 0.0902295
+*CONN
+*P gpio_out[7] O
+*I *698:io_out[5] O *D user_proj_timer
+*CAP
+1 gpio_out[7] 0.00160127
+2 *698:io_out[5] 0.00577758
+3 *570:9 0.0100503
+4 *570:7 0.0142266
+5 gpio_holdover[7] gpio_out[7] 3.14421e-05
+6 *130:17 gpio_out[7] 0.000366135
+7 *350:13 *570:9 0.0326026
+8 *351:13 *570:9 0.0222289
+9 *352:13 *570:9 0.000596538
+10 *526:9 *570:9 0.00274803
+*RES
+1 *698:io_out[5] *570:7 18.1711 
+2 *570:7 *570:9 450.625 
+3 *570:9 gpio_out[7] 7.16138 
+*END
+
+*D_NET *571 0.0818412
+*CONN
+*P gpio_out[8] O
+*I *698:io_out[6] O *D user_proj_timer
+*CAP
+1 gpio_out[8] 0.00146702
+2 *698:io_out[6] 0.00603799
+3 *571:9 0.00686104
+4 *571:7 0.011432
+5 *571:9 *572:9 0.00224236
+6 gpio_holdover[8] gpio_out[8] 4.39342e-06
+7 *131:19 gpio_out[8] 0.000568461
+8 *351:13 *571:9 0.0274113
+9 *526:9 *571:9 0.0161482
+10 *527:9 *571:9 0.00709533
+11 *528:9 *571:9 0.00257311
+*RES
+1 *698:io_out[6] *571:7 18.3153 
+2 *571:7 *571:9 386.268 
+3 *571:9 gpio_out[8] 7.01568 
+*END
+
+*D_NET *572 0.0703924
+*CONN
+*P gpio_out[9] O
+*I *698:io_out[7] O *D user_proj_timer
+*CAP
+1 gpio_out[9] 0.00132558
+2 *698:io_out[7] 0.00577758
+3 *572:9 0.00664012
+4 *572:7 0.0110921
+5 *132:23 gpio_out[9] 0.0019159
+6 *310:13 *572:9 0.0117087
+7 *351:13 *572:9 0.00579409
+8 *352:13 *572:9 0.0221429
+9 *528:9 *572:9 0.00175298
+10 *571:9 *572:9 0.00224236
+*RES
+1 *698:io_out[7] *572:7 18.1711 
+2 *572:7 *572:9 321.304 
+3 *572:9 gpio_out[9] 7.14728 
+*END

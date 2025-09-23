@@ -19,10 +19,6 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 - Can actively probe targets (inject NoC packets, force memory transactions).  
 - Acts as a **debug co-processor ASIC**, offloading analysis from host PC.  
 
-**System-Level Scope**
-- Goes beyond on-die debug: taps PCIe, DRAM buses, inter-chip NoCs.  
-- Provides a consistent debug plane across multiple AI chips.  
-
 ---
 
 ## 3. How This Looks in Practice

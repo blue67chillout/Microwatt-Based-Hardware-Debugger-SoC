@@ -34,7 +34,13 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 
 ---
 
-## 4. Minimal ASIC Architecture
+## 4. Prioritized attach points
+
+- JTAG / DMI / debug transport 
+- NoC telemetry registers / per-router counters
+- AXI-Stream trace export or trace pins (ETM-lite)
+
+## 5. Minimal ASIC Architecture
 
 - **Microwatt Core**  
   - Runs debug firmware, OpenOCD/GDB server.  
@@ -43,13 +49,38 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
   - JTAG/DMI → Wishbone bridge, controlling target SoC.  
 
 - **NoC Event Monitor (Wishbone slave)**  
-  - Lightweight sniffer for router metadata + counters.  
+  - Lightweight sniffer for router metadata + counters.
+ 
+- **Error Injection - controlled fault injection hooks
+  -scripted fault injection runs, then capture effect using aggregator
 
-- **Trace/Log Buffer (SRAM)**  
+- **Trace/Log Buffer (SRAM) (openRAM)**  
   - Stores pre/post-trigger trace.  
 
 - **Host I/O**  
   - USB 3.0 or GigE PHY for host connection.  
+
+
++-----------------------+ +-------------------+
+| Host PC / Debugger |<---->| USB3/GigE PHY |
++-----------------------+ +---------|---------+
+|
++---------------------------------------------------+
+| Microwatt Debugger ASIC |
+| |
+| +---------------------------------------------+ |
+| | Microwatt Core (GDB/OpenOCD Server) | |
+| +----|-------------------|-------------------+ |
+| | | |
+| +----v----+ +-------v------+ |
+| | dmi_dtm |<---->| wishbone_dbg | |
+| +---------+ +-------------+ |
+| | | |
+| +----v----+ +--------v--------+ +--------+ |
+| | NoC Mon | | Error Injection | | Trace | |
+| | | | Hooks | | Buffer | |
+| +---------+ +----------------+ +--------+ |
++---------------------------------------------------+
 
 ---
 
@@ -63,7 +94,7 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 ## 6. Impact
 - First **ASIC-debugger coprocessor** built on Microwatt.  
 - Re-uses proven **Wishbone debug fabric** for target integration.  
-- Provides real-time, cross-chip visibility critical for AI accelerators.  
+- Provides real-time, cross-chip visibility .  
 - Bridges gap between JTAG probes and system-scale debug observability.  
 
 

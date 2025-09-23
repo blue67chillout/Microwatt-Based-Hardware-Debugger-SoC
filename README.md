@@ -1,5 +1,4 @@
 # Microwatt-Based External Debugger for AI/NoC Workloads
-### Hackathon Proposal
 
 ---
 

@@ -51,7 +51,7 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 - **NoC Event Monitor (Wishbone slave)**  
   - Lightweight sniffer for router metadata + counters.
  
-- **Error Injection - controlled fault injection hooks
+- **Error Injection** - controlled fault injection hooks
   -scripted fault injection runs, then capture effect using aggregator
 
 - **Trace/Log Buffer (SRAM) (openRAM)**  

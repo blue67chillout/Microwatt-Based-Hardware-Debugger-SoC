@@ -1,87 +1,76 @@
-# Microwatt-Based External Debugger for AI/NoC Workloads
+# Microwatt-Based Debugger ASIC for AI/NoC Systems
 
 ---
 
 ## 1. Goal
-Build an **external debugger platform** using the Microwatt POWER core to provide deeper observability and real-time analysis for **AI accelerators and Network-on-Chip (NoC) systems** in ASIC environments.
-
-Instead of replacing the built-in debug fabric, Microwatt acts as an **orchestrator and flight recorder** — extending visibility, correlating data, and enabling active probes that existing infra cannot do alone.
+Tape out a **Microwatt-based debugger ASIC** that serves as an **external debug companion chip** for AI accelerators and Network-on-Chip (NoC) systems.  
+Leverages Microwatt’s native **Wishbone + JTAG/DMI debug fabric** to control, observe, and analyze external targets at ASIC-level performance.
 
 ---
 
-## 2. What the External Debugger (Microwatt-Based) Adds
+## 2. What This Debugger Adds
 
-The Microwatt core doesn’t replace the accelerator’s debug blocks — it **sits outside**, leveraging and extending them:
+**Extended Observability**
+- Aggregates debug data across cores, NoCs, DMA, and memory into a unified timeline.  
+- Adds scalable trace buffering (SRAM/DDR) for long captures.  
+- Enables live monitoring of congestion, stalls, and performance counters.  
 
-🔎 **Observability beyond the built-in scope**
-- Correlates AI cores, NoC, memory, DMA into a single timeline.
-- Buffers and streams large traces (internal infra usually can’t).
-- Collects performance metrics at system scale (bandwidth, congestion, hotspots).
+**Independent Debug Execution**
+- Microwatt firmware processes traces in real time (not just raw dump).  
+- Can actively probe targets (inject NoC packets, force memory transactions).  
+- Acts as a **debug co-processor ASIC**, offloading analysis from host PC.  
 
-🛠️ **Independent debug execution**
-- Runs its own firmware, analyzing debug data in real time instead of just dumping raw logs.
-- Can actively probe the AI chip (inject NoC packets, stress test memory ports).
-- Acts like a **debug co-processor**, offloading analysis from the host PC.
-
-🔗 **Cross-chip & system-level debug**
-- Goes beyond chip boundaries: watches PCIe, DRAM, inter-chip NoCs.
-- Correlates AI chip internals with host CPU/GPU activity.
-- Provides a uniform debug view for **multi-accelerator setups**.
+**System-Level Scope**
+- Goes beyond on-die debug: taps PCIe, DRAM buses, inter-chip NoCs.  
+- Provides a consistent debug plane across multiple AI chips.  
 
 ---
 
 ## 3. How This Looks in Practice
+**Scenario: Debugging congestion in a 256-core AI accelerator NoC**  
 
-Imagine debugging a congested **NoC in a 256-core AI accelerator**:
-
-- **Built-in debug infra**:  
-  - Router counters + trace packets from a few links.
-
-- **Microwatt-based debugger**:  
-  - Subscribes to those counters, timestamps them, **correlates across routers**.  
-  - Sniffs raw flits at selected links → reconstructs **traffic flows**.  
-  - Runs a congestion-detection algorithm locally, flags hotspots in real time.  
-  - Sends only **processed alerts** to the host PC (instead of drowning it in gigabytes of trace).  
+- **Built-in debug infra**: router counters + limited packet trace.  
+- **Microwatt Debugger ASIC**:  
+  - Subscribes to counters via Wishbone/Debug Master.  
+  - Timestamps and correlates events across routers.  
+  - Sniffs selected flits, reconstructs traffic flows.  
+  - Runs congestion-detection locally → flags hotspots.  
+  - Sends only **processed alerts** to host instead of raw gigabytes.  
 
 ---
 
-## 4. Minimal Architecture (Hackathon Scope)
+## 4. Minimal ASIC Architecture
 
 - **Microwatt Core**  
-  - Runs debug firmware (event correlation, analysis, host protocol server).
+  - Runs debug firmware, OpenOCD/GDB server.  
 
-- **JTAG/DMI Master Interface**  
-  - Controls AI/NoC SoC at register/memory level.  
-  - Acts as debug master for halt/resume, memory peek/poke.
+- **dmi_dtm + wishbone_debug_master**  
+  - JTAG/DMI → Wishbone bridge, controlling target SoC.  
 
-- **NoC Event Monitor**  
-  - Taps selected NoC links.  
-  - Collects counters, samples flits, reconstructs flow-level stats.
+- **NoC Event Monitor (Wishbone slave)**  
+  - Lightweight sniffer for router metadata + counters.  
 
-- **Trace/Log Buffer**  
-  - Small SRAM buffer for recent traces and events.  
-  - Supports burst transfer to host when requested.
+- **Trace/Log Buffer (SRAM)**  
+  - Stores pre/post-trigger trace.  
 
-- **Host I/O (USB/Ethernet)**  
-  - Bridges to host PC for integration with **GDB, OpenOCD, or custom debug CLI**.
+- **Host I/O**  
+  - USB 3.0 or GigE PHY for host connection.  
 
 ---
 
 ## 5. Hackathon Deliverables
-1. FPGA prototype with Microwatt + JTAG/DMI Master + USB/Ethernet bridge.  
-2. Debug firmware running on Microwatt:  
-   - Poll NoC counters, perform local analysis, flag congestion.  
-   - Serve debug commands from host (halt/resume, trace dump).  
-3. Demo scenario:  
-   - Stress AI accelerator NoC → external debugger detects congestion pattern → sends alerts to host.  
+- RTL prototype (Microwatt + DMI bridge + NoC Monitor).  
+- Debug firmware (halt/resume, trace collection, congestion detection).  
+- FPGA demo: detect & report NoC congestion in real time.  
 
 ---
 
 ## 6. Impact
-- Provides **ASIC-oriented, external debug visibility** that complements built-in infra.  
-- Reduces host overhead by performing **on-probe analysis**.  
-- Portable design: works across AI accelerators, NoC-based SoCs, and multi-chip systems.  
-- Ideal for **bring-up, performance tuning, and system-level debug** in complex AI hardware.
+- First **ASIC-debugger coprocessor** built on Microwatt.  
+- Re-uses proven **Wishbone debug fabric** for target integration.  
+- Provides real-time, cross-chip visibility critical for AI accelerators.  
+- Bridges gap between JTAG probes and system-scale debug observability.  
+
 
 ---
 
@@ -93,9 +82,8 @@ Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for detai
 
 ## Contact
 
-Questions, issues, and collaboration: Open an issue in this repo or contact the maintainer.
+Questions, issues, and collaboration: Open an issue in this repo or contact the maintainer through mail ( fridayfallacy67@gmail.com ).
 
 ---
 
-**Empower your hardware debug workflow by leveraging the flexibility, openness, and modern POWER architecture of Microwatt!**
 

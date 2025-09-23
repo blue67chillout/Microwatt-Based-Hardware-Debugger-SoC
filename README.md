@@ -62,7 +62,7 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 
 ```mermaid
 flowchart TD
-HostPC["Host PC / Debugger"]
+HostPC["Host PC "]
 PHY["USB 3.0 / GigE PHY"]
 MicrowattCore["Microwatt Core\n(GDB/OpenOCD Server)"]
 DTM["dmi_dtm (JTAG/DMI/Debug Transport)"]

@@ -61,26 +61,26 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
   - USB 3.0 or GigE PHY for host connection.  
 
 
-+-----------------------+ +-------------------+
-| Host PC / Debugger |<---->| USB3/GigE PHY |
-+-----------------------+ +---------|---------+
-|
-+---------------------------------------------------+
-| Microwatt Debugger ASIC |
-| |
-| +---------------------------------------------+ |
-| | Microwatt Core (GDB/OpenOCD Server) | |
-| +----|-------------------|-------------------+ |
-| | | |
-| +----v----+ +-------v------+ |
-| | dmi_dtm |<---->| wishbone_dbg | |
-| +---------+ +-------------+ |
-| | | |
-| +----v----+ +--------v--------+ +--------+ |
-| | NoC Mon | | Error Injection | | Trace | |
-| | | | Hooks | | Buffer | |
-| +---------+ +----------------+ +--------+ |
-+---------------------------------------------------+
+flowchart TD
+HostPC["Host PC / Debugger"]
+PHY["USB 3.0 / GigE PHY"]
+MicrowattCore["Microwatt Core\n(GDB/OpenOCD Server)"]
+DTM["dmi_dtm"]
+DebugMaster["wishbone_debug_master"]
+NoCMon["NoC Event Monitor"]
+ErrorInject["Error Injection Hooks"]
+TraceBuffer["Trace/Log Buffer (SRAM)"]
+
+HostPC <---> PHY
+PHY --> MicrowattCore
+
+MicrowattCore --> DTM
+DTM --> DebugMaster
+
+DebugMaster --> NoCMon
+DebugMaster --> ErrorInject
+DebugMaster --> TraceBuffer
+
 
 ---
 

@@ -61,6 +61,7 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
   - USB 3.0 or GigE PHY for host connection.  
 
 ```mermaid
+flowchart TD
 HostPC["Host PC / Debugger"]
 PHY["USB 3.0 / GigE PHY"]
 MicrowattCore["Microwatt Core\n(GDB/OpenOCD Server)"]

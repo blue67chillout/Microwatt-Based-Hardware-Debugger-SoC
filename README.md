@@ -1,71 +1,88 @@
-# Microwatt-Based Hardware Debugger SoC
-
-## Overview
-
-This repository contains the design, firmware, and integration resources for a **hardware debugger platform built on the open-source Microwatt POWER CPU core**. The project transforms Microwatt into a versatile debug master, offering real-time control, inspection, and patching of external hardware modules—targeting both FPGA and ASIC environments.
-
-The solution supports seamless integration with industry-standard debug tools (GDB, OpenOCD) through UART, SPI, GPIO, and JTAG protocols, making it ideal for hardware bring-up, rapid prototyping, advanced verification, and cross-disciplinary hardware/software education.
+# Microwatt-Based External Debugger for AI/NoC Workloads
+### Hackathon Proposal
 
 ---
 
-## Key Features
+## 1. Goal
+Build an **external debugger platform** using the Microwatt POWER core to provide deeper observability and real-time analysis for **AI accelerators and Network-on-Chip (NoC) systems** in ASIC environments.
 
-- **Wishbone Master Debugging:** Microwatt acts as a bus master, inspecting and manipulating memory/registers of any attached Wishbone-compliant peripheral, IP block, or soft CPU.
-- **Multi-Protocol Debug Bridges:** Supports UART, SPI, GPIO, and optional JTAG master for connection to external targets ranging from SoCs to custom digital designs.
-- **GDB/OpenOCD Server Block:** Built-in protocol handler accepts remote debug commands over UART, Ethernet, or USB, bridging industry-standard tools directly into the SoC’s internals.
-- **Breakpoints & Watchpoints:** Hardware logic enables setting breakpoints, watchpoints, and triggers for advanced test, debug, and automation scenarios.
-- **Performance & Trace Modules:** Optional additions for execution tracing, cycle/instruction counting, and system performance profiling.
-- **Firmware Tools:** Configurable firmware and command interpreter for streamlined debug workflows and easy integration with host scripts.
+Instead of replacing the built-in debug fabric, Microwatt acts as an **orchestrator and flight recorder** — extending visibility, correlating data, and enabling active probes that existing infra cannot do alone.
 
 ---
 
-## Architecture
+## 2. What the External Debugger (Microwatt-Based) Adds
 
+The Microwatt core doesn’t replace the accelerator’s debug blocks — it **sits outside**, leveraging and extending them:
 
-- **Microwatt Core:** Central processor running debug firmware.
-- **Wishbone Master:** Direct access to IP blocks and peripherals.
-- **External Interfaces:** UART, SPI, GPIO, optional JTAG master and GDB/OpenOCD server.
-- **Peripheral Agents:** Target modules with debug-agent logic for breakpoint, patch, and monitor functions.
+🔎 **Observability beyond the built-in scope**
+- Correlates AI cores, NoC, memory, DMA into a single timeline.
+- Buffers and streams large traces (internal infra usually can’t).
+- Collects performance metrics at system scale (bandwidth, congestion, hotspots).
 
----
+🛠️ **Independent debug execution**
+- Runs its own firmware, analyzing debug data in real time instead of just dumping raw logs.
+- Can actively probe the AI chip (inject NoC packets, stress test memory ports).
+- Acts like a **debug co-processor**, offloading analysis from the host PC.
 
-## Supported Debug Workflows
-
-- **Halt, single-step, resume, and status reporting on target modules**
-- **Memory/register inspection and patching**
-- **Setting, removing, and monitoring hardware breakpoints/watchpoints**
-- **Real-time trace and performance analysis**
-- **Automated test and remote debug via scriptable GDB/OpenOCD integration**
-
----
-
-## Applications
-
-- Rapid ASIC/FPGA hardware bring-up and troubleshooting
-- Embedded firmware debugging without special host hardware
-- System-level verification and cross-trigger workflows
-- Teaching computer architecture and digital hardware
-- Prototyping co-processor, accelerator, and multicore experiments
-- Open hardware development with professional tool support
+🔗 **Cross-chip & system-level debug**
+- Goes beyond chip boundaries: watches PCIe, DRAM, inter-chip NoCs.
+- Correlates AI chip internals with host CPU/GPU activity.
+- Provides a uniform debug view for **multi-accelerator setups**.
 
 ---
 
-## Getting Started
+## 3. How This Looks in Practice
 
-1. **Clone the repo** and review the top-level block diagrams and RTL modules.
-2. **Select target platform** (FPGA or prepare scripts for ASIC tapeout).
-3. **Connect external modules** through Wishbone, SPI, GPIO, or JTAG pins.
-4. **Run the debug firmware** on Microwatt; interface with GDB/OpenOCD or use terminal for manual command entry.
-5. **Start debugging!** Inspect, patch, and control attached hardware, view logs, handle breakpoints, and automate verification flows.
+Imagine debugging a congested **NoC in a 256-core AI accelerator**:
+
+- **Built-in debug infra**:  
+  - Router counters + trace packets from a few links.
+
+- **Microwatt-based debugger**:  
+  - Subscribes to those counters, timestamps them, **correlates across routers**.  
+  - Sniffs raw flits at selected links → reconstructs **traffic flows**.  
+  - Runs a congestion-detection algorithm locally, flags hotspots in real time.  
+  - Sends only **processed alerts** to the host PC (instead of drowning it in gigabytes of trace).  
 
 ---
 
-## Contributing
+## 4. Minimal Architecture (Hackathon Scope)
 
-Open for contributions in:
-- Hardware module design (trace, JTAG master, performance counters)
-- Firmware improvements and debug protocol extensions
-- Documentation, educational use cases, and integration examples
+- **Microwatt Core**  
+  - Runs debug firmware (event correlation, analysis, host protocol server).
+
+- **JTAG/DMI Master Interface**  
+  - Controls AI/NoC SoC at register/memory level.  
+  - Acts as debug master for halt/resume, memory peek/poke.
+
+- **NoC Event Monitor**  
+  - Taps selected NoC links.  
+  - Collects counters, samples flits, reconstructs flow-level stats.
+
+- **Trace/Log Buffer**  
+  - Small SRAM buffer for recent traces and events.  
+  - Supports burst transfer to host when requested.
+
+- **Host I/O (USB/Ethernet)**  
+  - Bridges to host PC for integration with **GDB, OpenOCD, or custom debug CLI**.
+
+---
+
+## 5. Hackathon Deliverables
+1. FPGA prototype with Microwatt + JTAG/DMI Master + USB/Ethernet bridge.  
+2. Debug firmware running on Microwatt:  
+   - Poll NoC counters, perform local analysis, flag congestion.  
+   - Serve debug commands from host (halt/resume, trace dump).  
+3. Demo scenario:  
+   - Stress AI accelerator NoC → external debugger detects congestion pattern → sends alerts to host.  
+
+---
+
+## 6. Impact
+- Provides **ASIC-oriented, external debug visibility** that complements built-in infra.  
+- Reduces host overhead by performing **on-probe analysis**.  
+- Portable design: works across AI accelerators, NoC-based SoCs, and multi-chip systems.  
+- Ideal for **bring-up, performance tuning, and system-level debug** in complex AI hardware.
 
 ---
 

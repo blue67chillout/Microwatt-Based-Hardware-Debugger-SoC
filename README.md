@@ -11,7 +11,7 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 
 **Extended Observability**
 - Aggregates debug data across cores, NoCs, DMA, and memory into a unified timeline.  
-- Adds scalable trace buffering (SRAM/DDR) for long captures.  
+- Adds scalable trace buffering (using openRAM) for long captures.  
 - Enables live monitoring of congestion, stalls, and performance counters.  
 
 **Independent Debug Execution**

@@ -71,22 +71,16 @@ ErrorInject["Error Injection Hooks"]
 TraceBuffer["Trace/Log Buffer (SRAM)"]
 AXITrace["AXI-Stream Trace Export\n(ETM-lite or Trace Pins)"]
 
-%% Connections
 HostPC <---> PHY
 PHY --> MicrowattCore
-
 MicrowattCore --> DTM
 DTM --> DebugMaster
-
 DebugMaster --> NoCMon
 DebugMaster --> ErrorInject
 DebugMaster --> TraceBuffer
 DebugMaster --> AXITrace
+AXITrace --> TraceBuffer
 
-%% Attach points annotations
-DTM -.->|JTAG/DMI/Debug| DebugMaster
-NoCMon -.->|Telemetry/Router Counters| DebugMaster
-AXITrace -.->|High-speed Trace| TraceBuffer
 
 
 ```

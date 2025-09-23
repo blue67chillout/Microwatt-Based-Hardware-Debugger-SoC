@@ -60,7 +60,7 @@ A **Microwatt-based debugger ASIC** that serves as an **external debug companion
 - **Host I/O**  
   - USB 3.0 or GigE PHY for host connection.  
 
-
+```
 flowchart TD
 HostPC["Host PC / Debugger"]
 PHY["USB 3.0 / GigE PHY"]
@@ -81,7 +81,7 @@ DebugMaster --> NoCMon
 DebugMaster --> ErrorInject
 DebugMaster --> TraceBuffer
 
-
+```
 ---
 
 ## 5. Hackathon Deliverables

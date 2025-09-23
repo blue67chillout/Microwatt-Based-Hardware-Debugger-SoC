@@ -3,8 +3,7 @@
 ---
 
 ## 1. Goal
-A **Microwatt-based debugger ASIC** that serves as an **external debug companion chip** for AI accelerators and Network-on-Chip (NoC) systems and  
-leverages Microwatt’s native **Wishbone + JTAG/DMI debug fabric** to control, observe, and analyze external targets at ASIC-level performance.
+A **Microwatt-based debugger ASIC** that serves as an **external debug companion chip** for AI accelerators and Network-on-Chip (NoC) systems and leverages Microwatt’s native **Wishbone + JTAG/DMI debug fabric** to control, observe, and analyze external targets at ASIC-level performance.
 
 ---
 

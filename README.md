@@ -1,4 +1,4 @@
-# Microwatt-Based Debugger ASIC for AI/NoC Systems
+# Microwatt-Based Debugger ASIC for NoC Systems
 
 ---
 

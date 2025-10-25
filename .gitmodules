@@ -1,0 +1,3 @@
+[submodule "verilog/rtl/sky130_sram_macros"]
+	path = verilog/rtl/sky130_sram_macros
+	url = https://github.com/VLSIDA/sky130_sram_macros.git

@@ -3,7 +3,7 @@
 // Word size: 64
 // Write size: 8
 
-module sky130_sram_4kbyte_1rw1r_64x512_8(
+module sky130_sram_2kbyte_1rw1r_64x256_8(
 `ifdef USE_POWER_PINS
     vccd1,
     vssd1,
@@ -16,7 +16,7 @@ module sky130_sram_4kbyte_1rw1r_64x512_8(
 
   parameter NUM_WMASKS = 8 ;
   parameter DATA_WIDTH = 64 ;
-  parameter ADDR_WIDTH = 9 ;
+  parameter ADDR_WIDTH = 8 ;
   parameter RAM_DEPTH = 1 << ADDR_WIDTH;
   // FIXME: This delay is arbitrary.
   parameter DELAY = 3 ;
@@ -40,7 +40,7 @@ module sky130_sram_4kbyte_1rw1r_64x512_8(
   output [DATA_WIDTH-1:0] read_data;
 
   // Instantiate two 32-bit SRAM modules
-  sky130_sram_2kbyte_1rw1r_32x512_8 sram0 (
+  sky130_sram_1kbyte_1rw1r_32x256_8 sram0 (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1),
     .vssd1(vssd1),
@@ -58,7 +58,7 @@ module sky130_sram_4kbyte_1rw1r_64x512_8(
     .dout1(read_data[31:0])
   );
 
-  sky130_sram_2kbyte_1rw1r_32x512_8 sram1 (
+  sky130_sram_1kbyte_1rw1r_32x256_8 sram1 (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1),
     .vssd1(vssd1),

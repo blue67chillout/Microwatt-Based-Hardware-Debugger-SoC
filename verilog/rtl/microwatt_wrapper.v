@@ -121,28 +121,28 @@ module microwatt_wrapper(
         .\wishbone_dma_in.stall (wishbone_dma_in_stall_dummy)
     );
 
-    wire dummy1 = uart1_txd_dummy & 1'b0;
-    wire dummy2 = sw_soc_reset_dummy & 1'b0;
-    wire dummy3 = run_out_dummy & 1'b0;
-    wire dummy4 = run_outs_dummy & 1'b0;
-    wire [28:0] dummy5 = wb_dram_in_adr_dummy & 29'b0;
-    wire dummy6 = wb_dram_in_cyc_dummy & 1'b0;
-    wire [63:0] dummy7 = wb_dram_in_dat_dummy & 64'b0;
-    wire [7:0] dummy8 = wb_dram_in_sel_dummy & 8'b0;
-    wire dummy9 = wb_dram_in_stb_dummy & 1'b0;
-    wire dummy10 = wb_dram_in_we_dummy & 1'b0;
-    wire [29:0] dummy11 = wb_ext_io_in_adr_dummy & 30'b0;
-    wire dummy12 = wb_ext_io_in_cyc_dummy & 1'b0;
-    wire [31:0] dummy13 = wb_ext_io_in_dat_dummy & 32'b0;
-    wire [3:0] dummy14 = wb_ext_io_in_sel_dummy & 4'b0;
-    wire dummy15 = wb_ext_io_in_stb_dummy & 1'b0;
-    wire dummy16 = wb_ext_io_in_we_dummy & 1'b0;
-    wire dummy17 = wb_ext_is_dram_csr_dummy & 1'b0;
-    wire dummy18 = wb_ext_is_dram_init_dummy & 1'b0;
-    wire dummy19 = wb_ext_is_eth_dummy & 1'b0;
-    wire dummy20 = wb_ext_is_sdcard_dummy & 1'b0;
-    wire dummy21 = wishbone_dma_in_ack_dummy & 1'b0;
-    wire [31:0] dummy22 = wishbone_dma_in_dat_dummy & 32'b0;
-    wire dummy23 = wishbone_dma_in_stall_dummy & 1'b0;
+    wire dummy = (uart1_txd_dummy & 1'b0) |
+                 (sw_soc_reset_dummy & 1'b0) |
+                 (run_out_dummy & 1'b0) |
+                 (run_outs_dummy & 1'b0) |
+                 |(wb_dram_in_adr_dummy & 29'b0) |
+                 (wb_dram_in_cyc_dummy & 1'b0) |
+                 |(wb_dram_in_dat_dummy & 64'b0) |
+                 |(wb_dram_in_sel_dummy & 8'b0) |
+                 (wb_dram_in_stb_dummy & 1'b0) |
+                 (wb_dram_in_we_dummy & 1'b0) |
+                 |(wb_ext_io_in_adr_dummy & 30'b0) |
+                 (wb_ext_io_in_cyc_dummy & 1'b0) |
+                 |(wb_ext_io_in_dat_dummy & 32'b0) |
+                 |(wb_ext_io_in_sel_dummy & 4'b0) |
+                 (wb_ext_io_in_stb_dummy & 1'b0) |
+                 (wb_ext_io_in_we_dummy & 1'b0) |
+                 (wb_ext_is_dram_csr_dummy & 1'b0) |
+                 (wb_ext_is_dram_init_dummy & 1'b0) |
+                 (wb_ext_is_eth_dummy & 1'b0) |
+                 (wb_ext_is_sdcard_dummy & 1'b0) |
+                 (wishbone_dma_in_ack_dummy & 1'b0) |
+                 |(wishbone_dma_in_dat_dummy & 32'b0) |
+                 (wishbone_dma_in_stall_dummy & 1'b0);
 
 endmodule

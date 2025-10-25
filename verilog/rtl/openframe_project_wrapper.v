@@ -133,7 +133,46 @@ module openframe_project_wrapper (
 	assign gpio_analog_sel = gpio_loopback_zero;
 	assign gpio_holdover = gpio_loopback_zero;
 
-    (* keep *) vccd1_connection vccd1_connection ();
-    (* keep *) vssd1_connection vssd1_connection ();
+	// Instantiate microwatt_wrapper
+	wire [31:0] microwatt_gpio_dir;
+	microwatt_wrapper microwatt_inst (
+ `ifdef USE_POWER_PINS
+	  .vccd1(vccd1),
+ 		.vssd1(vssd1),
+ `endif
+ 		.ext_clk(gpio_in[0]),
+ 		.ext_rst(gpio_in[1]),
+ 		.uart0_rxd(gpio_in[2]),
+ 		.uart0_txd(gpio_out[2]),
+ 		.jtag_tck(gpio_in[3]),
+ 		.jtag_tdi(gpio_in[4]),
+ 		.jtag_tms(gpio_in[5]),
+ 		.jtag_trst(gpio_in[6]),
+ 		.jtag_tdo(gpio_out[3]),
+ 		.spi_flash_sdat_i(gpio_in[10:7]),
+ 		.spi_flash_sdat_o(gpio_out[10:7]),
+ 		.spi_flash_sdat_oe(gpio_oeb[10:7]),
+ 		.spi_flash_cs_n(gpio_out[11]),
+ 		.spi_flash_clk(gpio_out[12]),
+ 		.gpio_in(gpio_in[43:12]),
+ 		.gpio_out(gpio_out[43:12]),
+ 		.gpio_dir(microwatt_gpio_dir)
+ 	);
 
-endmodule // openframe_project_wrapper
+ 	// Set gpio_oeb for GPIOs used by microwatt
+ 	assign gpio_oeb[43:12] = ~microwatt_gpio_dir;
+
+ 	// Set gpio configurations for used pins
+ 	// For simplicity, set ib_mode_sel, vtrip_sel, slow_sel, dm2, dm1, dm0 to default
+ 	assign gpio_ib_mode_sel = gpio_loopback_zero;
+ 	assign gpio_vtrip_sel = gpio_loopback_zero;
+ 	assign gpio_slow_sel = gpio_loopback_zero;
+ 	assign gpio_dm2 = gpio_loopback_zero;
+ 	assign gpio_dm1 = gpio_loopback_zero;
+ 	assign gpio_dm0 = gpio_loopback_zero;
+ 	assign gpio_inp_dis = gpio_loopback_zero;
+
+     (* keep *) vccd1_connection vccd1_connection ();
+     (* keep *) vssd1_connection vssd1_connection ();
+
+ endmodule // openframe_project_wrapper

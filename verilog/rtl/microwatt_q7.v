@@ -92722,9 +92722,33 @@ module rotator(rs, ra, shift, insn, is_32bit, right_shift, arith, clear_left, cl
 endmodule
 
 (* top =  1  *)
-module soc(rst, system_clk, \wb_dram_out.dat , \wb_dram_out.ack , \wb_dram_out.stall , \wb_ext_io_out.dat , \wb_ext_io_out.ack , \wb_ext_io_out.stall , \wishbone_dma_out.adr , \wishbone_dma_out.dat , \wishbone_dma_out.sel , \wishbone_dma_out.cyc , \wishbone_dma_out.stb , \wishbone_dma_out.we , ext_irq_eth, ext_irq_sdcard, uart0_rxd, uart1_rxd, jtag_tck, jtag_tms, jtag_tdi
-, jtag_trst, spi_flash_sdat_i, gpio_in, run_out, run_outs, \wb_dram_in.adr , \wb_dram_in.dat , \wb_dram_in.sel , \wb_dram_in.cyc , \wb_dram_in.stb , \wb_dram_in.we , \wb_ext_io_in.adr , \wb_ext_io_in.dat , \wb_ext_io_in.sel , \wb_ext_io_in.cyc , \wb_ext_io_in.stb , \wb_ext_io_in.we , wb_ext_is_dram_csr, wb_ext_is_dram_init, wb_ext_is_eth, wb_ext_is_sdcard
-, \wishbone_dma_in.dat , \wishbone_dma_in.ack , \wishbone_dma_in.stall , uart0_txd, uart1_txd, jtag_tdo, spi_flash_sck, spi_flash_cs_n, spi_flash_sdat_o, spi_flash_sdat_oe, gpio_out, gpio_dir, sw_soc_reset);
+module soc(rst, system_clk,
+ \wb_dram_out.dat , 
+ \wb_dram_out.ack ,
+ \wb_dram_out.stall ,
+ \wb_ext_io_out.dat ,
+ \wb_ext_io_out.ack , 
+ \wb_ext_io_out.stall , 
+ \wishbone_dma_out.adr , 
+ \wishbone_dma_out.dat , 
+ \wishbone_dma_out.sel , 
+ \wishbone_dma_out.cyc , 
+ \wishbone_dma_out.stb , 
+ \wishbone_dma_out.we , 
+ ext_irq_eth, ext_irq_sdcard,
+ uart0_rxd, uart1_rxd,
+ jtag_tck, jtag_tms, jtag_tdi, jtag_trst,
+ spi_flash_sdat_i, gpio_in, run_out, run_outs,
+\wb_dram_in.adr , \wb_dram_in.dat , 
+\wb_dram_in.sel , \wb_dram_in.cyc , 
+\wb_dram_in.stb , \wb_dram_in.we ,
+\wb_ext_io_in.adr , \wb_ext_io_in.dat , \wb_ext_io_in.sel , 
+\wb_ext_io_in.cyc , \wb_ext_io_in.stb , \wb_ext_io_in.we , 
+wb_ext_is_dram_csr, wb_ext_is_dram_init, wb_ext_is_eth, wb_ext_is_sdcard, 
+\wishbone_dma_in.dat , \wishbone_dma_in.ack , \wishbone_dma_in.stall , 
+uart0_txd, uart1_txd, jtag_tdo, 
+spi_flash_sck, spi_flash_cs_n, spi_flash_sdat_o, spi_flash_sdat_oe, 
+gpio_out, gpio_dir, sw_soc_reset);
   wire _000_;
   wire [63:0] _001_;
   wire _002_;
@@ -93914,7 +93938,7 @@ module soc(rst, system_clk, \wb_dram_out.dat , \wb_dram_out.ack , \wb_dram_out.s
   assign _243_ = _031_ ? 1'h0 : _244_;
   always @(posedge system_clk)
     _244_ <= _243_;
-  wishbone_bram_wrapper_4096_a75adb9e07879fb6c63b494abe06e3f9a6bb2ed9 \bram.bram0  (
+  wishbone_bram_wrapper_4096_a75adb9e07879fb6c63b494abe06e3f9a6bb2ed9 bram_bram0  (
     .clk(system_clk),
     .rst(rst_bram),
     .\wishbone_in.adr (wb_bram_in[28:0]),
@@ -93942,7 +93966,7 @@ module soc(rst, system_clk, \wb_dram_out.dat , \wb_dram_out.ack , \wb_dram_out.s
     .sys_clk(system_clk),
     .sys_reset(rst_dtm)
   );
-  core_0_1_0_32_2_32_32_2_32_2_86f0a572df18a8a725ad5e139b1757961790682b \processors:1.core  (
+  core_0_1_0_32_2_32_32_2_32_2_86f0a572df18a8a725ad5e139b1757961790682b processors_1_core  (
     .alt_reset(alt_reset_d),
     .clk(system_clk),
     .dmi_ack(_067_),

@@ -133,14 +133,18 @@ module openframe_project_wrapper (
 	assign gpio_analog_sel = gpio_loopback_zero;
 	assign gpio_holdover = gpio_loopback_zero;
 
+	// assign gpio_in[10] = 0;
+ //    assign gpio_in[9] = 0;
+ //    assign gpio_in[7] = 0;
+
+    // assign gpio_out[10] = 0;
+    // assign gpio_out[9] = 0;
+    // assign gpio_out[7] = 0;
+
 	// Instantiate microwatt_wrapper
 	wire [31:0] microwatt_gpio_dir;
 	wire [31:0] microwatt_gpio_out;
 	microwatt_wrapper microwatt_inst (
- `ifdef USE_POWER_PINS
-	  .vccd1(vccd1),
- 		.vssd1(vssd1),
- `endif
  		.ext_clk(gpio_in[0]),
  		.ext_rst(gpio_in[1]),
  		.uart0_rxd(gpio_in[2]),
@@ -150,9 +154,9 @@ module openframe_project_wrapper (
  		.jtag_tms(gpio_in[5]),
  		.jtag_trst(gpio_in[6]),
  		.jtag_tdo(gpio_out[14]),
- 		.spi_flash_sdat_i(gpio_in[10:7]),
- 		.spi_flash_sdat_o(gpio_out[10:7]),
- 		.spi_flash_sdat_oe(gpio_oeb[10:7]),
+ 		.spi_flash_sdat_i(gpio_in[8]),
+ 		.spi_flash_sdat_o(gpio_out[7]),
+ 		.spi_flash_sdat_oe(),
  		.spi_flash_cs_n(gpio_out[11]),
  		.spi_flash_clk(gpio_out[12]),
  		.gpio_in({3'b0, gpio_in[43:15]}),

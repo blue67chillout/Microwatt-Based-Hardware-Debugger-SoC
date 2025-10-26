@@ -31,6 +31,10 @@ module sram22_512x64m4w8(
 
   reg [DATA_WIDTH-1:0] mem [0:RAM_DEPTH-1];
 
+  initial begin
+    $readmemh("../../../../../verilog/dv/Caravel/microwatt/uart/microwatt.hex", mem);
+  end
+
   always @(posedge clk)
   begin
     if (ce && rstb) begin

@@ -1,3 +1,5 @@
+`define OPENFRAME_IO_PADS 44
+
 `default_nettype none
 /*
  *  Copyright (C) 2017  Clifford Wolf <clifford@clifford.at>
@@ -87,14 +89,10 @@ module uart_tb;
 	reg power3, power4;
 	reg uart_rx;
 
-	//wire gpio;
-	//wire [37:0] mprj_io;
-
-	wire [43:0] gpio_in;
-	wire [43:0] gpio_out;
-	wire [43:0] gpio_oeb;
-
-
+	wire gpio;
+	wire [`OPENFRAME_IO_PADS-1:0] gpio_in;
+	wire [`OPENFRAME_IO_PADS-1:0] gpio_out;
+	wire [`OPENFRAME_IO_PADS-1:0] gpio_oeb;
 	wire [15:0] checkbits;
 	wire user_flash_csb;
 	wire user_flash_clk;
@@ -102,40 +100,21 @@ module uart_tb;
 	inout user_flash_io1;
 	wire uart_tx;
 
-	initial begin
-		$display("Sim started");
-	end
-
-	// assign mprj_io[7] = microwatt_reset;
- //
-	// assign mprj_io[35] = 1'b1; // Boot from flash
- //
-	// assign user_flash_csb = mprj_io[8];
-	// assign user_flash_clk = mprj_io[9];
-	// assign user_flash_io0 = mprj_io[10];
-	// assign mprj_io[11] = user_flash_io1;
- //
-	// assign checkbits = mprj_io[31:16];
- //
-	// assign uart_tx = mprj_io[6];
-	// assign mprj_io[5] = uart_rx;
- //
-	// assign mprj_io[3] = 1'b1;  // Force CSB high.
-
-	assign gpio_in[0] = clock;
 	assign gpio_in[1] = microwatt_reset;
 
-	assign gpio_in[2] = uart_rx;
-	assign uart_tx = gpio_out[13];
-
-	assign checkbits = gpio_out[30:15];
+	assign gpio_in[35] = 1'b1; // Boot from flash
 
 	assign user_flash_csb = gpio_out[11];
 	assign user_flash_clk = gpio_out[12];
+	assign user_flash_io0 = gpio_out[10];
+	assign gpio_in[11] = user_flash_io1;
 
-	assign user_flash_io0 = gpio_in[8]; //input
-	assign gpio_in[7] = user_flash_io1; //output
+	assign checkbits = gpio_out[31:16]; // Assuming checkbits on gpio_out
 
+	assign uart_tx = gpio_out[13];
+	assign gpio_in[2] = uart_rx;
+
+	assign gpio_in[3] = 1'b1;  // Force CSB high? Wait, adjust as needed
 
 	// 100 MHz clock
 	always #5 clock <= (clock === 1'b0);
@@ -145,31 +124,22 @@ module uart_tb;
 	end
 
 	initial begin
-	$dumpfile("uart_tb.vcd");
-	$dumpvars(0, uart_tb);
-	$monitor("checkbits: %h CSB: %b at %t", checkbits, user_flash_csb, $time);
+		//$dumpfile("uart.vcd");
+		//$dumpvars(0, uart_tb);
 
-	$display("Microwatt UART rx -> tx test");
+		$display("Microwatt UART rx -> tx test");
 
-	repeat (1500000) @(posedge clock);
-	$display("Simulation timeout reached without UART response");
-	 $finish;
-		end
-
-	initial begin
-		RSTB <= 1'b0;
-		$display("Asserting microwatt_reset at %t", $time);
-		microwatt_reset <= 1'b0;
-		#1000;
-		$display("Deasserting microwatt_reset at %t", $time);
-		microwatt_reset <= 1'b1;
-		// Note: keep management engine in reset
-		//RSTB <= 1'b1;
+		repeat (1500000) @(posedge clock);
+		$finish;
 	end
 
 	initial begin
-		#1 force uart_tb.uut.gpio_out[11] = 0; // Force CSB low initially to allow flash access
-		$display("Forcing CSB low at %t", $time);
+		RSTB <= 1'b0;
+		microwatt_reset <= 1'b1;
+		#1000;
+		microwatt_reset <= 1'b0;
+		// Note: keep management engine in reset
+		//RSTB <= 1'b1;
 	end
 
 	initial begin		// Power-up sequence
@@ -190,12 +160,11 @@ module uart_tb;
 	initial begin
 		uart_rx <= 1'b1;
 
-		$display("Waiting for checkbits to be 0ffe at %t", $time);
 		wait(checkbits == 16'h0ffe)
-		$display("Microwatt alive at %t!", $time);
+		$display("Microwatt alive!");
 
 		// 115200 = 8680 ns per bit
-		$display("Writing 7 to Microwatt uart at %t", $time);
+		$display("Writing 7 to Microwatt uart");
 		uart_rx <= 1'b0;
 		#8680
 		uart_rx <= 1'b1;
@@ -224,82 +193,44 @@ module uart_tb;
 	wire USER_VDD1V8 = power4;
 	wire VSS = 1'b0;
 
-	wire unused = 1'b0;
-	wire [31:0] mask_rev_unused = 32'b0;
-	wire [43:0] gpio_unused_44 = 44'b0;
-
-	// wire dummy = (gpio_inp_dis & 1'b0) |
-	// 				(gpio_ib_mode_sel & 1'b0) |
-	// 				(gpio_vtrip_sel & 1'b0) |
-	// 				(gpio_slow_sel & 1'b0) |
-	// 				(gpio_holdover & 1'b0) |
-	// 				(gpio_analog_en & 1'b0) |
-	// 				(gpio_analog_sel & 1'b0) |
-	// 				()
-
-
-	// caravel uut (
-	// 	.vddio	  (VDD3V3),
-	// 	.vssio	  (VSS),
-	// 	.vdda	  (VDD3V3),
-	// 	.vssa	  (VSS),
-	// 	.vccd	  (VDD1V8),
-	// 	.vssd	  (VSS),
-	// 	.vdda1    (USER_VDD3V3),
-	// 	.vdda2    (USER_VDD3V3),
-	// 	.vssa1	  (VSS),
-	// 	.vssa2	  (VSS),
-	// 	.vccd1	  (USER_VDD1V8),
-	// 	.vccd2	  (USER_VDD1V8),
-	// 	.vssd1	  (VSS),
-	// 	.vssd2	  (VSS),
-	// 	.clock	  (clock),
-	// 	.gpio     (gpio),
-	// 	.mprj_io  (mprj_io),
-	// 	.resetb	  (RSTB)
-	// );
-
 	openframe_project_wrapper uut (
-		.vdda 				(VDD3V3),
-		.vdda1 				(USER_VDD3V3),
-		.vdda2 				(USER_VDD3V3),
-		.vssa 				(VSS),
-		.vssa1 				(VSS),
-		.vssa2 				(VSS),
-		.vccd 				(VDD1V8),
-		.vccd1 				(USER_VDD1V8),
-		.vccd2 				(USER_VDD1V8),
-		.vssd 				(VSS),
-		.vssd1 				(VSS),
-		.vssd2 				(VSS),
-		.vddio 				(VDD3V3),
-		.vssio 				(VSS),
-		.porb_h 			(1'b1),
-		.porb_l 			(1'b1),
-		.por_l 				(1'b1),
-		.resetb_h 			(microwatt_reset),
-		.resetb_l 			(microwatt_reset),
-		.mask_rev 			(mask_rev_unused),
-		.gpio_in 			(gpio_in),
-		.gpio_in_h 			(gpio_unused_44),
-		.gpio_out 			(gpio_out),
-		.gpio_oeb 			(gpio_oeb),
-		.gpio_inp_dis 		(gpio_unused_44),
-		.gpio_ib_mode_sel 	(gpio_unused_44),
-		.gpio_vtrip_sel 	(gpio_unused_44),
-		.gpio_slow_sel 		(gpio_unused_44),
-		.gpio_holdover 		(gpio_unused_44),
-		.gpio_analog_en 	(gpio_unused_44),
-		.gpio_analog_sel 	(gpio_unused_44),
-		.gpio_analog_pol 	(gpio_unused_44),
-		.gpio_dm2 			(gpio_unused_44),
-		.gpio_dm1 			(gpio_unused_44),
-		.gpio_dm0 			(gpio_unused_44),
-		.analog_io 			(gpio_unused_44),
-		.analog_noesd_io 	(gpio_unused_44),
-		.gpio_loopback_one 	(gpio_unused_44),
-		.gpio_loopback_zero (gpio_unused_44)
-
+		.vdda	  (VDD3V3),
+		.vdda1    (USER_VDD3V3),
+		.vdda2    (USER_VDD3V3),
+		.vssa	  (VSS),
+		.vssa1	  (VSS),
+		.vssa2	  (VSS),
+		.vccd	  (VDD1V8),
+		.vccd1	  (USER_VDD1V8),
+		.vccd2	  (USER_VDD1V8),
+		.vssd	  (VSS),
+		.vssd1	  (VSS),
+		.vssd2	  (VSS),
+		.vddio	  (VDD3V3),
+		.vssio	  (VSS),
+		.porb_h   (1'b1),
+		.porb_l   (1'b1),
+		.por_l    (1'b1),
+		.resetb_h (1'b1),
+		.resetb_l (1'b1),
+		.mask_rev (32'b0),
+		.gpio_in  (gpio_in),
+		.gpio_out (gpio_out),
+		.gpio_oeb (gpio_oeb),
+		.gpio_inp_dis (),
+		.gpio_vtrip_sel (),
+		.gpio_slow_sel (),
+		.gpio_holdover (),
+		.gpio_analog_en (),
+		.gpio_analog_sel (),
+		.gpio_analog_pol (),
+		.gpio_dm2 (),
+		.gpio_dm1 (),
+		.gpio_dm0 (),
+		.analog_io (),
+		.analog_noesd_io (),
+		.gpio_loopback_one (),
+		.gpio_loopback_zero ()
 	);
 
 	spiflash_microwatt #(

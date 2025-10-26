@@ -9,9 +9,11 @@ int main(void)
 
 	microwatt_alive();
 
-	writel(0x12345678, GPIO_REG_OUT);
-
+	/* Echo everything we receive back */
 	while (1) {
-		// Do nothing
+		unsigned char c = getchar();
+		putchar(c);
+		if (c == 13) // if CR send LF
+			putchar(10);
 	}
 }

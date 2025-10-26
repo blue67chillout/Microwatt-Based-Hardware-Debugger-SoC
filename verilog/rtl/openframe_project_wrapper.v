@@ -135,6 +135,7 @@ module openframe_project_wrapper (
 
 	// Instantiate microwatt_wrapper
 	wire [31:0] microwatt_gpio_dir;
+	wire [31:0] microwatt_gpio_out;
 	microwatt_wrapper microwatt_inst (
  `ifdef USE_POWER_PINS
 	  .vccd1(vccd1),
@@ -143,24 +144,43 @@ module openframe_project_wrapper (
  		.ext_clk(gpio_in[0]),
  		.ext_rst(gpio_in[1]),
  		.uart0_rxd(gpio_in[2]),
- 		.uart0_txd(gpio_out[2]),
+ 		.uart0_txd(gpio_out[13]),
  		.jtag_tck(gpio_in[3]),
  		.jtag_tdi(gpio_in[4]),
  		.jtag_tms(gpio_in[5]),
  		.jtag_trst(gpio_in[6]),
- 		.jtag_tdo(gpio_out[3]),
+ 		.jtag_tdo(gpio_out[14]),
  		.spi_flash_sdat_i(gpio_in[10:7]),
  		.spi_flash_sdat_o(gpio_out[10:7]),
  		.spi_flash_sdat_oe(gpio_oeb[10:7]),
  		.spi_flash_cs_n(gpio_out[11]),
  		.spi_flash_clk(gpio_out[12]),
- 		.gpio_in(gpio_in[43:12]),
- 		.gpio_out(gpio_out[43:12]),
+ 		.gpio_in({3'b0, gpio_in[43:15]}),
+ 		.gpio_out(microwatt_gpio_out),
  		.gpio_dir(microwatt_gpio_dir)
  	);
 
+ 	// Assign microwatt outputs to GPIOs
+ 	assign gpio_out[43:15] = microwatt_gpio_out[28:0];
+ 	// Upper GPIOs tied off
+ 	assign gpio_out[31:29] = 3'b0;
+
  	// Set gpio_oeb for GPIOs used by microwatt
- 	assign gpio_oeb[43:12] = ~microwatt_gpio_dir;
+ 	assign gpio_oeb[43:15] = ~microwatt_gpio_dir[28:0];
+
+ 	// Set gpio_oeb for fixed-direction GPIOs
+ 	assign gpio_oeb[0] = 1'b1; // ext_clk input
+ 	assign gpio_oeb[1] = 1'b1; // ext_rst input
+ 	assign gpio_oeb[2] = 1'b1; // uart0_rxd input
+ 	assign gpio_oeb[3] = 1'b1; // jtag_tck input
+ 	assign gpio_oeb[4] = 1'b1; // jtag_tdi input
+ 	assign gpio_oeb[5] = 1'b1; // jtag_tms input
+ 	assign gpio_oeb[6] = 1'b1; // jtag_trst input
+ 	assign gpio_oeb[11] = 1'b0; // spi_flash_cs_n output
+ 	assign gpio_oeb[12] = 1'b0; // spi_flash_clk output
+ 	assign gpio_oeb[13] = 1'b0; // uart0_txd output
+ 	assign gpio_oeb[14] = 1'b0; // jtag_tdo output
+ 	// gpio_oeb[10:7] controlled by spi_flash_sdat_oe from microwatt for bidirectional SPI data
 
  	// Set gpio configurations for used pins
  	// For simplicity, set ib_mode_sel, vtrip_sel, slow_sel, dm2, dm1, dm0 to default

@@ -111,6 +111,66 @@ AXITrace -.->|High-speed Trace| TraceBuffer
 
 ---
 
+## Getting Started
+
+### 1. Building the SoC
+
+The original Microwatt SoC was written in VHDL and designed for FPGA, containing FPGA-specific blocks such as BRAMs and LiteX components.  
+To prepare it for ASIC implementation, these were removed and replaced.
+
+Since OpenLane requires Verilog input, the design was converted from VHDL to Verilog using Yosys VHDL plugin.
+
+This generated a Verilog version of the full SoC suitable for ASIC flow.
+
+```
+docker run --rm -v $PWD:/src:z -w /src hdlc/ghdl:yosys yosys -m ghdl -p " \
+ghdl --std=08 --no-formal \
+-gMEMORY_SIZE=4096 \
+-gRAM_INIT_FILE=hello_world/hello_world.hex \
+-gCLK_FREQ=50000000 \
+-gSIM=false \
+-gUART0_IS_16550=true \
+decode_types.vhdl common.vhdl wishbone_types.vhdl fetch1.vhdl utils.vhdl plrufn.vhdl cache_ram.vhdl icache.vhdl predecode.vhdl decode1.vhdl helpers.vhdl insn_helpers.vhdl control.vhdl decode2.vhdl register_file.vhdl cr_file.vhdl crhelpers.vhdl ppc_fx_insns.vhdl rotator.vhdl logical.vhdl countbits.vhdl multiply.vhdl multiply-32s.vhdl divider.vhdl execute1.vhdl loadstore1.vhdl mmu.vhdl dcache.vhdl writeback.vhdl core_debug.vhdl core.vhdl fpu.vhdl pmu.vhdl bitsort.vhdl wishbone_arbiter.vhdl wishbone_bram_wrapper.vhdl sync_fifo.vhdl wishbone_debug_master.vhdl xics.vhdl syscon.vhdl gpio.vhdl soc.vhdl spi_rxtx.vhdl spi_flash_ctrl.vhdl git.vhdl dmi_dtm_dummy.vhdl nonrandom.vhdl main_bram.vhdl \
+-e soc; \
+hierarchy -check -top soc; \
+write_verilog microwatt.v \
+"
+```
+
+---
+
+### 2. Booting from SPI Flash
+
+ASIC systems cannot rely on FPGA-internal memories, so the SoC must boot from external SPI flash.
+
+A testbench was created where a SPI flash model is instantiated externally and connected to the SoC.  
+This flash model sends SPI signals containing the `.hex` firmware file to the SoC during boot.
+
+The `.hex` file is the binary of the firmware (for example, a UART test program).
+
+---
+
+### 3. Verifying UART Functionality
+
+To verify that the SoC boots correctly and runs firmware, a UART verification test was performed:
+
+- The SPI flash sends the firmware to the SoC at boot.  
+- The firmware initializes UART and transmits 7 bytes.  
+- The testbench monitors UART TX to confirm correct transmission.
+
+Made `alt_reset` an external signal to enable boot from flash.  
+
+---
+
+### 4. USB Controller Integration
+
+To enable high-speed host communication, we integrated our custom USB controller into the SoC.  
+The controller was wrapped with a Wishbone interface, allowing it to communicate directly with the Microwatt core and debug master.
+
+Firmware was written to initialize and handle USB transactions, allowing the SoC to send and receive data to/from the host PC, enabling trace export, firmware loading, and debug control over USB.
+
+---
+
 ## License
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.

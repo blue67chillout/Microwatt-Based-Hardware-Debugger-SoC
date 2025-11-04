@@ -32,11 +32,16 @@
 
 ### Included Peripherals
 
-| Peripheral   |
-|---------------|
-| UART          |
-| USB           |
-| JTAG Master   |
+### Included Peripherals
+
+| Peripheral   | Function / Interface Type      | Status       |
+|---------------|-------------------------------|---------------|
+| UART          | Serial communication (16550)  | ✔️ Enabled    |
+| USB           | USB Controller      | ✔️ Included |
+| JTAG Master   | Debug & boundary scan         | ✔️ Included, but not fully tested    |
+| SPI Flash     | SPI for boot storage     | ✔️ Enabled    |
+| GPIO          | 32-bit general-purpose I/O     | ✔️ Enabled    |
+
 
 ### 1. Building the SoC
 

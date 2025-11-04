@@ -32,8 +32,6 @@
 
 ### Included Peripherals
 
-### Included Peripherals
-
 | Peripheral   | Function / Interface Type      | Status       |
 |---------------|-------------------------------|---------------|
 | UART          | Serial communication (16550)  | ✔️ Enabled    |

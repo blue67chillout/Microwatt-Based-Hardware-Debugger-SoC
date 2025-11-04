@@ -8,7 +8,7 @@
 
 ### SoC Generic Parameters
 
-| Generic name | Type | Default / Example | Description |
+| Generic name | Type | Value | Description |
 |---------------|------|------------------|-------------|
 | `MEMORY_SIZE` | `natural` |4096| Total on-chip memory size (implementation specific). |
 | `CLK_FREQ` | `positive` | — | System clock frequency (in Hz). |
@@ -29,6 +29,12 @@
 | `UART0_IS_16550` | `boolean` | `true` | Make UART0 16550-compatible. |
 | `HAS_GPIO` | `boolean` | `true` | Enable GPIO peripheral. |
 | `NGPIO` | `natural` | `32` | Number of available GPIO pins. |
+
+### Included Peripherals
+
+| UART        |
+| USB         |
+| JTAG Master |
 
 ### 1. Building the SoC
 

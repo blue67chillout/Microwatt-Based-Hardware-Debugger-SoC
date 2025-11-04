@@ -12,29 +12,29 @@
 
 
   "VERILOG_FILES": [
-    "dir::rtl/microwatt_q17.v",
-    "dir::rtl/openframe_project_wrapper.v",
-    "dir::rtl/microwatt_wrapper.v",
-    "dir::rtl/tap_top.v",
-    "dir::rtl/simplebus_host.v",
-    "dir::rtl/raminfr.v",
-    "dir::rtl/uart_defines.v",
-    "dir::rtl/uart_receiver.v",
-    "dir::rtl/uart_regs.v",
-    "dir::rtl/uart_rfifo.v",
-    "dir::rtl/uart_sync_flops.v",
-    "dir::rtl/uart_tfifo.v",
-    "dir::rtl/uart_top.v",
-    "dir::rtl/uart_transmitter.v",
-    "dir::rtl/uart_wb.v"
+    "dir::../verilog/rtl/microwatt_q17.v",
+    "dir::../verilog/rtl/openframe_project_wrapper.v",
+    "dir::../verilog/rtl/microwatt_wrapper.v",
+    "dir::../verilog/rtl/tap_top.v",
+    "dir::../verilog/rtl/simplebus_host.v",
+    "dir::../verilog/rtl/raminfr.v",
+    "dir::../verilog/rtl/uart_defines.v",
+    "dir::../verilog/rtl/uart_receiver.v",
+    "dir::../verilog/rtl/uart_regs.v",
+    "dir::../verilog/rtl/uart_rfifo.v",
+    "dir::../verilog/rtl/uart_sync_flops.v",
+    "dir::../verilog/rtl/uart_tfifo.v",
+    "dir::../verilog/rtl/uart_top.v",
+    "dir::../verilog/rtl/uart_transmitter.v",
+    "dir::../verilog/rtl/uart_wb.v"
   ],
 
 
   "VERILOG_FILES_BLACKBOX": [
-     "dir::rtl/RAM512.v",
-     "dir::rtl/RAM32_1RW1R.v",
-     "dir::rtl/Microwatt_FP_DFFRFile.v",
-     "dir::rtl/multiply_add_64x64.v"
+     "dir::../verilog/rtl/RAM512.v",
+     "dir::../verilog/rtl/RAM32_1RW1R.v",
+     "dir::../verilog/rtl/Microwatt_FP_DFFRFile.v",
+     "dir::../verilog/rtl/multiply_add_64x64.v"
   ],
 
   "EXTRA_LEFS": [
@@ -44,10 +44,10 @@
     "dir::lef/RAM512.lef"
       ],
   "EXTRA_GDS_FILES": [
-    "dir::gds/Microwatt_FP_DFFRFile.gds",
-    "dir::gds/multiply_add_64x64.gds",
-    "dir::gds/RAM32_1RW1R.gds",
-    "dir::gds/RAM512.gds" 
+    "dir::gds/Microwatt_FP_DFFRFile.gds.gz",
+    "dir::gds/multiply_add_64x64.gds.gz",
+    "dir::gds/RAM32_1RW1R.gds.gz",
+    "dir::gds/RAM512.gds.gz" 
 
   ],
   "EXTRA_LIBS": [
@@ -69,9 +69,6 @@
 
 ],
 
-  "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
-
-
   "FALLBACK_SDC_FILE": "dir::base.sdc",
   "PNR_SDC_FILE": "dir::base.sdc",
   "SIGNOFF_SDC_FILE": "dir::base.sdc",
@@ -80,42 +77,42 @@
 
   "CLOCK_PORT": "gpio_in[0]",
   "CLOCK_PERIOD": 20.0,
-    "MAX_TRANSITION_CONSTRAINT": 0.5,
-    "QUIT_ON_SYNTH_CHECKS": 0,
-    "FP_PDN_CHECK_NODES": 0,
-    "SYNTH_ELABORATE_ONLY": 0,
-    "PL_RANDOM_GLB_PLACEMENT": 1,
-    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
-    "PL_RESIZER_DESIGN_OPTIMIZATIONS": 0,
-    "PL_RESIZER_TIMING_OPTIMIZATIONS": 0,
-    "GLB_RESIZER_TIMING_OPTIMIZATIONS": 0,
-    "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 0,
-    "PL_RESIZER_BUFFER_INPUT_PORTS": 0,
-    "RUN_CTS": 0,
-    "FP_PDN_ENABLE_RAILS": 0,
-    "GRT_REPAIR_ANTENNAS": 0,
-    "RUN_HEURISTIC_DIODE_INSERTION": 0,
-    "RUN_FILL_INSERTION": 0,
-    "RUN_TAP_DECAP_INSERTION": 0,
-    "FP_PDN_VPITCH": 40,
-    "FP_PDN_HPITCH": 40,
-    "FP_PDN_VOFFSET": 18.43,
-    "FP_PDN_HOFFSET": 22.83,
-    "MAGIC_ZEROIZE_ORIGIN": 0,
-    "FP_SIZING": "absolute",
-    "RUN_CVC": 0,
-    "FP_PDN_CORE_RING": 1,
-    "FP_PDN_CORE_RING_VWIDTH": 20,
-    "FP_PDN_CORE_RING_HWIDTH": 20,
-    "FP_PDN_CORE_RING_VOFFSET": -4,
-    "FP_PDN_CORE_RING_HOFFSET": -4,
-    "FP_PDN_CORE_RING_VSPACING": 2.4,
-    "FP_PDN_CORE_RING_HSPACING": 2.4,
-    "FP_PDN_VWIDTH": 6.4,
-    "FP_PDN_HWIDTH": 6.4,
-    "FP_PDN_HSPACING": 3.2,
-    "FP_PDN_VSPACING": 3.2,
-    "PL_TARGET_DENSITY": "0.15",
+  "MAX_TRANSITION_CONSTRAINT": 0.5,
+  "QUIT_ON_SYNTH_CHECKS": 0,
+  "FP_PDN_CHECK_NODES": 0,
+  "SYNTH_ELABORATE_ONLY": 0,
+  "PL_RANDOM_GLB_PLACEMENT": 1,
+  "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
+  "PL_RESIZER_DESIGN_OPTIMIZATIONS": 0,
+  "PL_RESIZER_TIMING_OPTIMIZATIONS": 0,
+  "GLB_RESIZER_TIMING_OPTIMIZATIONS": 0,
+  "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 0,
+  "PL_RESIZER_BUFFER_INPUT_PORTS": 0,
+  "RUN_CTS": 0,
+  "FP_PDN_ENABLE_RAILS": 0,
+  "GRT_REPAIR_ANTENNAS": 0,
+  "RUN_HEURISTIC_DIODE_INSERTION": 0,
+  "RUN_FILL_INSERTION": 0,
+  "RUN_TAP_DECAP_INSERTION": 0,
+  "FP_PDN_VPITCH": 40,
+  "FP_PDN_HPITCH": 40,
+  "FP_PDN_VOFFSET": 18.43,
+  "FP_PDN_HOFFSET": 22.83,
+  "MAGIC_ZEROIZE_ORIGIN": 0,
+  "FP_SIZING": "absolute",
+  "RUN_CVC": 0,
+  "FP_PDN_CORE_RING": 1,
+  "FP_PDN_CORE_RING_VWIDTH": 20,
+  "FP_PDN_CORE_RING_HWIDTH": 20,
+  "FP_PDN_CORE_RING_VOFFSET": -4,
+  "FP_PDN_CORE_RING_HOFFSET": -4,
+  "FP_PDN_CORE_RING_VSPACING": 2.4,
+  "FP_PDN_CORE_RING_HSPACING": 2.4,
+  "FP_PDN_VWIDTH": 6.4,
+  "FP_PDN_HWIDTH": 6.4,
+  "FP_PDN_HSPACING": 3.2,
+  "FP_PDN_VSPACING": 3.2,
+  "PL_TARGET_DENSITY": "0.15",
 
       "VDD_NETS": [
         "vccd1"
@@ -126,18 +123,6 @@
   "FP_TEMPLATE_PINS": [
         "vccd1",
         "vssd1"
-
-
-
-
-
-
-
-
-
-
-
-
     ],
 
     "DIE_AREA": "0 0 3166.63 4766.630",

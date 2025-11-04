@@ -4,6 +4,32 @@
 
 ## Getting Started
 
+### SoC Parameters
+
+### SoC Generic Parameters
+
+| Generic name | Type | Default / Example | Description |
+|---------------|------|------------------|-------------|
+| `MEMORY_SIZE` | `natural` |4096| Total on-chip memory size (implementation specific). |
+| `CLK_FREQ` | `positive` | — | System clock frequency (in Hz). |
+| `SIM` | `boolean` | `false` | Enable simulation-specific features. |
+| `NCPUS` | `positive` | `1` | Number of processor cores. |
+| `HAS_FPU` | `boolean` | `true` | Include Floating-Point Unit. |
+| `HAS_BTC` | `boolean` | `true` | Include Branch Target Cache. |
+| `ALT_RESET_ADDRESS` | `std_logic_vector(63 downto 0)` | `x"00000000F0000000"` | Alternate reset vector address. |
+| `HAS_DRAM` | `boolean` | `false` | Enables DRAM interface. |
+| `DRAM_SIZE` | `integer` | `0` | DRAM size in implementation-specific units. |
+| `DRAM_INIT_SIZE` | `integer` | `0` | Number of DRAM initialization entries. |
+| `HAS_SPI_FLASH` | `boolean` | `true` | Enables SPI Flash controller. |
+| `SPI_FLASH_DLINES` | `positive` | `4` | Number of SPI data lines (1–4). |
+| `SPI_FLASH_OFFSET` | `integer` | `0` | Offset for SPI Flash boot address. |
+| `SPI_FLASH_DEF_CKDV` | `natural` | `4` | Default SPI clock divider. |
+| `SPI_BOOT_CLOCKS` | `boolean` | `false` | Enable boot clocking during SPI boot. |
+| `LOG_LENGTH` | `natural` | `0` | Internal log buffer length. |
+| `UART0_IS_16550` | `boolean` | `true` | Make UART0 16550-compatible. |
+| `HAS_GPIO` | `boolean` | `true` | Enable GPIO peripheral. |
+| `NGPIO` | `natural` | `32` | Number of available GPIO pins. |
+
 ### 1. Building the SoC
 
 The original Microwatt SoC was written in VHDL and designed for FPGA, containing FPGA-specific blocks such as BRAMs and LiteX components.  

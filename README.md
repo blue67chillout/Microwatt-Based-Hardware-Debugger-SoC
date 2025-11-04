@@ -38,7 +38,7 @@
 |---------------|-------------------------------|---------------|
 | UART          | Serial communication (16550)  | ✔️ Enabled    |
 | USB           | USB Controller      | ✔️ Included |
-| JTAG Master   | Debug & boundary scan         | ✔️ Included, but not fully tested    |
+| JTAG Master   | Debug interface for Target SoC         | ✔️ Included, but not fully tested    |
 | SPI Flash     | SPI for boot storage     | ✔️ Enabled    |
 | GPIO          | 32-bit general-purpose I/O     | ✔️ Enabled    |
 

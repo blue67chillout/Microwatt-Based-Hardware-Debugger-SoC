@@ -90,11 +90,12 @@ The `.hex` file is the binary of the firmware (for example, a UART test program)
 
 To verify that the SoC boots correctly and runs firmware, a UART verification test was performed:
 
-- The SPI flash sends the firmware to the SoC at boot.  
-- The firmware initializes UART and transmits 7 bytes.  
+- The firmware gets loaded from Flash to MM at boot.  
+- The firmware initializes UART and runs "echoes", further also writes GPIOs, which is also later monitored in the testbench and verified.
+- Data is driven to the UART RX pins. 
 - The testbench monitors UART TX to confirm correct transmission.
 
-Made `alt_reset` an external signal to enable boot from flash.  
+*Made `alt_reset` an external signal to enable boot from flash.  
 
 ---
 

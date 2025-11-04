@@ -112,6 +112,11 @@ Firmware was written to initialize and handle USB transactions, allowing the SoC
 
 You can find the dv @ verilog/dv/Caravel/microwatt/uart | usb
 
+Make sure to add the path of powerpc64 binaries to your path environmental variable!
+```
+export PATH=~/powerpc64le-power8--glibc--stable-2025.08-1/bin:$PATH
+```
+
 Here is proof that my microwatt is alive 
 
 

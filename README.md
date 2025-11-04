@@ -108,6 +108,20 @@ Firmware was written to initialize and handle USB transactions, allowing the SoC
 
 ---
 
+### DV
+
+You can find the dv @ verilog/dv/Caravel/microwatt/uart | usb
+
+Here is proof that my microwatt is alive 
+
+
+<img width="978" height="544" alt="Screenshot 2025-11-04 at 11 57 20 AM" src="https://github.com/user-attachments/assets/295e71a9-8d54-42a4-a548-efd9496e9e84" />
+
+### Librelane Flow update, the flow is still running, 
+
+latest update, currently @ STA  (stage 45)
+
+
 ### Proposal :
 
 ---

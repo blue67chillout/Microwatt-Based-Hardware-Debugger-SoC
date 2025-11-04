@@ -25,7 +25,7 @@ ifeq ($(SIM),RTL)
 	-l$(USER_PROJECT_VERILOG)/rtl/user_defines.v \
 	-l$(USER_PROJECT_VERILOG)/rtl/openframe_project_netlists.v \
 	-f$(USER_PROJECT_VERILOG)/includes/includes.rtl.caravel_user_project \
-	-s uart_tb \
+	-s usb_tb \
 	$< -o $@ 
 else
 	iverilog $(SIM_DEFINES) -DGL \

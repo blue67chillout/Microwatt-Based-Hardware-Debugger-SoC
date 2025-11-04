@@ -20,12 +20,12 @@ reg power3, power4;
 	inout user_flash_io0;
 	inout user_flash_io1;
 
-       reg [4:0]  usb_utmi_data_in ;
+       reg [4:0]  usb_utmi_data_in ;    
         reg usb_utmi_txready     ;
-       reg usb_utmi_rxvalid    ;
-       reg usb_utmi_rxactive   ;
+       reg usb_utmi_rxvalid    ; 
+       reg usb_utmi_rxactive   ; 
        reg usb_utmi_rxerror     ;
-       reg[1:0] usb_utmi_linestate ;
+       reg[1:0] usb_utmi_linestate ;  
 
        wire [4:0] usb_utmi_data_out    ;
         wire usb_utmi_txvalid     ;
@@ -50,10 +50,10 @@ assign gpio_in[1] = microwatt_reset;
 
 assign gpio_in[6:3]=usb_utmi_data_in;
  assign gpio_in[14] =  usb_utmi_txready ;
-assign gpio_in[15] = usb_utmi_rxvalid   ;
-  assign gpio_in[16]= usb_utmi_rxactive   ;
+assign gpio_in[15] = usb_utmi_rxvalid   ; 
+  assign gpio_in[16]= usb_utmi_rxactive   ; 
 assign  gpio_in[17] = usb_utmi_rxerror;
-  assign gpio_in[19:18]=usb_utmi_linestate ;
+  assign gpio_in[19:18]=usb_utmi_linestate ; 
 
 
       assign usb_utmi_data_out =(gpio_in[23:20])   ;
@@ -82,7 +82,7 @@ assign checkbits = gpio_out[43:32];
 
 
 	initial begin
-		$dumpfile("usb_tb. vcd");
+		$dumpfile("usb_tb.vcd");
 		$dumpvars(0, usb_tb);
 
 		$display("Microwatt usb rx -> tx test");
@@ -117,7 +117,7 @@ initial begin		// Power-up sequence
 		power4 <= 1'b1;
 	end
 initial begin
-	wait(checkbits == 12'h000e)
+	wait(checkbits == 12'hxxxe)
 		$display("Microwatt alive!");
 	end
 
@@ -126,28 +126,28 @@ initial begin
 
 
 
- /* initial begin
-
+ /* initial begin 
+   
     usb_utmi_data_in = 8'h00;
     usb_utmi_txready = 1'b0;
     usb_utmi_rxvalid = 1'b0;
     usb_utmi_rxactive = 1'b0;
     usb_utmi_rxerror = 1'b0;
     usb_utmi_linestate = 2'b01;  // J-state (idle for full-speed)
-
-
+    
+   
     wait(microwatt_reset == 1'b0);
     #2000;
-
+    
     $display("Starting USB transaction at time %t", $time);
-
+    
     // Simulate device attach - change linestate
     usb_utmi_linestate = 2'b01;  // J-state indicates device attached
     #100;
-
+    
     // Wait for host enumeration to start
     #5000;
-
+    
     // Simulate receiving IN token from host
     $display("Simulating IN token reception at time %t", $time);
     usb_utmi_rxactive = 1'b1;
@@ -155,29 +155,29 @@ initial begin
     usb_utmi_data_in = 8'h69;  // IN token PID
     @(posedge clock);
     #10;
-
+    
     usb_utmi_data_in = 8'h00;  // Address = 0, Endpoint = 0 (lower byte)
     @(posedge clock);
     #10;
-
+    
     usb_utmi_data_in = 8'h10;  // CRC5 (example value)
     @(posedge clock);
     #10;
-
+    
     usb_utmi_rxvalid = 1'b0;
     usb_utmi_rxactive = 1'b0;
     #100;
-
+    
     // Device should respond with DATA packet
     // Wait for txvalid from device
     wait(usb_utmi_txvalid == 1'b1);
     usb_utmi_txready = 1'b1;  // PHY ready to transmit
     $display("Device transmitting DATA at time %t", $time);
-
+    
     repeat(10) @(posedge clock);  // Let device transmit data
     usb_utmi_txready = 1'b0;
     #100;
-
+    
     // Simulate ACK handshake from host
     $display("Simulating ACK reception at time %t", $time);
     usb_utmi_rxactive = 1'b1;
@@ -185,11 +185,11 @@ initial begin
     usb_utmi_data_in = 8'hD2;  // ACK PID
     @(posedge clock);
     #10;
-
+    
     usb_utmi_rxvalid = 1'b0;
     usb_utmi_rxactive = 1'b0;
     #500;
-
+    
     // Simulate OUT token transaction
     $display("Simulating OUT token at time %t", $time);
     usb_utmi_rxactive = 1'b1;
@@ -197,25 +197,25 @@ initial begin
     usb_utmi_data_in = 8'hE1;  // OUT token PID
     @(posedge clock);
     #10;
-
+    
     usb_utmi_data_in = 8'h00;  // Address = 0, Endpoint = 0
     @(posedge clock);
     #10;
-
+    
     usb_utmi_data_in = 8'h10;  // CRC5
     @(posedge clock);
     #10;
-
+    
     usb_utmi_rxvalid = 1'b0;
     #50;
-
+    
     // Send DATA0 packet
     $display("Sending DATA0 packet at time %t", $time);
     usb_utmi_rxvalid = 1'b1;
     usb_utmi_data_in = 8'hC3;  // DATA0 PID
     @(posedge clock);
     #10;
-
+    
     // Send 8 bytes of test data
     usb_utmi_data_in = 8'h11;
     @(posedge clock);
@@ -241,7 +241,7 @@ initial begin
     usb_utmi_data_in = 8'h88;
     @(posedge clock);
     #10;
-
+    
     // CRC16 (example values)
     usb_utmi_data_in = 8'hAB;
     @(posedge clock);
@@ -249,15 +249,15 @@ initial begin
     usb_utmi_data_in = 8'hCD;
     @(posedge clock);
     #10;
-
+    
     usb_utmi_rxvalid = 1'b0;
     usb_utmi_rxactive = 1'b0;
     #200;
-
+    
     // Wait for device to respond with ACK
     $display("Waiting for device ACK at time %t", $time);
     #1000;
-
+    
     // Simulate SETUP token for control transfer
     $display("Simulating SETUP token at time %t", $time);
     usb_utmi_rxactive = 1'b1;
@@ -265,24 +265,24 @@ initial begin
     usb_utmi_data_in = 8'h2D;  // SETUP token PID
     @(posedge clock);
     #10;
-
+    
     usb_utmi_data_in = 8'h00;  // Address and endpoint
     @(posedge clock);
     #10;
-
+    
     usb_utmi_data_in = 8'h10;  // CRC5
     @(posedge clock);
     #10;
-
+    
     usb_utmi_rxvalid = 1'b0;
     #50;
-
+    
     // Send SETUP data (Device Request)
     usb_utmi_rxvalid = 1'b1;
     usb_utmi_data_in = 8'hC3;  // DATA0 PID
     @(posedge clock);
     #10;
-
+    
     // Standard USB Device Request (GET_DESCRIPTOR)
     usb_utmi_data_in = 8'h80;  // bmRequestType
     @(posedge clock);
@@ -308,7 +308,7 @@ initial begin
     usb_utmi_data_in = 8'h00;  // wLength high
     @(posedge clock);
     #10;
-
+    
     // CRC16
     usb_utmi_data_in = 8'hEF;
     @(posedge clock);
@@ -316,21 +316,21 @@ initial begin
     usb_utmi_data_in = 8'h01;
     @(posedge clock);
     #10;
-
+    
     usb_utmi_rxvalid = 1'b0;
     usb_utmi_rxactive = 1'b0;
     #500;
-
+    
     $display("USB stimulus complete at time %t", $time);
-
+    
     // Continue monitoring for remaining simulation
     #10000;
 
   end*/
 
 
-
-
+  
+  
   wire VDD3V3 = power1;
 	wire VDD1V8 = power2;
 	wire USER_VDD3V3 = power3;

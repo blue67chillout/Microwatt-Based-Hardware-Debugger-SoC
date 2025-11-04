@@ -14,8 +14,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 `default_nettype none
-`define OPENFRAME_IO_PADS 44
-
 /*
  *-------------------------------------------------------------
  *
@@ -157,10 +155,6 @@ module openframe_project_wrapper (
     assign spi_flash_sdat_i[1] = gpio_in[8];
 
 	microwatt_wrapper microwatt_inst (
-`ifdef USE_POWER_PINS
-    .vccd1(vccd1),
-    .vssd1(vssd1),
-`endif 
  		.ext_clk(gpio_in[0]),
  		.ext_rst(gpio_in[1]),
 		.alt_reset(gpio_in[10]),
@@ -183,7 +177,9 @@ module openframe_project_wrapper (
 
  	// Assign microwatt outputs to GPIOs
  	assign gpio_out[43:15] = microwatt_gpio_out[28:0];
- 
+ 	// Upper GPIOs tied off
+ 	assign gpio_out[31:29] = 3'b0;
+
  	// Set gpio_oeb for GPIOs used by microwatt
  	assign gpio_oeb[43:15] = ~microwatt_gpio_dir[28:0];
 
@@ -211,7 +207,7 @@ module openframe_project_wrapper (
  	assign gpio_dm0 = gpio_loopback_zero;
  	assign gpio_inp_dis = gpio_loopback_zero;
 
-     //(* keep *) vccd1_connection vccd1_connection ();
-     //(* keep *) vssd1_connection vssd1_connection ();
+     (* keep *) vccd1_connection vccd1_connection ();
+     (* keep *) vssd1_connection vssd1_connection ();
 
  endmodule // openframe_project_wrapper

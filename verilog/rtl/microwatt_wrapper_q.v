@@ -1,7 +1,6 @@
 module microwatt_wrapper(
     input ext_clk,
     input ext_rst,
-    input alt_reset,
     input uart0_rxd,
     input [3:0]spi_flash_sdat_i,
     input [31:0] gpio_in,
@@ -43,12 +42,9 @@ module microwatt_wrapper(
     wire [31:0] wishbone_dma_in_dat_dummy;
     wire wishbone_dma_in_stall_dummy;
 
-
-
-        soc soc_inst(
+     soc soc_inst(
         .rst(ext_rst),
         .system_clk(ext_clk),
-	.alt_reset_drive(alt_reset),
         .\wb_dram_out.dat (64'b0),
         .\wb_dram_out.ack (1'b0),
         .\wb_dram_out.stall (1'b0),
@@ -103,6 +99,7 @@ module microwatt_wrapper(
         .\wishbone_dma_in.dat (wishbone_dma_in_dat_dummy),
         .\wishbone_dma_in.stall (wishbone_dma_in_stall_dummy)
     );
+
     // wire dummy = (uart1_txd_dummy & 1'b0) |
     //              (sw_soc_reset_dummy & 1'b0) |
     //              (run_out_dummy & 1'b0) |

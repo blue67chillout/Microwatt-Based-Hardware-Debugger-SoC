@@ -44,9 +44,7 @@
 ### 1. Building the SoC
 
 The original Microwatt SoC was written in VHDL and designed for FPGA, containing FPGA-specific blocks such as BRAMs and LiteX components.  
-To prepare it for ASIC implementation, these were removed and replaced.
-
-Since OpenLane requires Verilog input, the design was converted from VHDL to Verilog using Yosys VHDL plugin.
+To prepare it for ASIC implementation, some modules were replaced and filtered for the same, and the design was converted from VHDL to Verilog using Yosys VHDL plugin(via the ghdl:yosys docker image).
 
 This generated a Verilog version of the full SoC suitable for ASIC flow.
 
@@ -54,8 +52,6 @@ This generated a Verilog version of the full SoC suitable for ASIC flow.
 docker run --rm -v $PWD:/src:z -w /src hdlc/ghdl:yosys yosys -m ghdl -p " \
 ghdl --std=08 --no-formal \
 -gMEMORY_SIZE=4096 \
--gRAM_INIT_FILE=hello_world/hello_world.hex \
--gCLK_FREQ=50000000 \
 -gSIM=false \
 -gUART0_IS_16550=true \
 decode_types.vhdl common.vhdl wishbone_types.vhdl fetch1.vhdl utils.vhdl plrufn.vhdl cache_ram.vhdl icache.vhdl predecode.vhdl decode1.vhdl helpers.vhdl insn_helpers.vhdl control.vhdl decode2.vhdl register_file.vhdl cr_file.vhdl crhelpers.vhdl ppc_fx_insns.vhdl rotator.vhdl logical.vhdl countbits.vhdl multiply.vhdl multiply-32s.vhdl divider.vhdl execute1.vhdl loadstore1.vhdl mmu.vhdl dcache.vhdl writeback.vhdl core_debug.vhdl core.vhdl fpu.vhdl pmu.vhdl bitsort.vhdl wishbone_arbiter.vhdl wishbone_bram_wrapper.vhdl sync_fifo.vhdl wishbone_debug_master.vhdl xics.vhdl syscon.vhdl gpio.vhdl soc.vhdl spi_rxtx.vhdl spi_flash_ctrl.vhdl git.vhdl dmi_dtm_dummy.vhdl nonrandom.vhdl main_bram.vhdl \
@@ -63,6 +59,18 @@ decode_types.vhdl common.vhdl wishbone_types.vhdl fetch1.vhdl utils.vhdl plrufn.
 hierarchy -check -top soc; \
 write_verilog microwatt.v \
 "
+```
+The second challenge included replacing the current cache_ram, register_file and main_bram/main_memory with equivalent sram macros. In the first iteration, sky130 based openram macros were utilized and tested, however due to the prevelant relibility issues, the implementation had to be dropped in the last moment, however options recommended by the organizers( OL-DFFRAM and Commercial Sram) would satisy my main_memory requirements, but can't satisfy the requirements of multiple ports, as presented in the cache_ram and register file. Therefore quite late in the submission, we discoverd DFFRAM compiler, and met our requirements with the same 
+
+```
+git clone --depth 1 https://github.com/antonblanchard/DFFRAM -b microwatt-20221228
+```
+
+```
+	./dffram.py --pdk-root $PDK_ROOT --size 32x64 --variant 1RW1R --min-height 180 --pin_order=ram32_1rw1r_pin_order.cfg
+	./dffram.py --pdk-root $PDK_ROOT --size 512x64 --vertical-halo 100 --horizontal-halo 20 --pin_order=ram512_pin_order.cfg
+
+
 ```
 
 ---

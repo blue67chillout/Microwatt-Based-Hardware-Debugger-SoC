@@ -22,7 +22,7 @@ OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 designs=$(shell find * -maxdepth 0 -type d)
 
 ROOTLESS ?= 0
-USER_ARGS = -u $$(id -u $$USER):$$(id -g $$USER)
+USER_ARGS = -u 0:0
 ifeq ($(ROOTLESS), 1)
 	USER_ARGS =
 endif

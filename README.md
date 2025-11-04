@@ -32,9 +32,11 @@
 
 ### Included Peripherals
 
-| UART        |
-| USB         |
-| JTAG Master |
+| Peripheral   |
+|---------------|
+| UART          |
+| USB           |
+| JTAG Master   |
 
 ### 1. Building the SoC
 

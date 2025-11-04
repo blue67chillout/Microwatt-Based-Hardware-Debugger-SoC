@@ -125,6 +125,10 @@ latest update, currently @ Detailed Routing  (stage 46)
 
 <img width="1208" height="653" alt="Screenshot 2025-11-04 at 11 58 44 AM" src="https://github.com/user-attachments/assets/db44d3dd-110d-48e9-b67d-7f5215b17418" />
 
+### Debug FLow
+
+<img width="822" height="564" alt="Screenshot 2025-11-04 at 7 46 50 PM" src="https://github.com/user-attachments/assets/eb76fd8e-5821-41d8-96e7-f3f725f524b3" />
+
 
 ### Proposal :
 

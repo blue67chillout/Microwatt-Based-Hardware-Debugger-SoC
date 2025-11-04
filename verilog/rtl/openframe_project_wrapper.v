@@ -14,6 +14,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 `default_nettype none
+`define OPENFRAME_IO_PADS 44
+
 /*
  *-------------------------------------------------------------
  *
@@ -133,16 +135,35 @@ module openframe_project_wrapper (
 	assign gpio_analog_sel = gpio_loopback_zero;
 	assign gpio_holdover = gpio_loopback_zero;
 
+	// assign gpio_in[10] = 0;
+ //    assign gpio_in[9] = 0;
+ //    assign gpio_in[7] = 0;
+
+    // assign gpio_out[10] = 0;
+    // assign gpio_out[9] = 0;
+    // assign gpio_out[7] = 0;
+
 	// Instantiate microwatt_wrapper
 	wire [31:0] microwatt_gpio_dir;
 	wire [31:0] microwatt_gpio_out;
+	wire [3:0] spi_flash_sdat_oe;
+    wire [3:0] spi_flash_sdat_o;
+    wire [3:0] spi_flash_sdat_i;
+
+    assign spi_flash_sdat_i[0] = 0;
+    assign spi_flash_sdat_i[2] = 0;
+    assign spi_flash_sdat_i[3] = 0;
+    assign gpio_out[7] = spi_flash_sdat_o[0];
+    assign spi_flash_sdat_i[1] = gpio_in[8];
+
 	microwatt_wrapper microwatt_inst (
- `ifdef USE_POWER_PINS
-	  .vccd1(vccd1),
- 		.vssd1(vssd1),
- `endif
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),
+    .vssd1(vssd1),
+`endif 
  		.ext_clk(gpio_in[0]),
  		.ext_rst(gpio_in[1]),
+		.alt_reset(gpio_in[10]),
  		.uart0_rxd(gpio_in[2]),
  		.uart0_txd(gpio_out[13]),
  		.jtag_tck(gpio_in[3]),
@@ -150,9 +171,9 @@ module openframe_project_wrapper (
  		.jtag_tms(gpio_in[5]),
  		.jtag_trst(gpio_in[6]),
  		.jtag_tdo(gpio_out[14]),
- 		.spi_flash_sdat_i(gpio_in[10:7]),
- 		.spi_flash_sdat_o(gpio_out[10:7]),
- 		.spi_flash_sdat_oe(gpio_oeb[10:7]),
+ 		.spi_flash_sdat_i(spi_flash_sdat_i),
+ 		.spi_flash_sdat_o(spi_flash_sdat_o),
+ 		.spi_flash_sdat_oe(spi_flash_sdat_oe),
  		.spi_flash_cs_n(gpio_out[11]),
  		.spi_flash_clk(gpio_out[12]),
  		.gpio_in({3'b0, gpio_in[43:15]}),
@@ -162,9 +183,7 @@ module openframe_project_wrapper (
 
  	// Assign microwatt outputs to GPIOs
  	assign gpio_out[43:15] = microwatt_gpio_out[28:0];
- 	// Upper GPIOs tied off
- 	assign gpio_out[31:29] = 3'b0;
-
+ 
  	// Set gpio_oeb for GPIOs used by microwatt
  	assign gpio_oeb[43:15] = ~microwatt_gpio_dir[28:0];
 
@@ -192,7 +211,7 @@ module openframe_project_wrapper (
  	assign gpio_dm0 = gpio_loopback_zero;
  	assign gpio_inp_dis = gpio_loopback_zero;
 
-     (* keep *) vccd1_connection vccd1_connection ();
-     (* keep *) vssd1_connection vssd1_connection ();
+     //(* keep *) vccd1_connection vccd1_connection ();
+     //(* keep *) vssd1_connection vssd1_connection ();
 
  endmodule // openframe_project_wrapper

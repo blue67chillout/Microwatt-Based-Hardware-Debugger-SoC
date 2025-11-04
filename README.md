@@ -119,7 +119,9 @@ Here is proof that my microwatt is alive
 
 ### Librelane Flow update, the flow is still running, 
 
-latest update, currently @ STA  (stage 45)
+latest update, currently @ Detailed Routing  (stage 46)
+
+<img width="1208" height="653" alt="Screenshot 2025-11-04 at 11 58 44 AM" src="https://github.com/user-attachments/assets/db44d3dd-110d-48e9-b67d-7f5215b17418" />
 
 
 ### Proposal :

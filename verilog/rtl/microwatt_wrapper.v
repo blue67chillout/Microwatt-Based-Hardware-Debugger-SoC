@@ -1,10 +1,5 @@
 module microwatt_wrapper(
-`ifdef USE_POWER_PINS
-    inout vccd1, // 1.8V
-    inout vssd1, // digital ground
-`endif
-	
-input ext_clk,
+    input ext_clk,
     input ext_rst,
     input alt_reset,
     input uart0_rxd,
@@ -51,10 +46,6 @@ input ext_clk,
 
 
         soc soc_inst(
-`ifdef USE_POWER_PINS
-    .vccd1(vccd1),
-    .vssd1(vssd1),
-`endif
         .rst(ext_rst),
         .system_clk(ext_clk),
 	.alt_reset_drive(alt_reset),

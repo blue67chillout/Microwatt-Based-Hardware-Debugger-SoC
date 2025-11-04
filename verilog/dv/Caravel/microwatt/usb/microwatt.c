@@ -31,8 +31,9 @@ int main(void)
 	//writel(0xBB, USB_BASE + USB_WR_DATA);
 
 	//Send data
-	writel(0x04, USB_BASE+USB_XFER_DATA);
 	writel(0x80020000, USB_BASE+USB_XFER_TOKEN);
+	writel(0x04, USB_BASE+USB_XFER_DATA);
+
 
 	//Wait for Completion
 	usb_wait_done();

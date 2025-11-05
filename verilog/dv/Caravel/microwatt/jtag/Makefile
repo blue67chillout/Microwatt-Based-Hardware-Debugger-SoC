@@ -16,10 +16,10 @@
 
 include ../make.env
 
-PATTERN = jtag
+PATTERN = jtag_tb
 all: ${PATTERN:=.vcd}
 
 microwatt.elf: microwatt.c ../lib/console.c ../lib/head.S ../microwatt.lds
 	$(POWERPC_CROSS_COMPILE)gcc $(POWERPC_CFLAGS) -Wl,-T,../microwatt.lds -o $@ microwatt.c ../lib/console.c ../lib/head.S
 
-include ../make.rules
+include ../make_jtag.rules

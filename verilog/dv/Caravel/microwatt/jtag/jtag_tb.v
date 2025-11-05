@@ -65,8 +65,13 @@ module jtag_tb;
 	reg power1, power2;
 	reg power3, power4;
 
-	wire gpio;
-	wire [37:0] mprj_io;
+	//wire gpio;
+	//wire [37:0] mprj_io;
+	
+	wire [43:0] gpio_in;
+	wire [43:0] gpio_out;
+	wire [43:0] gpio_oeb;
+	
 	wire [15:0] checkbits;
 	wire user_flash_csb;
 	wire user_flash_clk;
@@ -79,23 +84,30 @@ module jtag_tb;
 	reg jtag_tck;
 	reg jtag_tdi;
 
-	assign mprj_io[7] = microwatt_reset;
+	//assign mprj_io[7] = microwatt_reset;
+	assign gpio_in[0] = clock;
+	assign gpio_in[1] = microwatt_reset;
 
-	assign mprj_io[35] = 1'b1; // Boot from flash
+	assign gpio_in[6] = microwatt_reset;
 
-	assign user_flash_csb = mprj_io[8];
-	assign user_flash_clk = mprj_io[9];
-	assign user_flash_io0 = mprj_io[10];
-	assign mprj_io[11] = user_flash_io1;
+	//assign mprj_io[35] = 1'b1; // Boot from flash
+	assign gpio_in[10] = 1'b1 ;
 
-	assign checkbits = mprj_io[31:16];
+	assign checkbits = gpio_out[30:15];
 
-	assign mprj_io[3] = 1'b1;  // Force CSB high.
+	assign user_flash_csb = gpio_out[11];
+	assign user_flash_clk = gpio_out[12];
 
-	assign jtag_tdo = mprj_io[12];
-	assign mprj_io[13] = jtag_tms;
-	assign mprj_io[14] = jtag_tck;
-	assign mprj_io[15] = jtag_tdi;
+	assign user_flash_io0 = gpio_out[7]; //input
+	assign gpio_in[8] = user_flash_io1; //output
+
+
+	//assign mprj_io[3] = 1'b1;  // Force CSB high.
+
+	assign jtag_tdo = gpio_out[14];
+	assign gpio_in[5] = jtag_tms;
+	assign gpio_in[3] = jtag_tck;
+	assign gpio_in[4] = jtag_tdi;
 
 	// 100 MHz clock
 	always #5 clock <= (clock === 1'b0);
@@ -105,8 +117,8 @@ module jtag_tb;
 	end
 
 	initial begin
-		//$dumpfile("jtag.vcd");
-		//$dumpvars(0, jtag_tb);
+		$dumpfile("jtag.vcd");
+		$dumpvars(0, jtag_tb);
 
 		$display("Microwatt JTAG IDCODE test");
 
@@ -206,27 +218,50 @@ module jtag_tb;
 	wire USER_VDD3V3 = power3;
 	wire USER_VDD1V8 = power4;
 	wire VSS = 1'b0;
+	wire unused = 1'b0;
 
-	caravel uut (
-		.vddio	  (VDD3V3),
-		.vssio	  (VSS),
-		.vdda	  (VDD3V3),
-		.vssa	  (VSS),
-		.vccd	  (VDD1V8),
-		.vssd	  (VSS),
-		.vdda1    (USER_VDD3V3),
-		.vdda2    (USER_VDD3V3),
-		.vssa1	  (VSS),
-		.vssa2	  (VSS),
-		.vccd1	  (USER_VDD1V8),
-		.vccd2	  (USER_VDD1V8),
-		.vssd1	  (VSS),
-		.vssd2	  (VSS),
-		.clock	  (clock),
-		.gpio     (gpio),
-		.mprj_io  (mprj_io),
-		.resetb	  (RSTB)
-	);
+	openframe_project_wrapper uut (
+		.vdda 				(VDD3V3),
+		.vdda1 				(USER_VDD3V3),
+		.vdda2 				(USER_VDD3V3),
+		.vssa 				(VSS),
+		.vssa1 				(VSS),
+		.vssa2 				(VSS),
+		.vccd 				(VDD1V8),
+		.vccd1 				(USER_VDD1V8),
+		.vccd2 				(USER_VDD1V8),
+		.vssd 				(VSS),
+		.vssd1 				(VSS),
+		.vssd2 				(VSS),
+		.vddio 				(VDD3V3),
+		.vssio 				(VSS),
+		.porb_h 			(unused),
+		.porb_l 			(unused),
+		.por_l 				(unused),
+		.resetb_h 			(RSTB),
+		.resetb_l 			(RSTB),
+		.mask_rev 			(unused),
+		.gpio_in 			(gpio_in),
+		.gpio_in_h 			(unused),
+		.gpio_out 			(gpio_out),
+		.gpio_oeb 			(gpio_oeb),
+		.gpio_inp_dis 		(unused),
+		.gpio_ib_mode_sel 	(unused),
+		.gpio_vtrip_sel 	(unused),
+		.gpio_slow_sel 		(unused),
+		.gpio_holdover 		(unused),
+		.gpio_analog_en 	(unused),
+		.gpio_analog_sel 	(unused),
+		.gpio_analog_pol 	(unused),
+		.gpio_dm2 			(unused),
+		.gpio_dm1 			(unused),
+		.gpio_dm0 			(unused),
+		.analog_io 			(unused),
+		.analog_noesd_io 	(unused),
+		.gpio_loopback_one 	(unused),
+		.gpio_loopback_zero (unused)
+
+	);	
 
 	spiflash_microwatt #(
 		.FILENAME("microwatt.hex")

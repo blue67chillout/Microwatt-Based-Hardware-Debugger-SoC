@@ -63,13 +63,15 @@ write_verilog microwatt.v \
 The second challenge included replacing the current cache_ram, register_file and main_bram/main_memory with equivalent sram macros. In the first iteration, sky130 based openram macros were utilized and tested, however due to the prevelant relibility issues, the implementation had to be dropped in the last moment, however options recommended by the organizers( OL-DFFRAM and Commercial Sram) would satisy my main_memory requirements, but can't satisfy the requirements of multiple ports, as presented in the cache_ram and register file. Therefore quite late in the submission, we discoverd DFFRAM compiler, and met our requirements with the same 
 
 ```
-git clone --depth 1 https://github.com/antonblanchard/DFFRAM -b microwatt-20221228
+git clone https://github.com/AUCOHL/DFFRAM.git
+cd DFFRAM
+nix develop
 ```
 
 ```
-./dffram.py --pdk-root $PDK_ROOT --size 32x64 --variant 1RW1R --min-height 180 --pin_order=ram32_1rw1r_pin_order.cfg
+./dffram.py 32x64 1RW1R --min-height 180 -c "PIN_ORDER_FILE=ram32_1rw1r_pin_order.cfg"
 
-./dffram.py --pdk-root $PDK_ROOT --size 512x64 --vertical-halo 100 --horizontal-halo 20 --pin_order=ram512_pin_order.cfg
+./dffram.py 512x64 --vertical-halo 100 --horizontal-halo 20 -c "PIN_ORDER_FILE=ram512_pin_order.cfg"
 
 ```
 
@@ -77,7 +79,7 @@ git clone --depth 1 https://github.com/antonblanchard/DFFRAM -b microwatt-202212
 
 ### 2. Booting from SPI Flash
 
-ASIC systems cannot rely on FPGA-internal memories, so the SoC must boot from external SPI flash.
+ASIC systems cannot rely on internal memories for boot, so the SoC must boot from external SPI flash.
 
 A testbench was created where a SPI flash model is instantiated externally and connected to the SoC.  
 This flash model sends SPI signals containing the `.hex` firmware file to the SoC during boot.
@@ -124,9 +126,14 @@ export PATH=~/powerpc64le-power8--glibc--stable-2025.08-1/bin:$PATH
 cd verilog/dv/Caravel/microwatt/uart
 make all
 ```
+- (For jtag test)
+```
+cd verilog/dv/Caravel/microwatt/jtag
+make all
+```
 - Make sure to run `make clean` after performing the test
 
-Here is proof that my microwatt is alive 
+Here is proof that my microwatt is alive
 
 
 <img width="978" height="544" alt="Screenshot 2025-11-04 at 11 57 20 AM" src="https://github.com/user-attachments/assets/295e71a9-8d54-42a4-a548-efd9496e9e84" />

@@ -36,7 +36,7 @@
 -v $(USER_PROJECT_VERILOG)/rtl/usbh_sie.v
 
 # Microwatt
--v $(USER_PROJECT_VERILOG)/rtl/microwatt_q19.v
+-v $(USER_PROJECT_VERILOG)/rtl/microwatt_uart.v
 
 -v $(USER_PROJECT_VERILOG)/rtl/openframe_project_wrapper.v
 

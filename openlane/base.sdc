@@ -5,7 +5,7 @@
 # Environment variables
 set clk_port "gpio_in[0]"
 set clk_period 20.0 ;# 50 MHz (adjust as needed)
-create_clock -name core_clk -period $clk_period [get_ports $clk_port]
+create_clock -name core_clk -period $clk_period [get_ports {gpio_in[0]}]
 set_propagated_clock [get_clocks core_clk]
 
 # Default IO delay as % of clock

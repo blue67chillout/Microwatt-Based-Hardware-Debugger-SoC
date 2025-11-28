@@ -103,103 +103,82 @@ module openframe_project_wrapper (
     input  [`OPENFRAME_IO_PADS-1:0] gpio_loopback_zero
 );
 
-// 	user_proj_timer mprj (
-// `ifdef USE_POWER_PINS
-// 		.vccd1(vccd1),
-// 		.vssd1(vssd1),
-// `endif
-//         .wb_clk_i(gpio_in[0]),
-//         .wb_rst_i(gpio_in[1]),
-//         .io_in(gpio_in[12:2]),
-//         .io_out(gpio_out[12:2]),
-//         .io_oeb(gpio_oeb[12:2])
-
-// 	    /* NOTE:  Openframe signals not used in picosoc:	*/
-// 	    /* porb_h:    3.3V domain signal			*/
-// 	    /* resetb_h:  3.3V domain signal			*/
-// 	    /* gpio_in_h: 3.3V domain signals			*/
-// 	    /* analog_io: analog signals			*/
-// 	    /* analog_noesd_io: analog signals			*/
-// 	);
-
-
-
-	/* All analog enable/select/polarity and holdover bits	*/
-	/* will not be handled in the picosoc module.  Tie	*/
-	/* each one of them off to the local loopback zero bit.	*/
-
-	assign gpio_analog_en = gpio_loopback_zero;
-	assign gpio_analog_pol = gpio_loopback_zero;
-	assign gpio_analog_sel = gpio_loopback_zero;
-	assign gpio_holdover = gpio_loopback_zero;
-
-	// assign gpio_in[10] = 0;
- //    assign gpio_in[9] = 0;
- //    assign gpio_in[7] = 0;
-
-    // assign gpio_out[10] = 0;
-    // assign gpio_out[9] = 0;
-    // assign gpio_out[7] = 0;
-
-	// Instantiate microwatt_wrapper
-	wire [31:0] microwatt_gpio_dir;
-	wire [31:0] microwatt_gpio_out;
-	wire [3:0] spi_flash_sdat_oe;
+    wire [31:0] microwatt_gpio_dir;
+    wire [31:0] microwatt_gpio_out;
+    wire [3:0] spi_flash_sdat_oe;
     wire [3:0] spi_flash_sdat_o;
     wire [3:0] spi_flash_sdat_i;
 
     assign spi_flash_sdat_i[0] = 0;
     assign spi_flash_sdat_i[2] = 0;
     assign spi_flash_sdat_i[3] = 0;
-    assign gpio_out[7] = spi_flash_sdat_o[0];
-    assign spi_flash_sdat_i[1] = gpio_in[8];
+    assign gpio_out[6] = spi_flash_sdat_o[0];
+    assign spi_flash_sdat_i[1] = gpio_in[7];
 
-	microwatt_wrapper microwatt_inst (
- 		.ext_clk(gpio_in[0]),
- 		.ext_rst(gpio_in[1]),
-		.alt_reset(gpio_in[10]),
- 		.uart0_rxd(gpio_in[2]),
- 		.uart0_txd(gpio_out[13]),
- 		.jtag_tck(gpio_in[3]),
- 		.jtag_tdi(gpio_in[4]),
- 		.jtag_tms(gpio_in[5]),
- 		.jtag_trst(gpio_in[6]),
- 		.jtag_tdo(gpio_out[14]),
+
+	microwatt_wrapper mprj (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),
+    .vssd1(vssd1),
+`endif
+ 		.ext_clk(gpio_in[38]),
+ 		.ext_rst(gpio_in[39]),
+		.alt_reset(gpio_in[40]),
+ 		.uart0_rxd(gpio_in[41]),
+ 		.uart0_txd(gpio_out[42]),
+ 		.jtag_tck(gpio_in[0]),
+ 		.jtag_tdi(gpio_in[2]),
+ 		.jtag_tms(gpio_in[1]),
+ 		.jtag_trst(gpio_in[43]),
+ 		.jtag_tdo(gpio_out[3]),
  		.spi_flash_sdat_i(spi_flash_sdat_i),
  		.spi_flash_sdat_o(spi_flash_sdat_o),
  		.spi_flash_sdat_oe(spi_flash_sdat_oe),
- 		.spi_flash_cs_n(gpio_out[11]),
- 		.spi_flash_clk(gpio_out[12]),
- 		.gpio_in({3'b0, gpio_in[43:15]}),
+ 		.spi_flash_cs_n(gpio_out[4]),
+ 		.spi_flash_clk(gpio_out[5]),
+ 		.gpio_in({2'b0, gpio_in[37:24],gpio_in[23:14],gpio_in[13:8]}),
  		.gpio_out(microwatt_gpio_out),
  		.gpio_dir(microwatt_gpio_dir)
  	);
 
  	// Assign microwatt outputs to GPIOs
- 	assign gpio_out[43:15] = microwatt_gpio_out[28:0];
+ 	assign {gpio_out[37:24],gpio_out[23:14],gpio_out[13:8]} = microwatt_gpio_out[29:0];
+
+	wire unusedx ;
  	// Upper GPIOs tied off
- 	assign gpio_out[31:29] = 3'b0;
+       assign unusedx = microwatt_gpio_dir[31] & microwatt_gpio_dir[30] & 1'b0 ;     
+
 
  	// Set gpio_oeb for GPIOs used by microwatt
- 	assign gpio_oeb[43:15] = ~microwatt_gpio_dir[28:0];
+ 	assign {gpio_oeb[37:24],gpio_oeb[23:14],gpio_oeb[13:8]}  = ~microwatt_gpio_dir[29:0];
 
  	// Set gpio_oeb for fixed-direction GPIOs
- 	assign gpio_oeb[0] = 1'b1; // ext_clk input
- 	assign gpio_oeb[1] = 1'b1; // ext_rst input
- 	assign gpio_oeb[2] = 1'b1; // uart0_rxd input
- 	assign gpio_oeb[3] = 1'b1; // jtag_tck input
- 	assign gpio_oeb[4] = 1'b1; // jtag_tdi input
- 	assign gpio_oeb[5] = 1'b1; // jtag_tms input
- 	assign gpio_oeb[6] = 1'b1; // jtag_trst input
- 	assign gpio_oeb[11] = 1'b0; // spi_flash_cs_n output
- 	assign gpio_oeb[12] = 1'b0; // spi_flash_clk output
- 	assign gpio_oeb[13] = 1'b0; // uart0_txd output
- 	assign gpio_oeb[14] = 1'b0; // jtag_tdo output
- 	// gpio_oeb[10:7] controlled by spi_flash_sdat_oe from microwatt for bidirectional SPI data
+	
+ 	assign gpio_oeb[38] = 1'b1; // ext_clk input
+ 	assign gpio_oeb[39] = 1'b1; // ext_rst input
+ 	assign gpio_oeb[41] = 1'b1; // uart0_rxd input
+ 	assign gpio_oeb[40] = 1'b1; // alt_reset input
+ 	assign gpio_oeb[0] = 1'b1; // jtag_tck input
+ 	assign gpio_oeb[2] = 1'b1; // jtag_tdi input
+ 	assign gpio_oeb[1] = 1'b1; // jtag_tms input
+ 	assign gpio_oeb[43] = 1'b1; // jtag_trst input
+ 	assign gpio_oeb[4] = 1'b0; // spi_flash_cs_n output
+ 	assign gpio_oeb[5] = 1'b0; // spi_flash_clk output
+ 	assign gpio_oeb[42] = 1'b0; // uart0_txd output
+ 	assign gpio_oeb[3] = 1'b0; // jtag_tdo output
+        assign gpio_oeb[7:6] = ~spi_flash_sdat_oe[1:0];
 
- 	// Set gpio configurations for used pins
- 	// For simplicity, set ib_mode_sel, vtrip_sel, slow_sel, dm2, dm1, dm0 to default
- 	assign gpio_ib_mode_sel = gpio_loopback_zero;
+
+        assign gpio_out[7]  = 1'b0 ;
+        assign gpio_out[0]  = 1'b0;
+        assign gpio_out[1]  = 1'b0;
+        assign gpio_out[2]  = 1'b0;
+        assign gpio_out[38] = 1'b0;
+        assign gpio_out[39] = 1'b0;
+        assign gpio_out[40] = 1'b0;
+        assign gpio_out[41] = 1'b0;
+        assign gpio_out[43] = 1'b0;
+        assign gpio_ib_mode_sel = gpio_loopback_zero;
  	assign gpio_vtrip_sel = gpio_loopback_zero;
  	assign gpio_slow_sel = gpio_loopback_zero;
  	assign gpio_dm2 = gpio_loopback_zero;
@@ -207,7 +186,12 @@ module openframe_project_wrapper (
  	assign gpio_dm0 = gpio_loopback_zero;
  	assign gpio_inp_dis = gpio_loopback_zero;
 
-     (* keep *) vccd1_connection vccd1_connection ();
-     (* keep *) vssd1_connection vssd1_connection ();
+	assign gpio_analog_en = gpio_loopback_zero;
+	assign gpio_analog_pol = gpio_loopback_zero;
+	assign gpio_analog_sel = gpio_loopback_zero;
+	assign gpio_holdover = gpio_loopback_zero;
 
- endmodule // openframe_project_wrapper
+	(* keep *) vccd1_connection vccd1_connection ();
+	(* keep *) vssd1_connection vssd1_connection ();
+
+endmodule	// openframe_project_wrapper

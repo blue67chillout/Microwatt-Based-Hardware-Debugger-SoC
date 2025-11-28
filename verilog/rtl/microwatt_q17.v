@@ -3718,6 +3718,7 @@ module multiply_2
    inout vssd1,
 `endif
    input  clk,
+   input rst,
    input  m_in_valid,
    input  [63:0] m_in_data1,
    input  [63:0] m_in_data2,
@@ -3809,6 +3810,7 @@ module multiply_2
     .VGND(vssd1),
 `endif
     .clk(clk),
+    .rst(rst),
     .a(n35128_o),
     .b(n35129_o),
     .c(n35130_o),
@@ -17197,6 +17199,214 @@ module control_3_bf8b4530d8d246dd74ac53a13471bba17941dff7
     endcase
 endmodule
 
+module main_bram_64_9_4096_a75adb9e07879fb6c63b494abe06e3f9a6bb2ed9
+(
+`ifdef USE_POWER_PINS
+   inout vccd1,
+   inout vssd1,
+`endif
+   input  clk,
+   input  [8:0] addr,
+   input  [63:0] din,
+   input  [7:0] sel,
+   input  re,
+   input  we,
+   output [63:0] dout
+);
+
+  // ----- original signals -----
+  wire [7:0] sel_qual;
+  wire [63:0] memory_0_Do0;    // RAM drives this net (memory output)
+  wire [63:0] obuf;            // signal used by rest of logic
+  wire [7:0] n29409_o;
+  wire n29411_o;
+  reg  [63:0] n29417_q;
+
+  // ----- triple buffered versions -----
+  wire [7:0] sel_qual_buf1, sel_qual_buf2, sel_qual_del;
+  wire n29411_buf1, n29411_buf2, n29411_del;
+  wire [8:0] addr_buf1, addr_buf2, addr_del;
+  wire [63:0] din_buf1, din_buf2, din_del;
+  wire [63:0] obuf_buf1, obuf_buf2, obuf_del;
+
+  assign dout = n29417_q;
+
+  assign sel_qual = n29409_o;
+  assign n29409_o = we ? sel : 8'b00000000;
+  assign n29411_o  = re | we;
+
+  // -----------------------------------------------------------------------
+  // Triple buffer stages for all pins
+  // -----------------------------------------------------------------------
+  genvar i;
+  generate
+    // WE buffers (3 stages)
+    for (i = 0; i < 8; i = i + 1) begin : we_bufs
+      sky130_fd_sc_hd__buf_2 we_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(sel_qual_buf1[i]),
+        .A(sel_qual[i])
+      );
+      sky130_fd_sc_hd__buf_2 we_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(sel_qual_buf2[i]),
+        .A(sel_qual_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 we_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(sel_qual_del[i]),
+        .A(sel_qual_buf2[i])
+      );
+    end
+
+    // addr[8:0] buffers (3 stages)
+    for (i = 0; i < 9; i = i + 1) begin : addr_bufs
+      sky130_fd_sc_hd__buf_2 addr_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(addr_buf1[i]),
+        .A(addr[i])
+      );
+      sky130_fd_sc_hd__buf_2 addr_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(addr_buf2[i]),
+        .A(addr_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 addr_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(addr_del[i]),
+        .A(addr_buf2[i])
+      );
+    end
+
+    // din[63:0] buffers (3 stages)
+    for (i = 0; i < 64; i = i + 1) begin : din_bufs
+      sky130_fd_sc_hd__buf_2 din_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(din_buf1[i]),
+        .A(din[i])
+      );
+      sky130_fd_sc_hd__buf_2 din_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(din_buf2[i]),
+        .A(din_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 din_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(din_del[i]),
+        .A(din_buf2[i])
+      );
+    end
+
+    // RAM output buffers (3 stages)
+    for (i = 0; i < 64; i = i + 1) begin : dout_bufs
+      sky130_fd_sc_hd__buf_2 dout_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(obuf_buf1[i]),
+        .A(memory_0_Do0[i])
+      );
+      sky130_fd_sc_hd__buf_2 dout_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(obuf_buf2[i]),
+        .A(obuf_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 dout_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(obuf_del[i]),
+        .A(obuf_buf2[i])
+      );
+    end
+
+    // Enable signal buffers (3 stages)
+    sky130_fd_sc_hd__buf_2 en_buf1 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(n29411_buf1),
+      .A(n29411_o)
+    );
+    sky130_fd_sc_hd__buf_2 en_buf2 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(n29411_buf2),
+      .A(n29411_buf1)
+    );
+    sky130_fd_sc_hd__buf_2 en_buf3 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(n29411_del),
+      .A(n29411_buf2)
+    );
+
+  endgenerate
+
+  // connect buffered RAM output to the rest of the logic
+  assign obuf = obuf_del;
+
+  // -----------------------------------------------------------------------
+  // RAM instance: use triple buffered control, address and data signals
+  // -----------------------------------------------------------------------
+  RAM512 memory_0 (
+`ifdef USE_POWER_PINS
+    .VPWR(vccd1),
+    .VGND(vssd1),
+`endif
+    .CLK(clk),
+    .WE0(sel_qual_del),   // triple buffered WE
+    .EN0(n29411_del),     // triple buffered EN
+    .Di0(din_del),        // triple buffered data input
+    .A0(addr_del),        // triple buffered address
+    .Do0(memory_0_Do0)    // RAM drives memory_0_Do0 only
+  );
+
+  /* final register */
+  always @(posedge clk)
+    n29417_q <= obuf;
+
+endmodule
+
+// ============================================================================
+
 module cache_ram_5_64_1489f923c4dca729178b3e3233458550d8dddf29
 (
 `ifdef USE_POWER_PINS
@@ -17210,6 +17420,8 @@ module cache_ram_5_64_1489f923c4dca729178b3e3233458550d8dddf29
    input  [4:0] wr_addr,
    input  [63:0] wr_data,
    output [63:0] rd_data);
+
+  // original nets
   wire wr_enable;
   wire [63:0] rd_data0_tmp;
   wire [63:0] rd_data0_saved;
@@ -17217,94 +17429,256 @@ module cache_ram_5_64_1489f923c4dca729178b3e3233458550d8dddf29
   wire rd_en_prev;
   wire n29419_o;
   wire [63:0] cache_ram_0_Do0;
-  wire [63:0] cache_ram_0_Do1;
+  wire [63:0] cache_ram_0_Do1;  // RAM drives this net (Do1)
   wire [63:0] n29428_o;
   wire [63:0] n29429_o;
   reg [63:0] n29430_q;
   reg n29431_q;
+
   assign rd_data = rd_data0;
-  /* asic/cache_ram.vhdl:44:12  */
-  assign wr_enable = n29419_o; // (signal)
-  /* asic/cache_ram.vhdl:45:12  */
-  assign rd_data0_tmp = cache_ram_0_Do1; // (signal)
-  /* asic/cache_ram.vhdl:46:12  */
-  assign rd_data0_saved = n29430_q; // (signal)
-  /* asic/cache_ram.vhdl:47:12  */
-  assign rd_data0 = n29428_o; // (signal)
-  /* asic/cache_ram.vhdl:48:12  */
-  assign rd_en_prev = n29431_q; // (signal)
-  /* asic/cache_ram.vhdl:54:18  */
-  assign n29419_o = |(wr_sel);
-  /* asic/cache_ram.vhdl:56:5  */
+  assign wr_enable      = n29419_o;
+  assign rd_data0_saved = n29430_q;
+  assign rd_data0       = n29428_o;
+  assign rd_en_prev     = n29431_q;
+  assign n29419_o       = |(wr_sel);
+
+  // ----- triple buffered versions -----
+  wire [7:0]  wr_sel_buf1, wr_sel_buf2, wr_sel_del;
+  wire        wr_enable_buf1, wr_enable_buf2, wr_enable_del;
+  wire        rd_en_buf1, rd_en_buf2, rd_en_del;
+  wire [4:0]  wr_addr_buf1, wr_addr_buf2, wr_addr_del;
+  wire [4:0]  rd_addr_buf1, rd_addr_buf2, rd_addr_del;
+  wire [63:0] wr_data_buf1, wr_data_buf2, wr_data_del;
+  wire [63:0] rd_data0_tmp_buf1, rd_data0_tmp_buf2, rd_data0_tmp_del;
+
+  // -----------------------------------------------------------------------
+  // Triple buffer stages for all pins
+  // -----------------------------------------------------------------------
+  genvar i;
+  generate
+    // WE bus buffers (3 stages)
+    for (i = 0; i < 8; i = i + 1) begin : wr_we_bufs
+      sky130_fd_sc_hd__buf_2 we_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_sel_buf1[i]),
+        .A(wr_sel[i])
+      );
+      sky130_fd_sc_hd__buf_2 we_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_sel_buf2[i]),
+        .A(wr_sel_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 we_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_sel_del[i]),
+        .A(wr_sel_buf2[i])
+      );
+    end
+
+    // wr_addr[4:0] buffers (3 stages)
+    for (i = 0; i < 5; i = i + 1) begin : wr_addr_bufs
+      sky130_fd_sc_hd__buf_2 wraddr_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_addr_buf1[i]),
+        .A(wr_addr[i])
+      );
+      sky130_fd_sc_hd__buf_2 wraddr_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_addr_buf2[i]),
+        .A(wr_addr_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 wraddr_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_addr_del[i]),
+        .A(wr_addr_buf2[i])
+      );
+    end
+
+    // rd_addr[4:0] buffers (3 stages)
+    for (i = 0; i < 5; i = i + 1) begin : rd_addr_bufs
+      sky130_fd_sc_hd__buf_2 rdaddr_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(rd_addr_buf1[i]),
+        .A(rd_addr[i])
+      );
+      sky130_fd_sc_hd__buf_2 rdaddr_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(rd_addr_buf2[i]),
+        .A(rd_addr_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 rdaddr_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(rd_addr_del[i]),
+        .A(rd_addr_buf2[i])
+      );
+    end
+
+    // wr_data[63:0] buffers (3 stages)
+    for (i = 0; i < 64; i = i + 1) begin : wrdata_bufs
+      sky130_fd_sc_hd__buf_2 wrdata_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_data_buf1[i]),
+        .A(wr_data[i])
+      );
+      sky130_fd_sc_hd__buf_2 wrdata_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_data_buf2[i]),
+        .A(wr_data_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 wrdata_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(wr_data_del[i]),
+        .A(wr_data_buf2[i])
+      );
+    end
+
+    // RAM read output buffers (3 stages)
+    for (i = 0; i < 64; i = i + 1) begin : rdout_bufs
+      sky130_fd_sc_hd__buf_2 rdout_buf1 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(rd_data0_tmp_buf1[i]),
+        .A(cache_ram_0_Do1[i])
+      );
+      sky130_fd_sc_hd__buf_2 rdout_buf2 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(rd_data0_tmp_buf2[i]),
+        .A(rd_data0_tmp_buf1[i])
+      );
+      sky130_fd_sc_hd__buf_2 rdout_buf3 (
+`ifdef USE_POWER_PINS
+        .VPWR(vccd1),
+        .VGND(vssd1),
+`endif
+        .X(rd_data0_tmp_del[i]),
+        .A(rd_data0_tmp_buf2[i])
+      );
+    end
+
+    // Enable buffers (3 stages each)
+    sky130_fd_sc_hd__buf_2 en_wr_buf1 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(wr_enable_buf1),
+      .A(wr_enable)
+    );
+    sky130_fd_sc_hd__buf_2 en_wr_buf2 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(wr_enable_buf2),
+      .A(wr_enable_buf1)
+    );
+    sky130_fd_sc_hd__buf_2 en_wr_buf3 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(wr_enable_del),
+      .A(wr_enable_buf2)
+    );
+
+    sky130_fd_sc_hd__buf_2 en_rd_buf1 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(rd_en_buf1),
+      .A(rd_en)
+    );
+    sky130_fd_sc_hd__buf_2 en_rd_buf2 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(rd_en_buf2),
+      .A(rd_en_buf1)
+    );
+    sky130_fd_sc_hd__buf_2 en_rd_buf3 (
+`ifdef USE_POWER_PINS
+      .VPWR(vccd1),
+      .VGND(vssd1),
+`endif
+      .X(rd_en_del),
+      .A(rd_en_buf2)
+    );
+
+  endgenerate
+
+  // route downstream net from triple buffer outputs
+  assign rd_data0_tmp = rd_data0_tmp_del;
+
+  // instantiate RAM using triple buffered control/address/data signals
   RAM32_1RW1R cache_ram_0 (
 `ifdef USE_POWER_PINS
     .VPWR(vccd1),
     .VGND(vssd1),
 `endif
     .CLK(clk),
-    .EN0(wr_enable),
-    .A0(wr_addr),
-    .WE0(wr_sel),
-    .Di0(wr_data),
-    .EN1(rd_en),
-    .A1(rd_addr),
-    .Do0(),
-    .Do1(cache_ram_0_Do1));
-  /* asic/cache_ram.vhdl:82:30  */
+    .EN0(wr_enable_del),     // triple buffered
+    .A0(wr_addr_del),        // triple buffered
+    .WE0(wr_sel_del),        // triple buffered
+    .Di0(wr_data_del),       // triple buffered
+    .EN1(rd_en_del),         // triple buffered
+    .A1(rd_addr_del),        // triple buffered
+    .Do0(cache_ram_0_Do0),
+    .Do1(cache_ram_0_Do1)    // RAM drives cache_ram_0_Do1 only
+  );
+
+  // remaining logic uses rd_data0_tmp (driven by triple buffer outputs)
   assign n29428_o = rd_en_prev ? rd_data0_tmp : rd_data0_saved;
-  /* asic/cache_ram.vhdl:75:9  */
   assign n29429_o = rd_en_prev ? rd_data0_tmp : rd_data0_saved;
-  /* asic/cache_ram.vhdl:75:9  */
+
   always @(posedge clk)
     n29430_q <= n29429_o;
-  /* asic/cache_ram.vhdl:75:9  */
+
   always @(posedge clk)
     n29431_q <= rd_en;
-endmodule
 
-module main_bram_64_9_4096_a75adb9e07879fb6c63b494abe06e3f9a6bb2ed9
-(
-`ifdef USE_POWER_PINS
-   inout vccd1,
-   inout vssd1,
-`endif
-   input  clk,
-   input  [8:0] addr,
-   input  [63:0] din,
-   input  [7:0] sel,
-   input  re,
-   input  we,
-   output [63:0] dout);
-  wire [7:0] sel_qual;
-  wire [63:0] obuf;
-  wire [7:0] n29409_o;
-  wire [63:0] memory_0_Do0;
-  wire n29411_o;
-  reg [63:0] n29417_q;
-  assign dout = n29417_q;
-  /* asic/main_bram.vhdl:49:29  */
-  assign sel_qual = n29409_o; // (signal)
-  /* asic/main_bram.vhdl:37:12  */
-  assign obuf = memory_0_Do0; // (signal)
-  /* asic/main_bram.vhdl:44:21  */
-  assign n29409_o = we ? sel : 8'b00000000;
-  /* asic/main_bram.vhdl:46:5  */
-  RAM512 memory_0 (
-`ifdef USE_POWER_PINS
-    .VPWR(vccd1),
-    .VGND(vssd1),
-`endif
-    .CLK(clk),
-    .WE0(sel_qual),
-    .EN0(n29411_o),
-    .Di0(din),
-    .A0(addr),
-    .Do0(memory_0_Do0));
-  /* asic/main_bram.vhdl:50:24  */
-  assign n29411_o = re | we;
-  /* asic/main_bram.vhdl:59:9  */
-  always @(posedge clk)
-    n29417_q <= obuf;
 endmodule
 
 module core_debug_0
@@ -38450,6 +38824,7 @@ module fpu
     .vssd1(vssd1),
 `endif
     .clk(clk),
+    .rst(rst),
     .m_in_valid(n13862_o),
     .m_in_data1(n13863_o),
     .m_in_data2(n13864_o),
@@ -67630,6 +68005,7 @@ module execute1_0_276e8824c88e117571aa19e570895b56ecbd3507
     .vssd1(vssd1),
 `endif
     .clk(clk),
+    .rst(rst),
     .m_in_valid(n9638_o),
     .m_in_data1(n9639_o),
     .m_in_data2(n9640_o),
@@ -89150,11 +89526,69 @@ module core_0_4_1_4_4_1_2_2_452bf2882a9b5f1c06340d5059c72dbd8af3bf8b
   /* core.vhdl:207:9  */
   assign n1484_o = {register_file_0_log_out, cr_file_0_log_out, dcache_0_log_out, 1'b0, loadstore1_0_log_out, 5'b00000, execute1_0_log_out, decode2_0_log_out, decode1_0_log_out, icache_0_log_out, fetch1_0_log_out};
 endmodule
-(* top =  1  *)
-module soc(rst, system_clk, alt_reset_drive,\wb_dram_out.dat , \wb_dram_out.ack , \wb_dram_out.stall , \wb_ext_io_out.dat , \wb_ext_io_out.ack , \wb_ext_io_out.stall , \wishbone_dma_out.adr , \wishbone_dma_out.dat , \wishbone_dma_out.sel , \wishbone_dma_out.cyc , \wishbone_dma_out.stb , \wishbone_dma_out.we , ext_irq_eth, ext_irq_sdcard, uart0_rxd, uart1_rxd, jtag_tck, jtag_tms, jtag_tdi
-, jtag_trst, spi_flash_sdat_i, gpio_in, run_out, run_outs, \wb_dram_in.adr , \wb_dram_in.dat , \wb_dram_in.sel , \wb_dram_in.cyc , \wb_dram_in.stb , \wb_dram_in.we , \wb_ext_io_in.adr , \wb_ext_io_in.dat , \wb_ext_io_in.sel , \wb_ext_io_in.cyc , \wb_ext_io_in.stb , \wb_ext_io_in.we , wb_ext_is_dram_csr, wb_ext_is_dram_init, wb_ext_is_eth, wb_ext_is_sdcard
-, \wishbone_dma_in.dat , \wishbone_dma_in.ack , \wishbone_dma_in.stall , uart0_txd, uart1_txd, jtag_tdo, spi_flash_sck, spi_flash_cs_n, spi_flash_sdat_o, spi_flash_sdat_oe, gpio_out, gpio_dir, sw_soc_reset);
-  wire _000_;
+module soc(
+    vccd1,
+    vssd1,
+    rst,
+    system_clk,
+    alt_reset_drive ,
+    \wb_dram_out.dat ,
+    \wb_dram_out.ack ,
+    \wb_dram_out.stall ,
+    \wb_ext_io_out.dat ,
+    \wb_ext_io_out.ack ,
+    \wb_ext_io_out.stall ,
+    \wishbone_dma_out.adr ,
+    \wishbone_dma_out.dat ,
+    \wishbone_dma_out.sel ,
+    \wishbone_dma_out.cyc ,
+    \wishbone_dma_out.stb ,
+    \wishbone_dma_out.we ,
+    ext_irq_eth,
+    ext_irq_sdcard,
+    uart0_rxd,
+    uart1_rxd,
+    jtag_tck,
+    jtag_tms,
+    jtag_tdi,
+    jtag_trst,
+    spi_flash_sdat_i,
+    gpio_in,
+    run_out,
+    run_outs ,
+    \wb_dram_in.adr ,
+    \wb_dram_in.dat ,
+    \wb_dram_in.sel ,
+    \wb_dram_in.cyc ,
+    \wb_dram_in.stb ,
+    \wb_dram_in.we ,
+    \wb_ext_io_in.adr ,
+    \wb_ext_io_in.dat ,
+    \wb_ext_io_in.sel ,
+    \wb_ext_io_in.cyc ,
+    \wb_ext_io_in.stb ,
+    \wb_ext_io_in.we ,
+    wb_ext_is_dram_csr,
+    wb_ext_is_dram_init,
+    wb_ext_is_eth,
+    wb_ext_is_sdcard ,
+    \wishbone_dma_in.dat ,
+    \wishbone_dma_in.ack ,
+    \wishbone_dma_in.stall ,
+    uart0_txd,
+    uart1_txd,
+    jtag_tdo,
+    spi_flash_sck,
+    spi_flash_cs_n,
+    spi_flash_sdat_o,
+    spi_flash_sdat_oe,
+    gpio_out,
+    gpio_dir,
+    sw_soc_reset
+);
+inout vccd1;
+inout vssd1;
+wire _000_;
   wire [63:0] _001_;
   wire _002_;
   wire [31:0] _003_;
@@ -90468,6 +90902,10 @@ module soc(rst, system_clk, alt_reset_drive,\wb_dram_out.dat , \wb_dram_out.ack 
    input alt_reset_drive ;
    wire alt_reset_drive ;
   core_0_4_1_4_4_1_2_2_452bf2882a9b5f1c06340d5059c72dbd8af3bf8b processors_1_core  (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),
+    .vssd1(vssd1),
+`endif
     .alt_reset(alt_reset_drive),
     .clk(system_clk),
     .dmi_ack(_067_),
@@ -92536,8 +92974,7 @@ module syscon_100000000_4096_0_0_0_589433b711fb88bdee7cbb7d486960b51e4c8efd
   /* syscon.vhdl:108:12  */
   assign info_has_bram = n1624_o; // (signal)
   /* syscon.vhdl:109:12  */
-  //assign info_has_uart = n1616_o; // (signal)
-  assign info_has_uart = 0;
+  assign info_has_uart = n1616_o; // (signal)
   /* syscon.vhdl:110:12  */
   assign info_has_spif = n1628_o; // (signal)
   /* syscon.vhdl:111:12  */
